@@ -657,4 +657,4 @@ INSERT INTO bairro (bai_nome, cidade_cid_id) VALUES ('Bairro Frango', (SELECT ci
 
 INSERT INTO endereco (end_logradouro, end_numero, end_observacoes, bairro_bai_id) VALUES ('Av. Teste', 7777, 'Observação de teste!', (SELECT bai_id FROM bairro WHERE bai_nome = 'Bairro Batata Doce'));
 
-INSERT INTO parametrizacao (par_nome_fantasia, par_razao_social, par_cnpj, par_ie, par_email, par_telefone, par_data_ativacao, endereco_end_id) VALUES ('Top Burguer', 'TOP BURGUER LTDA.', '62.246.009/0001-34', 225450934645, 'contato@topburguer.com.br', '(18) 3263-9999', NOW(), (SELECT end_id FROM endereco WHERE end_logradouro = 'Av. Teste'));
+INSERT INTO parametrizacao (par_nome_fantasia, par_razao_social, par_cnpj, par_ie, par_email, par_telefone, par_data_ativacao, endereco_end_id) VALUES ('Top Burguer', 'TOP BURGUER LTDA.', '62246009000134', 225450934645, 'contato@topburguer.com.br', '1832639999', NOW(), (SELECT end_id FROM endereco WHERE end_logradouro = 'Av. Teste'));
