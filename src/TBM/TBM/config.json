@@ -1,5 +1,0 @@
-{
-    "database": {
-        "connectionString": "Server=localhost;Database=tbmdb;Uid=tbm;Pwd=tbm;"
-    }
-}
