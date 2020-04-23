@@ -78,18 +78,25 @@
     <Compile Include="Uteis\StringUteis.cs" />
     <Compile Include="DAL\DALBairro.cs" />
     <Compile Include="DAL\DALBase.cs" />
+    <Compile Include="DAL\DALCargo.cs" />
     <Compile Include="DAL\DALCidade.cs" />
     <Compile Include="DAL\DALEndereco.cs" />
     <Compile Include="DAL\DALEstado.cs" />
+    <Compile Include="DAL\DALFuncionario.cs" />
     <Compile Include="DAL\DALParametrizacao.cs" />
+    <Compile Include="DAL\DALUsuario.cs" />
     <Compile Include="DAL\MySQLPersistencia.cs" />
     <Compile Include="DAL\Persistencia.cs" />
     <Compile Include="DAL\PersistenciaFactory.cs" />
     <Compile Include="Model\Bairro.cs" />
+    <Compile Include="Model\Cargo.cs" />
     <Compile Include="Model\Cidade.cs" />
     <Compile Include="Model\Endereco.cs" />
     <Compile Include="Model\Estado.cs" />
+    <Compile Include="Model\Funcionario.cs" />
     <Compile Include="Model\Parametrizacao.cs" />
+    <Compile Include="Model\PessoaFisica.cs" />
+    <Compile Include="Model\Usuario.cs" />
     <Compile Include="View\mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
