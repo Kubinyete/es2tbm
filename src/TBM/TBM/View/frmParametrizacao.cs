@@ -94,8 +94,8 @@ namespace TBM.View
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(
+                "Você está prestes a cancelar todas as modificações efetuadas até o momento.",
                 "Dseja cancelar a operação atual?", 
-                "Você está prestes a cancelar todas as modificações efetuadas até o momento.", 
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -125,7 +125,7 @@ namespace TBM.View
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Erro", "Não foi possível carregar a imagem selecionada.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Não foi possível carregar a imagem selecionada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
