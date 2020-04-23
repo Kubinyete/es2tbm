@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace TBM.DAL
 {
-    class PersistenciaFactory
+    public class PersistenciaFactory
     {
         private static readonly dynamic json = JsonConvert.DeserializeObject(File.ReadAllText(@"./config.json"));
 

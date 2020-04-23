@@ -8,7 +8,7 @@ using TBM.Model;
 
 namespace TBM.DAL
 {
-    class DALParametrizacao : DALBase
+    public class DALParametrizacao : DALBase
     {
         public DALParametrizacao(Persistencia p) : base(p)
         {

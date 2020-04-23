@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Endereco
+    public class Endereco
     {
         private int _id;
         private string _logradouro;
+        private int _numero;
         private string _observacoes;
 
         private Bairro _bairro;
 
-        public Endereco(int id, string logradouro, string observacoes, Bairro bairro)
+        public Endereco(int id, int numero, string logradouro, string observacoes, Bairro bairro)
         {
             Id = id;
+            Numero = numero;
             Logradouro = logradouro;
             Observacoes = observacoes;
             Bairro = bairro;
@@ -26,5 +28,11 @@ namespace TBM.Model
         public string Logradouro { get => _logradouro; set => _logradouro = value; }
         public string Observacoes { get => _observacoes; set => _observacoes = value; }
         public Bairro Bairro { get => _bairro; set => _bairro = value; }
+        public int Numero { get => _numero; set => _numero = value; }
+
+        public override string ToString()
+        {
+            return String.Format("{0}, n° {1} - {2} - {3} - {4}", Logradouro, Numero, Bairro.Nome, Bairro.Cidade.Nome, Bairro.Cidade.Estado.Uf);
+        }
     }
 }

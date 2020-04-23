@@ -8,7 +8,7 @@ using TBM.Model;
 
 namespace TBM.DAL
 {
-    class DALEndereco : DALBase
+    public class DALEndereco : DALBase
     {
         public DALEndereco(Persistencia p) : base(p)
         {
@@ -19,6 +19,7 @@ namespace TBM.DAL
         {
             return new Endereco(
                 (int)dr["end_id"],
+                (int)dr["end_numero"],
                 (string)dr["end_logradouro"],
                 (string)dr["end_observacoes"],
                 e != null ? e : DALBairro.mapearObjeto(dr, null)

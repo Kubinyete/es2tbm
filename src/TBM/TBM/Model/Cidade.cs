@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Cidade
+    public class Cidade
     {
         private int _id;
         private string _nome;

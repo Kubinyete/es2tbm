@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Estado
+    public class Estado
     {
         private string _uf;
         private string _nome;

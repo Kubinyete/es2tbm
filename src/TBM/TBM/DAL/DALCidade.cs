@@ -8,7 +8,7 @@ using TBM.Model;
 
 namespace TBM.DAL
 {
-    class DALCidade : DALBase
+    public class DALCidade : DALBase
     {
         public DALCidade(Persistencia p) : base(p)
         {

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using TBM.DAL;
 using TBM.Model;
 
-namespace TBM
+namespace TBM.View
 {
     public partial class mainForm : Form
     {
@@ -21,9 +21,12 @@ namespace TBM
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            Model.Parametrizacao p = new DALParametrizacao(PersistenciaFactory.criarConexaoPersistencia()).obterParametrizacao();
+            
+        }
 
-            Console.WriteLine(p.ToString());
+        private void parametrizaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmParametrizacao().ShowDialog();
         }
     }
 }

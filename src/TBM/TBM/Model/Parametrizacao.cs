@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Parametrizacao
+    public class Parametrizacao
     {
         private int _id;
         private string _nome_fantasia;
@@ -34,6 +34,21 @@ namespace TBM.Model
             Telefone = telefone;
             Data_ativacao = data_ativacao;
             Endereco = endereco;
+        }
+
+        public Parametrizacao()
+        {
+            Id = 0;
+            Nome_fantasia = String.Empty;
+            Razao_social = String.Empty;
+            Cnpj = String.Empty;
+            Ie = 0;
+            Email = String.Empty;
+            Logomarca = null;
+            Logomarca_path = String.Empty;
+            Telefone = String.Empty;
+            Data_ativacao = DateTime.Now;
+            Endereco = null;
         }
 
         public int Id { get => _id; set => _id = value; }
