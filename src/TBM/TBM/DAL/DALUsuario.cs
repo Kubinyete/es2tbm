@@ -53,7 +53,7 @@ namespace TBM.DAL
 
             if(dt.Rows.Count >= 1)
             {
-                ret = mapearObjeto(dt.Rows[0]);
+                ret = mapearObjeto(dt.Rows[0], f);
             }
             return ret;
         }
