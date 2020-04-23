@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Usuario : PessoaFisica
+    class Usuario
     {
         private string _username;
         private string _password;
         private bool _ativado;
         private Funcionario _funcionario;
 
-        public Usuario(string username,string password,bool ativado,Funcionario funcionario,
-            string cpf, string rg, string nome, DateTime data_nascimento, Endereco endereco) : 
-            base(cpf, rg, nome, data_nascimento, endereco)
+        public Usuario(string username, string password, bool ativado, Funcionario funcionario)
         {
             Username = username;
             Password = password;

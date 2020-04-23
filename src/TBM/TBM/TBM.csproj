@@ -77,6 +77,7 @@
     <Compile Include="DAL\DALCidade.cs" />
     <Compile Include="DAL\DALEndereco.cs" />
     <Compile Include="DAL\DALEstado.cs" />
+    <Compile Include="DAL\DALFuncionario.cs" />
     <Compile Include="DAL\DALParametrizacao.cs" />
     <Compile Include="DAL\DALUsuario.cs" />
     <Compile Include="DAL\MySQLPersistencia.cs" />
