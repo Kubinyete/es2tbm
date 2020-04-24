@@ -74,6 +74,7 @@
     <Compile Include="BL\BLBase.cs" />
     <Compile Include="BL\BLParametrizacao.cs" />
     <Compile Include="BL\Errors\BLValidationError.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Uteis\ControlUteis.cs" />
     <Compile Include="Uteis\StringUteis.cs" />
     <Compile Include="DAL\DALBairro.cs" />
@@ -97,6 +98,18 @@
     <Compile Include="Model\Parametrizacao.cs" />
     <Compile Include="Model\PessoaFisica.cs" />
     <Compile Include="Model\Usuario.cs" />
+    <Compile Include="View\FrmCadastroFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmCadastroFuncionario.Designer.cs">
+      <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +124,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\FrmCadastroFuncionario.resx">
+      <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,8 +159,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

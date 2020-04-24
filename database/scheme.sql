@@ -619,3 +619,38 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+---------------------------------------------------
+--- PROCEDURES
+-------- ------------ ------------- ---------------
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login`(
+	IN P_USR_USERNAME VARCHAR(32), 
+    IN P_USR_PASSWORD VARCHAR(32), 
+    OUT P_SUCESSFUL tinyint, 
+    OUT P_MSG VARCHAR(32)
+)
+BEGIN 
+    DECLARE usr_name varchar(32); 
+    DECLARE usr_senha varchar(32);
+    DECLARE usr_active tinyint(1);
+    DECLARE p_password_md5 varchar(32);
+    SELECT usr_username, usr_password,usr_ativado into usr_name,usr_senha,usr_active 
+    from usuario where usr_username = P_USR_USERNAME;
+    
+    IF usr_name is null OR usr_active <> 1 then 
+			SET P_SUCESSFUL := 0;
+			set P_MSG := 'Usuario não encontrado';
+	ELSE
+		SET P_PASSWORD_MD5 = md5(P_USR_PASSWORD);
+		IF usr_senha = P_PASSWORD_MD5 then 
+			SET P_SUCESSFUL := 1;
+            set P_MSG := 'OK';
+		else 
+			SET P_SUCESSFUL := 0;
+			set P_MSG := 'Usuário Inválido';
+		end if; 
+	END IF;
+END
+
+
