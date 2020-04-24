@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace TBM.DAL
 
         }
 
-        public static Usuario mapearObjeto(DataRow dt,Funcionario funcionario)
+        public static Usuario mapearObjeto(DataRow dt, Funcionario funcionario)
         {
             return new Usuario(
                 dt["usr_username"].ToString(),
@@ -25,7 +26,7 @@ namespace TBM.DAL
             );
         }
 
-        public Usuario obterUsuario(string username,Funcionario f)
+        public Usuario obterUsuario(string username, Funcionario f)
         {
             Usuario ret = null;
 
@@ -51,11 +52,39 @@ namespace TBM.DAL
 "inner join estado on cidade.estado_est_uf = estado.est_uf" +
  "where usuario.usr_username = @username;", parametros);
 
-            if(dt.Rows.Count >= 1)
+            Db.fechar();
+
+            if (dt.Rows.Count >= 1)
             {
-                ret = mapearObjeto(dt.Rows[0]);
+                ret = mapearObjeto(dt.Rows[0], f);
             }
             return ret;
         }
+
+        public string Logar(string username, string password)
+        {
+            string ret = "Erro";
+            bool logou = false;
+
+            Db.abrir();
+
+            var parametros = criarParametros();
+            parametros.Add("@username", username);
+            parametros.Add("@password", password);
+
+            DataTable dt = Db.executarSelect("CALL login(@username,@password,@output_cod,@output_msg);"+
+            "select @output_cod, @output_msg;", parametros);
+
+            if (dt.Rows.Count > 0)
+            {
+                ret = dt.Rows[0]["@output_msg"].ToString();
+            }
+
+            Db.fechar();
+
+            return ret;
+        }
+
+
     }
 }
