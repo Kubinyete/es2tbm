@@ -71,7 +71,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLBairro.cs" />
     <Compile Include="BL\BLBase.cs" />
+    <Compile Include="BL\BLCidade.cs" />
+    <Compile Include="BL\BLEndereco.cs" />
+    <Compile Include="BL\BLEstado.cs" />
     <Compile Include="BL\BLParametrizacao.cs" />
     <Compile Include="BL\Errors\BLValidationError.cs" />
     <Compile Include="Uteis\ControlUteis.cs" />
@@ -90,6 +94,19 @@
     <Compile Include="Model\Endereco.cs" />
     <Compile Include="Model\Estado.cs" />
     <Compile Include="Model\Parametrizacao.cs" />
+    <Compile Include="View\ECrudContext.cs" />
+    <Compile Include="View\frmBairro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmBairro.Designer.cs">
+      <DependentUpon>frmBairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmGerenciarEnderecos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmGerenciarEnderecos.Designer.cs">
+      <DependentUpon>frmGerenciarEnderecos.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +121,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\frmBairro.resx">
+      <DependentUpon>frmBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmGerenciarEnderecos.resx">
+      <DependentUpon>frmGerenciarEnderecos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +141,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -135,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

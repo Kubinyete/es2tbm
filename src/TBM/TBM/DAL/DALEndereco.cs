@@ -35,7 +35,7 @@ namespace TBM.DAL
             var param = criarParametros();
             param.Add("bid", e.Id);
 
-            DataTable dt = Db.executarSelect("SELECT end_id, end_logradouro, end_observacoes FROM bairro WHERE bairro_bai_id = @bid", param);
+            DataTable dt = Db.executarSelect("SELECT end_id, end_logradouro, end_numero, end_observacoes FROM endereco WHERE bairro_bai_id = @bid", param);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -59,7 +59,7 @@ namespace TBM.DAL
             param.Add("bid", e.Id);
             param.Add("busca", String.Format("%{0}%", busca));
 
-            DataTable dt = Db.executarSelect("SELECT end_id, end_logradouro, end_observacoes FROM bairro WHERE bairro_bai_id = @bid AND end_logradouro LIKE @busca", param);
+            DataTable dt = Db.executarSelect("SELECT end_id, end_logradouro, end_numero, end_observacoes FROM endereco WHERE bairro_bai_id = @bid AND end_logradouro LIKE @busca", param);
 
             foreach (DataRow dr in dt.Rows)
             {

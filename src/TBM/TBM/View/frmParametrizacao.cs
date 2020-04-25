@@ -165,5 +165,17 @@ namespace TBM.View
                 }
             }
         }
+
+        private void btnEndereco_Click(object sender, EventArgs e)
+        {
+            Endereco novo = new frmGerenciarEnderecos().exibirComRetorno();
+
+            if (novo != null)
+            {
+                cbEndereco.Items.Clear();
+                cbEndereco.Items.Add(novo);
+                cbEndereco.SelectedIndex = 0;
+            }
+        }
     }
 }

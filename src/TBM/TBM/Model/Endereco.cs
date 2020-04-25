@@ -34,5 +34,10 @@ namespace TBM.Model
         {
             return String.Format("{0}, n° {1} - {2} - {3} - {4}", Logradouro, Numero, Bairro.Nome, Bairro.Cidade.Nome, Bairro.Cidade.Estado.Uf);
         }
+
+        public bool Equals(Endereco obj)
+        {
+            return Id == obj.Id;
+        }
     }
 }

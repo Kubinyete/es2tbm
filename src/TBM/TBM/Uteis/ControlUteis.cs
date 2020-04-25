@@ -20,5 +20,21 @@ namespace TBM.Uteis
 
             return ret;
         }
+
+        public static void selecionarEmTabela(DataGridView dgv, object prev)
+        {
+            if (prev != null)
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    object curr = row.DataBoundItem;
+
+                    if (curr.Equals(prev))
+                    {
+                        row.Selected = true;
+                    }
+                }
+            }
+        }
     }
 }

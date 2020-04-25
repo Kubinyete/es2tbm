@@ -19,5 +19,10 @@ namespace TBM.Model
 
         public string Uf { get => _uf; set => _uf = value; }
         public string Nome { get => _nome; set => _nome = value; }
+
+        public override string ToString()
+        {
+            return Uf;
+        }
     }
 }
