@@ -11,6 +11,7 @@ using System.IO;
 using TBM.Model;
 using TBM.BL;
 using TBM.Uteis;
+using TBM.BL.Errors;
 
 namespace TBM.View
 {
@@ -18,7 +19,7 @@ namespace TBM.View
     {
         private Parametrizacao _parametrizacao;
 
-        public Parametrizacao Parametrizacao { get => _parametrizacao; set => _parametrizacao = value; }
+        protected Parametrizacao Parametrizacao { get => _parametrizacao; set => _parametrizacao = value; }
 
         public frmParametrizacao()
         {
@@ -49,7 +50,10 @@ namespace TBM.View
 
                 if (p.Logomarca != null)
                 {
-                    pbLogo.Image = Image.FromStream(new MemoryStream(p.Logomarca));
+                    try
+                    {
+                        pbLogo.Image = Image.FromStream(new MemoryStream(p.Logomarca));
+                    } catch (Exception) {}
                 }
             }
         }
@@ -63,12 +67,21 @@ namespace TBM.View
 
             p.Nome_fantasia = tbNomeFantasia.Text;
             p.Razao_social = tbRazaoSocial.Text;
-            p.Cnpj = tbCnpj.Text;
+            p.Cnpj = ControlUteis.obterStringSemMascara(tbCnpj);
             p.Ie = Convert.ToInt64(ControlUteis.obterStringSemMascara(tbInscricaoEstadual));
             p.Email = tbEmail.Text;
             p.Telefone = ControlUteis.obterStringSemMascara(tbTelefone);
             p.Endereco = (Endereco)cbEndereco.SelectedItem;
-            p.Logomarca = (byte[])new ImageConverter().ConvertTo(pbLogo.Image, typeof(byte[]));
+            
+            try
+            {
+                p.Logomarca = pbLogo.Image != null ? (byte[])new ImageConverter().ConvertTo(pbLogo.Image, typeof(byte[])) : null;
+            } 
+            catch (NotSupportedException)
+            {
+                p.Logomarca = null;
+            }
+            
             p.Logomarca_path = tbCaminhoLogo.Text;
 
             return p;
@@ -77,17 +90,40 @@ namespace TBM.View
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Parametrizacao p = obterDadosPreenchidos();
+            var bl = new BLParametrizacao();
 
-            if (Parametrizacao != null)
+            try
             {
-                // Alterar os dados    
-
-                // BLParametrizacao.atualizar(p);
-            } else
+                if (Parametrizacao != null && bl.atualizarParametrizacao(p) || Parametrizacao == null && bl.cadastrarParametrizacao(p))
+                {
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Não foi possível atualizar o registro na base de dados.",
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+            }
+            catch (BLValidationError err)
             {
-                // Cadastrar os dados
-
-                // Parametrizacao = BLParametrizacao.cadastrar(p);
+                MessageBox.Show(
+                    err.Message,
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            } catch (Exception err)
+            {
+                MessageBox.Show(
+                    String.Format("Não foi possível atualizar o registro na base de dados:\n{0}.", err.Message),
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 
@@ -95,7 +131,7 @@ namespace TBM.View
         {
             if (MessageBox.Show(
                 "Você está prestes a cancelar todas as modificações efetuadas até o momento.",
-                "Dseja cancelar a operação atual?", 
+                "Deseja cancelar a operação atual?", 
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
