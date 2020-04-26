@@ -42,9 +42,9 @@ namespace TBM.DAL
 "endereco.end_observacoes, endereco.end_numero, bairro.bai_id," +
 "bairro.bai_nome, cidade.cid_id, cidade.cid_nome, estado.est_uf," +
 "estado.est_nome" +
- "from usuario" +
- "inner join funcionario on usuario.funcionario_pessoafisica_pes_cpf = funcionario_pessoafisica_pes_cpf" +
- "inner join pessoafisica on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf" +
+"from usuario" +
+"inner join funcionario on usuario.funcionario_pessoafisica_pes_cpf = funcionario_pessoafisica_pes_cpf" +
+"inner join pessoafisica on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf" +
 "inner join cargo on cargo.car_id = funcionario.cargo_car_id" +
 "inner join endereco on endereco.end_id = pessoafisica.endereco_end_id" +
 "inner join bairro on bairro.bai_id = endereco.bairro_bai_id" +
@@ -84,7 +84,5 @@ namespace TBM.DAL
 
             return ret;
         }
-
-
     }
 }

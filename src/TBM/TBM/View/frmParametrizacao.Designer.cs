@@ -34,7 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbParametros = new System.Windows.Forms.GroupBox();
             this.btnLogo = new System.Windows.Forms.Button();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnEndereco = new System.Windows.Forms.Button();
             this.cbEndereco = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,16 +49,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbCnpj = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.ofdAlterar = new System.Windows.Forms.OpenFileDialog();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.gbParametros.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbNomeFantasia
@@ -138,15 +138,6 @@
             this.btnLogo.UseVisualStyleBackColor = true;
             this.btnLogo.Click += new System.EventHandler(this.btnLogo_Click);
             // 
-            // pbLogo
-            // 
-            this.pbLogo.Location = new System.Drawing.Point(447, 32);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(300, 300);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 22;
-            this.pbLogo.TabStop = false;
-            // 
             // btnEndereco
             // 
             this.btnEndereco.Location = new System.Drawing.Point(366, 214);
@@ -155,6 +146,7 @@
             this.btnEndereco.TabIndex = 21;
             this.btnEndereco.Text = "Procurar";
             this.btnEndereco.UseVisualStyleBackColor = true;
+            this.btnEndereco.Click += new System.EventHandler(this.btnEndereco_Click);
             // 
             // cbEndereco
             // 
@@ -274,18 +266,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "CNPJ";
             // 
-            // pbIcone
-            // 
-            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
-            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbIcone.Image = global::TBM.Properties.Resources.settings_icon;
-            this.pbIcone.Location = new System.Drawing.Point(0, 0);
-            this.pbIcone.Name = "pbIcone";
-            this.pbIcone.Size = new System.Drawing.Size(50, 50);
-            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbIcone.TabIndex = 9;
-            this.pbIcone.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnConfirmar);
@@ -319,6 +299,27 @@
             // 
             this.ofdAlterar.Filter = "Arquivos PNG|*.png|Arquivos JPEG|*.jpeg|Arquivos JPG|*.jpg|Todos os arquivos|*.*";
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Location = new System.Drawing.Point(447, 32);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(300, 300);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 22;
+            this.pbLogo.TabStop = false;
+            // 
+            // pbIcone
+            // 
+            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
+            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbIcone.Image = global::TBM.Properties.Resources.settings_icon;
+            this.pbIcone.Location = new System.Drawing.Point(0, 0);
+            this.pbIcone.Name = "pbIcone";
+            this.pbIcone.Size = new System.Drawing.Size(50, 50);
+            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIcone.TabIndex = 9;
+            this.pbIcone.TabStop = false;
+            // 
             // frmParametrizacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,9 +336,9 @@
             this.panel1.ResumeLayout(false);
             this.gbParametros.ResumeLayout(false);
             this.gbParametros.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

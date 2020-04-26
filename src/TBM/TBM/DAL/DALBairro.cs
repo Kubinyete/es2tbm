@@ -24,6 +24,16 @@ namespace TBM.DAL
             );
         }
 
+        public static Dictionary<string, object> mapearParametros(Bairro b)
+        {
+            var param = criarParametros();
+            param.Add("id", b.Id);
+            param.Add("nome", b.Nome);
+            param.Add("cidade", b.Cidade.Id);
+
+            return param;
+        }
+
         public List<Bairro> obterBairros(Cidade e)
         {
             List<Bairro> ret = new List<Bairro>();
@@ -65,6 +75,48 @@ namespace TBM.DAL
                     mapearObjeto(dr, e)
                 );
             }
+
+            Db.fechar();
+
+            return ret;
+        }
+
+        public bool inserirBairro(Bairro b)
+        {
+            Db.abrir();
+
+            var param = mapearParametros(b);
+
+            bool ret = Db.executarNonQuery("INSERT INTO bairro (bai_nome, cidade_cid_id) VALUES (@nome, @cidade)", param) > 0;
+
+            Db.fechar();
+
+            if (ret)
+                b.Id = (int)Db.obterUltimoId();
+
+            return ret;
+        }
+
+        public bool atualizarBairro(Bairro b)
+        {
+            Db.abrir();
+
+            var param = mapearParametros(b);
+
+            bool ret = Db.executarNonQuery("UPDATE bairro SET bai_nome = @nome, cidade_cid_id = @cidade WHERE bai_id = @id", param) > 0;
+
+            Db.fechar();
+
+            return ret;
+        }
+
+        public bool excluirBairro(Bairro b)
+        {
+            Db.abrir();
+
+            var param = mapearParametros(b);
+
+            bool ret = Db.executarNonQuery("DELETE FROM bairro WHERE bai_id = @id", param) > 0;
 
             Db.fechar();
 

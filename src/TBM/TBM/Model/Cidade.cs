@@ -23,5 +23,10 @@ namespace TBM.Model
         public int Id { get => _id; set => _id = value; }
         public string Nome { get => _nome; set => _nome = value; }
         internal Estado Estado { get => _estado; set => _estado = value; }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

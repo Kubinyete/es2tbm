@@ -17,7 +17,7 @@ namespace TBM.DAL
 
         protected Persistencia Db { get => _db;}
 
-        protected Dictionary<string, object> criarParametros()
+        protected static Dictionary<string, object> criarParametros()
         {
             return new Dictionary<string, object>();
         }
