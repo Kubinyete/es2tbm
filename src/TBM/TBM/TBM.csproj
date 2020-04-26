@@ -77,12 +77,6 @@
     <Compile Include="Controller\CadastroAlteracaoController.cs" />
     <Compile Include="Controller\PesquisarFuncionarioController.cs" />
     <Compile Include="Controller\LoginController.cs" />
-    <Compile Include="DAL\DALCargo.cs" />
-    <Compile Include="DAL\DALUsuario.cs" />
-    <Compile Include="Model\Cargo.cs" />
-    <Compile Include="Model\Funcionario.cs" />
-    <Compile Include="Model\PessoaFisica.cs" />
-    <Compile Include="Model\Usuario.cs" />
     <Compile Include="BL\BLBairro.cs" />
     <Compile Include="BL\BLBase.cs" />
     <Compile Include="BL\BLCidade.cs" />
