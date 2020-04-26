@@ -24,6 +24,15 @@ namespace TBM.Model
             Bairro = bairro;
         }
 
+        public Endereco()
+        {
+            Id = 0;
+            Numero = 0;
+            Logradouro = String.Empty;
+            Observacoes = String.Empty;
+            Bairro = null;
+        }
+
         public int Id { get => _id; set => _id = value; }
         public string Logradouro { get => _logradouro; set => _logradouro = value; }
         public string Observacoes { get => _observacoes; set => _observacoes = value; }
@@ -33,6 +42,11 @@ namespace TBM.Model
         public override string ToString()
         {
             return String.Format("{0}, n° {1} - {2} - {3} - {4}", Logradouro, Numero, Bairro.Nome, Bairro.Cidade.Nome, Bairro.Cidade.Estado.Uf);
+        }
+
+        public bool Equals(Endereco obj)
+        {
+            return Id == obj.Id;
         }
     }
 }

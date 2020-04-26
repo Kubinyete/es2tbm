@@ -20,8 +20,25 @@ namespace TBM.Model
             Cidade = cidade;
         }
 
+        public Bairro()
+        {
+            Id = 0;
+            Nome = String.Empty;
+            Cidade = null;
+        }
+
         public int Id { get => _id; set => _id = value; }
         public string Nome { get => _nome; set => _nome = value; }
         public Cidade Cidade { get => _cidade; set => _cidade = value; }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
+
+        public bool Equals(Bairro obj)
+        {
+            return Id == obj.Id;
+        }
     }
 }

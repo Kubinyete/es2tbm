@@ -561,7 +561,7 @@ CREATE TABLE IF NOT EXISTS `tbmdb`.`parametrizacao` (
   `par_cnpj` CHAR(14) NOT NULL,
   `par_ie` BIGINT NOT NULL,
   `par_email` VARCHAR(64) NULL,
-  `par_logomarca` BLOB NULL,
+  `par_logomarca` MEDIUMBLOB NULL,
   `par_logomarca_path` VARCHAR(64) NULL,
   `par_telefone` VARCHAR(16) NULL,
   `par_data_ativacao` DATETIME NOT NULL,

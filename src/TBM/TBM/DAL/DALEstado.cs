@@ -43,5 +43,23 @@ namespace TBM.DAL
 
             return ret;
         }
+
+        public List<Estado> obterTodosEstados()
+        {
+            List<Estado> ret = new List<Estado>();
+
+            Db.abrir();
+
+            DataTable dt = Db.executarSelect("SELECT est_uf, est_nome FROM estado");
+
+            foreach (var row in dt.Rows)
+            {
+                ret.Add(mapearObjeto(dt.Rows[0]));
+            }
+
+            Db.fechar();
+
+            return ret;
+        }
     }
 }

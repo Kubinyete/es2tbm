@@ -38,37 +38,35 @@ namespace TBM.BL
                 throw new BLValidationError("É preciso informar um endereço.");
         }
 
-        public void atualizarParametrizacao(Parametrizacao p)
+        public bool atualizarParametrizacao(Parametrizacao p)
         {
-            // @TODO:
-            // Efetuar checks...
-            throw new NotImplementedException();
+            verificarConsistencia(p);
+            return new DALParametrizacao(Persistencia).atualizarParametrizacao(p);
         }
 
-        public void cadastrarParametrizacao(Parametrizacao p)
+        public bool cadastrarParametrizacao(Parametrizacao p)
         {
-            // @TODO:
-            // Efetuar checks...
-            throw new NotImplementedException();
+            verificarConsistencia(p);
+            return new DALParametrizacao(Persistencia).inserirParametrizacao(p);
         }
 
-        public void cadastrarParametrizacao(string nome_fantasia, string razao_social, string cnpj, long ie, string email, byte[] logomarca, string logomarca_path, string telefone, DateTime data_ativacao, Endereco endereco)
+        public Parametrizacao cadastrarParametrizacao(string nome_fantasia, string razao_social, string cnpj, long ie, string email, byte[] logomarca, string logomarca_path, string telefone, DateTime data_ativacao, Endereco endereco)
         {
-            cadastrarParametrizacao(
-                new Parametrizacao(
-                    0,
-                    nome_fantasia,
-                    razao_social,
-                    cnpj,
-                    ie,
-                    email,
-                    logomarca,
-                    logomarca_path,
-                    telefone,
-                    data_ativacao,
-                    endereco
-                )
+            var p = new Parametrizacao(
+                0,
+                nome_fantasia,
+                razao_social,
+                cnpj,
+                ie,
+                email,
+                logomarca,
+                logomarca_path,
+                telefone,
+                data_ativacao,
+                endereco
             );
+
+            return cadastrarParametrizacao(p) ? p : null;
         }
     }
 }

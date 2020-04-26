@@ -35,6 +35,25 @@ namespace TBM.DAL
             );
         }
 
+        public static Dictionary<string, object> mapearParametros(Parametrizacao p)
+        {
+            var param = criarParametros();
+
+            param.Add("id", p.Id);
+            param.Add("nome", p.Nome_fantasia);
+            param.Add("razao", p.Razao_social);
+            param.Add("cnpj", p.Cnpj);
+            param.Add("ie", p.Ie);
+            param.Add("email", p.Email == String.Empty ? null : p.Email);
+            param.Add("logo", p.Logomarca);
+            param.Add("logopath", p.Logomarca_path == String.Empty ? null : p.Logomarca_path);
+            param.Add("telefone", p.Telefone == String.Empty ? null : p.Telefone);
+            param.Add("data", p.Data_ativacao);
+            param.Add("endereco", p.Endereco.Id);
+
+            return param;
+        }
+
         public Parametrizacao obterParametrizacao()
         {
             Parametrizacao ret = null;
@@ -47,6 +66,34 @@ namespace TBM.DAL
             {
                 ret = mapearObjeto(dr);
             }
+
+            Db.fechar();
+
+            return ret;
+        }
+
+        public bool inserirParametrizacao(Parametrizacao p) {
+            Db.abrir();
+
+            var param = mapearParametros(p);
+
+            bool ret = Db.executarNonQuery("INSERT INTO parametrizacao (par_nome_fantasia, par_razao_social, par_cnpj, par_ie, par_email, par_logomarca, par_logomarca_path, par_telefone, par_data_ativacao, endereco_end_id) VALUES (@nome, @razao, @cnpj, @ie, @email, @logo, @logopath, @telefone, @data, @endereco)", param) > 0;
+
+            Db.fechar();
+
+            if (ret)
+                p.Id = (int)Db.obterUltimoId();
+
+            return ret;
+        }
+
+        public bool atualizarParametrizacao(Parametrizacao p)
+        {
+            Db.abrir();
+
+            var param = mapearParametros(p);
+
+            bool ret = Db.executarNonQuery("UPDATE parametrizacao SET par_nome_fantasia = @nome, par_razao_social = @razao, par_cnpj = @cnpj, par_ie = @ie, par_email = @email, par_logomarca = @logo, par_logomarca_path = @logopath, par_telefone = @telefone, par_data_ativacao = @data, endereco_end_id = @endereco WHERE par_id = @id", param) > 0;
 
             Db.fechar();
 
