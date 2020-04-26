@@ -33,5 +33,10 @@ namespace TBM.View
         {
             new frmLogin().ShowDialog();
         }
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Funcionario.PesquisarFuncionario().ShowDialog();
+        }
     }
 }

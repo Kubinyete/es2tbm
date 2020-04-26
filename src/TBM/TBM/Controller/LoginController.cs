@@ -13,7 +13,6 @@ namespace TBM.Controller
         public string logar(string username, string senha)
         {
             string ret = "";
-            bool logou=false;
             DAL.DALUsuario dal_usr = new DAL.DALUsuario(
                 DAL.PersistenciaFactory.criarConexaoPersistencia());
             return ret = dal_usr.Logar(username, senha);

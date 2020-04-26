@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Cargo
+    public class Cargo
     {
         private int _id;
         private string _nome;
@@ -25,5 +25,10 @@ namespace TBM.Model
         public string Nome { get => _nome; set => _nome = value; }
         public string Descricao { get => _descricao; set => _descricao = value; }
         public double Sal_base { get => _sal_base; set => _sal_base = value; }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace TBM.BL.Errors
     {
         public BLValidationError(string message) : base(message)
         {
+
         }
     }
 }

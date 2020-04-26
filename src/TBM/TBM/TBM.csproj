@@ -72,8 +72,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\BLBase.cs" />
+    <Compile Include="BL\BLPesquisarFuncionario.cs" />
+    <Compile Include="BL\BLLogin.cs" />
     <Compile Include="BL\BLParametrizacao.cs" />
+    <Compile Include="BL\BLCadastroeAlteracaoFuncionario.cs" />
     <Compile Include="BL\Errors\BLValidationError.cs" />
+    <Compile Include="Controller\CadastroAlteracaoController.cs" />
+    <Compile Include="Controller\PesquisarFuncionarioController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Uteis\ControlUteis.cs" />
     <Compile Include="Uteis\StringUteis.cs" />
@@ -98,10 +103,10 @@
     <Compile Include="Model\Parametrizacao.cs" />
     <Compile Include="Model\PessoaFisica.cs" />
     <Compile Include="Model\Usuario.cs" />
-    <Compile Include="View\FrmCadastroFuncionario.cs">
+    <Compile Include="View\Funcionario\FrmCadastroFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmCadastroFuncionario.Designer.cs">
+    <Compile Include="View\Funcionario\FrmCadastroFuncionario.Designer.cs">
       <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmLogin.cs">
@@ -109,6 +114,12 @@
     </Compile>
     <Compile Include="View\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Funcionario\PesquisarFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Funcionario\PesquisarFuncionario.Designer.cs">
+      <DependentUpon>PesquisarFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="View\mainForm.cs">
       <SubType>Form</SubType>
@@ -124,11 +135,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\FrmCadastroFuncionario.resx">
+    <EmbeddedResource Include="View\Funcionario\FrmCadastroFuncionario.resx">
       <DependentUpon>FrmCadastroFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Funcionario\PesquisarFuncionario.resx">
+      <DependentUpon>PesquisarFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
@@ -144,6 +158,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -159,6 +174,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
