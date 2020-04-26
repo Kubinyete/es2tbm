@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class PessoaFisica
+    public class PessoaFisica
     {
         private string _cpf;
         private string _rg;

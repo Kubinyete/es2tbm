@@ -61,6 +61,34 @@ namespace TBM.DAL
             return ret;
         }
 
+        /*
+         * Fiz esta sobrecarga para carregar o combobox do form de alteração
+        */
+        public List<Endereco> obterEnderecos()
+        {
+            List<Endereco> ret = new List<Endereco>();
+
+            Db.abrir();
+
+            DataTable dt = Db.executarSelect("select end_id,end_logradouro,end_observacoes, bairro.bai_id,bairro.bai_nome,"+ 
+"cidade.cid_id,endereco.end_numero ,cidade.cid_nome, estado.est_uf, estado.est_nome "+
+"from endereco "+
+"inner join bairro on endereco.bairro_bai_id = bairro_bai_id "+
+"inner join cidade on cidade.cid_id = bairro.cidade_cid_id " +
+"inner join estado on estado.est_uf = cidade.estado_est_uf;");
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                ret.Add(
+                    mapearObjeto(dr, null)
+                );
+            }
+
+            Db.fechar();
+
+            return ret;
+        }
+
         public List<Endereco> procurarEnderecos(Bairro e, string busca)
         {
             List<Endereco> ret = new List<Endereco>();

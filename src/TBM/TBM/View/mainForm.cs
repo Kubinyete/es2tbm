@@ -28,5 +28,15 @@ namespace TBM.View
         {
             new frmParametrizacao().ShowDialog();
         }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmLogin().ShowDialog();
+        }
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Funcionario.PesquisarFuncionario().ShowDialog();
+        }
     }
 }

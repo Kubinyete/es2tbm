@@ -39,5 +39,19 @@ namespace TBM.DAL
             }
             return ret;
         }
+
+        public List<Cargo> obterCargos()
+        {
+            List<Cargo> ret = new List<Cargo>();
+
+            Db.abrir();
+
+            DataTable dt = Db.executarSelect("select * from cargo;");
+            foreach(DataRow r in dt.Rows)
+            {
+                ret.Add(mapearObjeto(r));
+            }
+            return ret;
+        }
     }
 }

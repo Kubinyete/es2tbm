@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Funcionario : PessoaFisica
+    public class Funcionario : PessoaFisica
     {
         private double _salario_atual;
         private Cargo _cargo;
@@ -20,6 +20,6 @@ namespace TBM.Model
         }
 
         public double Salario_atual { get => _salario_atual; set => _salario_atual = value; }
-        internal Cargo Cargo { get => _cargo; set => _cargo = value; }
+        public Cargo Cargo { get => _cargo; set => _cargo = value; }
     }
 }
