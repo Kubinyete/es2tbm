@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using TBM.BL;
 using TBM.BL.Errors;
 using TBM.Model;
@@ -58,7 +59,21 @@ namespace TBM.View
                 e = new Endereco();
 
             e.Logradouro = tbLogradouro.Text.Trim();
-            e.Numero = Convert.ToInt32(tbNumero.Text.Trim());
+            
+            try
+            {
+                e.Numero = Convert.ToInt32(tbNumero.Text.Trim());
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(
+                    "O número do endereço informado não é um número válido.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+
             e.Observacoes = tbObservacoes.Text;
 
             e.Bairro = (Bairro)cbBairro.SelectedItem;
@@ -110,42 +125,44 @@ namespace TBM.View
             BLEndereco bl = new BLEndereco();
             Endereco e = obterDadosPreenchidos();
 
-            try
+            if (e != null)
             {
-
-                if (Endereco != null && bl.atualizarEndereco(e) || Endereco == null && bl.cadastrarEndereco(e))
+                try
                 {
-                    enderecoConfirmado = e;
+                    if (Endereco != null && bl.atualizarEndereco(e) || Endereco == null && bl.cadastrarEndereco(e))
+                    {
+                        enderecoConfirmado = e;
 
-                    Close();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Não foi possível atualizar o registro na base de dados.",
+                            "Erro",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
                 }
-                else
+                catch (BLValidationError err)
                 {
                     MessageBox.Show(
-                        "Não foi possível atualizar o registro na base de dados.",
+                        err.Message,
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(
+                        String.Format("Não foi possível atualizar o registro na base de dados:\n{0}.", err.Message),
                         "Erro",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                     );
                 }
-            }
-            catch (BLValidationError err)
-            {
-                MessageBox.Show(
-                    err.Message,
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(
-                    String.Format("Não foi possível atualizar o registro na base de dados:\n{0}.", err.Message),
-                    "Erro",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
             }
         }
 
@@ -166,6 +183,11 @@ namespace TBM.View
             {
                 Close();
             }
+        }
+
+        private void tbNumero_KeyUp(object sender, KeyEventArgs e)
+        {
+            tbNumero.Text = Regex.Replace(tbNumero.Text, @"[^0123456789]", "");
         }
     }
 }

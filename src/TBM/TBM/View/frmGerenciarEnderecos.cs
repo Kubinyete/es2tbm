@@ -158,7 +158,7 @@ namespace TBM.View
             {
                 Bairro b = new frmBairro(cidadeSelecionada).exibirComRetorno();
 
-                carregarBairros(cidadeSelecionada, b != null ? b : bairroSelecionado);
+                carregarBairros(cidadeSelecionada, b);
             } else
             {
                 MessageBox.Show(
@@ -195,7 +195,7 @@ namespace TBM.View
             {
                 Endereco e = new frmEndereco(bairroSelecionado).exibirComRetorno();
 
-                carregarEnderecos(bairroSelecionado, e != null ? e : enderecoSelecionado);
+                carregarEnderecos(bairroSelecionado, e);
             }
             else
             {

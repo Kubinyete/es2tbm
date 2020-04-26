@@ -30,20 +30,20 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbParametros = new System.Windows.Forms.GroupBox();
+            this.cbBairro = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbObservacoes = new System.Windows.Forms.RichTextBox();
+            this.tbNumero = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbLogradouro = new System.Windows.Forms.TextBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.pbIcone = new System.Windows.Forms.PictureBox();
-            this.tbNumero = new System.Windows.Forms.TextBox();
-            this.tbObservacoes = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAction = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbBairro = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.gbParametros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
@@ -77,6 +77,50 @@
             this.gbParametros.TabStop = false;
             this.gbParametros.Text = "Parâmetros";
             // 
+            // cbBairro
+            // 
+            this.cbBairro.Enabled = false;
+            this.cbBairro.FormattingEnabled = true;
+            this.cbBairro.Location = new System.Drawing.Point(229, 71);
+            this.cbBairro.Name = "cbBairro";
+            this.cbBairro.Size = new System.Drawing.Size(231, 21);
+            this.cbBairro.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(226, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Bairro";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Observações";
+            // 
+            // tbObservacoes
+            // 
+            this.tbObservacoes.Location = new System.Drawing.Point(9, 114);
+            this.tbObservacoes.Name = "tbObservacoes";
+            this.tbObservacoes.Size = new System.Drawing.Size(451, 72);
+            this.tbObservacoes.TabIndex = 21;
+            this.tbObservacoes.Text = "";
+            // 
+            // tbNumero
+            // 
+            this.tbNumero.Location = new System.Drawing.Point(9, 71);
+            this.tbNumero.Name = "tbNumero";
+            this.tbNumero.Size = new System.Drawing.Size(212, 20);
+            this.tbNumero.TabIndex = 20;
+            this.tbNumero.Text = "0";
+            this.tbNumero.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbNumero_KeyUp);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -102,18 +146,6 @@
             this.tbLogradouro.Size = new System.Drawing.Size(451, 20);
             this.tbLogradouro.TabIndex = 0;
             // 
-            // lblTitulo
-            // 
-            this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(472, 50);
-            this.lblTitulo.TabIndex = 2;
-            this.lblTitulo.Text = "%action% Endereço";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // pbIcone
             // 
             this.pbIcone.BackColor = System.Drawing.Color.Transparent;
@@ -126,29 +158,17 @@
             this.pbIcone.TabIndex = 9;
             this.pbIcone.TabStop = false;
             // 
-            // tbNumero
+            // lblTitulo
             // 
-            this.tbNumero.Location = new System.Drawing.Point(9, 71);
-            this.tbNumero.Name = "tbNumero";
-            this.tbNumero.Size = new System.Drawing.Size(212, 20);
-            this.tbNumero.TabIndex = 20;
-            // 
-            // tbObservacoes
-            // 
-            this.tbObservacoes.Location = new System.Drawing.Point(9, 114);
-            this.tbObservacoes.Name = "tbObservacoes";
-            this.tbObservacoes.Size = new System.Drawing.Size(451, 72);
-            this.tbObservacoes.TabIndex = 21;
-            this.tbObservacoes.Text = "";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Observações";
+            this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(472, 50);
+            this.lblTitulo.TabIndex = 2;
+            this.lblTitulo.Text = "%action% Endereço";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel2
             // 
@@ -190,24 +210,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(226, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Bairro";
-            // 
-            // cbBairro
-            // 
-            this.cbBairro.Enabled = false;
-            this.cbBairro.FormattingEnabled = true;
-            this.cbBairro.Location = new System.Drawing.Point(229, 71);
-            this.cbBairro.Name = "cbBairro";
-            this.cbBairro.Size = new System.Drawing.Size(231, 21);
-            this.cbBairro.TabIndex = 24;
             // 
             // frmEndereco
             // 

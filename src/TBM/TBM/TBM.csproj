@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLCliente.cs" />
     <Compile Include="BL\BLPesquisarFuncionario.cs" />
     <Compile Include="BL\BLLogin.cs" />
     <Compile Include="BL\BLCadastroeAlteracaoFuncionario.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="BL\BLEstado.cs" />
     <Compile Include="BL\BLParametrizacao.cs" />
     <Compile Include="BL\Errors\BLValidationError.cs" />
+    <Compile Include="DAL\DALCliente.cs" />
+    <Compile Include="Model\Cliente.cs" />
     <Compile Include="Uteis\ControlUteis.cs" />
     <Compile Include="Uteis\StringUteis.cs" />
     <Compile Include="DAL\DALBairro.cs" />
@@ -113,6 +116,12 @@
     </Compile>
     <Compile Include="View\frmBairro.Designer.cs">
       <DependentUpon>frmBairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmEndereco.cs">
       <SubType>Form</SubType>
@@ -148,6 +157,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\frmBairro.resx">
       <DependentUpon>frmBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmEndereco.resx">
       <DependentUpon>frmEndereco.cs</DependentUpon>
@@ -215,9 +227,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\location-icon.png" />
   </ItemGroup>
