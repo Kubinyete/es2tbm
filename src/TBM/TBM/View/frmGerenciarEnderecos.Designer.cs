@@ -35,11 +35,19 @@
             this.btnEnderecoNovo = new System.Windows.Forms.Button();
             this.btnEnderecoEditar = new System.Windows.Forms.Button();
             this.dgvEnderecos = new System.Windows.Forms.DataGridView();
+            this.end_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end_logradouro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end_numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end_observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end_bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnBairroNovo = new System.Windows.Forms.Button();
             this.btnBairroEditar = new System.Windows.Forms.Button();
             this.dgvBairros = new System.Windows.Forms.DataGridView();
+            this.bai_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bai_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bai_cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbFiltros = new System.Windows.Forms.GroupBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,19 +58,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.cbCidade = new System.Windows.Forms.ComboBox();
-            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bai_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bai_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bai_cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_logradouro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.end_bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.gbDados.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -72,8 +72,8 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBairros)).BeginInit();
             this.gbFiltros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -127,6 +127,7 @@
             this.btnEnderecoNovo.TabIndex = 2;
             this.btnEnderecoNovo.Text = "Novo";
             this.btnEnderecoNovo.UseVisualStyleBackColor = true;
+            this.btnEnderecoNovo.Click += new System.EventHandler(this.btnEnderecoNovo_Click);
             // 
             // btnEnderecoEditar
             // 
@@ -137,6 +138,7 @@
             this.btnEnderecoEditar.TabIndex = 1;
             this.btnEnderecoEditar.Text = "Editar";
             this.btnEnderecoEditar.UseVisualStyleBackColor = true;
+            this.btnEnderecoEditar.Click += new System.EventHandler(this.btnEnderecoEditar_Click);
             // 
             // dgvEnderecos
             // 
@@ -158,6 +160,42 @@
             this.dgvEnderecos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEnderecos.Size = new System.Drawing.Size(707, 434);
             this.dgvEnderecos.TabIndex = 1;
+            // 
+            // end_id
+            // 
+            this.end_id.DataPropertyName = "Id";
+            this.end_id.HeaderText = "Código";
+            this.end_id.Name = "end_id";
+            this.end_id.ReadOnly = true;
+            this.end_id.Visible = false;
+            // 
+            // end_logradouro
+            // 
+            this.end_logradouro.DataPropertyName = "Logradouro";
+            this.end_logradouro.HeaderText = "Logradouro";
+            this.end_logradouro.Name = "end_logradouro";
+            this.end_logradouro.ReadOnly = true;
+            // 
+            // end_numero
+            // 
+            this.end_numero.DataPropertyName = "Numero";
+            this.end_numero.HeaderText = "Número";
+            this.end_numero.Name = "end_numero";
+            this.end_numero.ReadOnly = true;
+            // 
+            // end_observacoes
+            // 
+            this.end_observacoes.DataPropertyName = "Observacoes";
+            this.end_observacoes.HeaderText = "Observações";
+            this.end_observacoes.Name = "end_observacoes";
+            this.end_observacoes.ReadOnly = true;
+            // 
+            // end_bairro
+            // 
+            this.end_bairro.DataPropertyName = "Bairro";
+            this.end_bairro.HeaderText = "Bairro";
+            this.end_bairro.Name = "end_bairro";
+            this.end_bairro.ReadOnly = true;
             // 
             // panel3
             // 
@@ -220,6 +258,29 @@
             this.dgvBairros.Size = new System.Drawing.Size(263, 434);
             this.dgvBairros.TabIndex = 0;
             this.dgvBairros.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvBairros_MouseDoubleClick);
+            // 
+            // bai_id
+            // 
+            this.bai_id.DataPropertyName = "Id";
+            this.bai_id.HeaderText = "Código";
+            this.bai_id.Name = "bai_id";
+            this.bai_id.ReadOnly = true;
+            this.bai_id.Visible = false;
+            // 
+            // bai_nome
+            // 
+            this.bai_nome.DataPropertyName = "Nome";
+            this.bai_nome.HeaderText = "Bairro";
+            this.bai_nome.Name = "bai_nome";
+            this.bai_nome.ReadOnly = true;
+            // 
+            // bai_cidade
+            // 
+            this.bai_cidade.DataPropertyName = "Cidade";
+            this.bai_cidade.HeaderText = "Cidade";
+            this.bai_cidade.Name = "bai_cidade";
+            this.bai_cidade.ReadOnly = true;
+            this.bai_cidade.Visible = false;
             // 
             // gbFiltros
             // 
@@ -316,18 +377,6 @@
             this.cbCidade.Size = new System.Drawing.Size(217, 21);
             this.cbCidade.TabIndex = 0;
             // 
-            // pbIcone
-            // 
-            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
-            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbIcone.Image = global::TBM.Properties.Resources.location_icon;
-            this.pbIcone.Location = new System.Drawing.Point(0, 0);
-            this.pbIcone.Name = "pbIcone";
-            this.pbIcone.Size = new System.Drawing.Size(50, 50);
-            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbIcone.TabIndex = 9;
-            this.pbIcone.TabStop = false;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.IndianRed;
@@ -370,64 +419,17 @@
             this.panel2.Size = new System.Drawing.Size(984, 80);
             this.panel2.TabIndex = 5;
             // 
-            // bai_id
+            // pbIcone
             // 
-            this.bai_id.DataPropertyName = "Id";
-            this.bai_id.HeaderText = "Código";
-            this.bai_id.Name = "bai_id";
-            this.bai_id.ReadOnly = true;
-            this.bai_id.Visible = false;
-            // 
-            // bai_nome
-            // 
-            this.bai_nome.DataPropertyName = "Nome";
-            this.bai_nome.HeaderText = "Bairro";
-            this.bai_nome.Name = "bai_nome";
-            this.bai_nome.ReadOnly = true;
-            // 
-            // bai_cidade
-            // 
-            this.bai_cidade.DataPropertyName = "Cidade";
-            this.bai_cidade.HeaderText = "Cidade";
-            this.bai_cidade.Name = "bai_cidade";
-            this.bai_cidade.ReadOnly = true;
-            this.bai_cidade.Visible = false;
-            // 
-            // end_id
-            // 
-            this.end_id.DataPropertyName = "Id";
-            this.end_id.HeaderText = "Código";
-            this.end_id.Name = "end_id";
-            this.end_id.ReadOnly = true;
-            this.end_id.Visible = false;
-            // 
-            // end_logradouro
-            // 
-            this.end_logradouro.DataPropertyName = "Logradouro";
-            this.end_logradouro.HeaderText = "Logradouro";
-            this.end_logradouro.Name = "end_logradouro";
-            this.end_logradouro.ReadOnly = true;
-            // 
-            // end_numero
-            // 
-            this.end_numero.DataPropertyName = "Numero";
-            this.end_numero.HeaderText = "Número";
-            this.end_numero.Name = "end_numero";
-            this.end_numero.ReadOnly = true;
-            // 
-            // end_observacoes
-            // 
-            this.end_observacoes.DataPropertyName = "Observacoes";
-            this.end_observacoes.HeaderText = "Observações";
-            this.end_observacoes.Name = "end_observacoes";
-            this.end_observacoes.ReadOnly = true;
-            // 
-            // end_bairro
-            // 
-            this.end_bairro.DataPropertyName = "Bairro";
-            this.end_bairro.HeaderText = "Bairro";
-            this.end_bairro.Name = "end_bairro";
-            this.end_bairro.ReadOnly = true;
+            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
+            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbIcone.Image = global::TBM.Properties.Resources.location_icon;
+            this.pbIcone.Location = new System.Drawing.Point(0, 0);
+            this.pbIcone.Name = "pbIcone";
+            this.pbIcone.Size = new System.Drawing.Size(50, 50);
+            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIcone.TabIndex = 9;
+            this.pbIcone.TabStop = false;
             // 
             // frmGerenciarEnderecos
             // 
@@ -451,8 +453,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBairros)).EndInit();
             this.gbFiltros.ResumeLayout(false);
             this.gbFiltros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).EndInit();
             this.ResumeLayout(false);
 
         }

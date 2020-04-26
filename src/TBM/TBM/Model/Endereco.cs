@@ -24,6 +24,15 @@ namespace TBM.Model
             Bairro = bairro;
         }
 
+        public Endereco()
+        {
+            Id = 0;
+            Numero = 0;
+            Logradouro = String.Empty;
+            Observacoes = String.Empty;
+            Bairro = null;
+        }
+
         public int Id { get => _id; set => _id = value; }
         public string Logradouro { get => _logradouro; set => _logradouro = value; }
         public string Observacoes { get => _observacoes; set => _observacoes = value; }

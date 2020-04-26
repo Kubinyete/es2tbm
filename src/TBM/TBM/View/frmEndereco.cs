@@ -7,70 +7,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TBM.Model;
 using TBM.BL;
 using TBM.BL.Errors;
-using TBM.Uteis;
+using TBM.Model;
 
 namespace TBM.View
 {
-    public partial class frmBairro : Form
+    public partial class frmEndereco : Form
     {
+        private Endereco _endereco;
         private Bairro _bairro;
-        private Cidade _cidade;
 
-        public frmBairro(Cidade c, Bairro b = null)
+        protected Endereco enderecoConfirmado { get; set; }
+        protected Endereco Endereco { get => _endereco; set => _endereco = value; }
+        protected Bairro Bairro { get => _bairro; set => _bairro = value; }
+
+        public frmEndereco(Bairro b, Endereco e = null)
         {
             InitializeComponent();
 
-            Bairro = b;
-            Cidade = c;
+            _bairro = b;
+            _endereco = e;
 
-            string actionStr = Bairro == null ? "Cadastrar novo" : "Alterar";
+            string actionStr = Endereco == null ? "Cadastrar novo" : "Alterar";
 
             Text = Text.Replace("%action%", actionStr);
             lblTitulo.Text = lblTitulo.Text.Replace("%action%", actionStr);
             btnAction.Text = btnAction.Text.Replace("%action%", actionStr);
         }
 
-        protected Bairro bairroConfirmado { get; set; }
-
-        protected Bairro Bairro { get => _bairro; set => _bairro = value; }
-        protected Cidade Cidade { get => _cidade; set => _cidade = value; }
-
-        private void preencherDados(Cidade c, Bairro b = null)
+        private void preencherDados(Bairro b, Endereco e = null)
         {
-            cbCidade.Items.Clear();
-            cbCidade.Items.Add(c);
-            cbCidade.SelectedIndex = 0;
+            cbBairro.Items.Clear();
+            cbBairro.Items.Add(b);
+            cbBairro.SelectedIndex = 0;
 
-            if (b != null)
+            if (e != null)
             {
-                tbNome.Text = b.Nome;
+                tbLogradouro.Text = e.Logradouro;
+                tbNumero.Text = e.Numero.ToString();
+                tbObservacoes.Text = e.Observacoes;
             }
         }
 
-        private Bairro obterDadosPreenchidos()
+        private Endereco obterDadosPreenchidos()
         {
-            Bairro b = Bairro;
+            Endereco e = Endereco;
 
-            if (b == null)
-                b = new Bairro();
+            if (e == null)
+                e = new Endereco();
 
-            b.Nome = tbNome.Text.Trim();
-            b.Cidade = (Cidade)cbCidade.SelectedItem;
+            e.Logradouro = tbLogradouro.Text.Trim();
+            e.Numero = Convert.ToInt32(tbNumero.Text.Trim());
+            e.Observacoes = tbObservacoes.Text;
 
-            return b;
+            e.Bairro = (Bairro)cbBairro.SelectedItem;
+
+            return e;
         }
 
-        private void frmBairro_Load(object sender, EventArgs e)
+        private void frmEndereco_Load(object sender, EventArgs e)
         {
-            if (Bairro != null)
+            if (Endereco != null)
             {
                 btnExcluir.Enabled = true;
             }
 
-            preencherDados(Cidade, Bairro);
+            preencherDados(Bairro, Endereco);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace TBM.View
             {
                 try
                 {
-                    new BLBairro().removerBairro(Bairro);
+                    new BLEndereco().removerEndereco(Endereco);
                 }
                 catch (BLValidationError err)
                 {
@@ -99,20 +102,20 @@ namespace TBM.View
                         MessageBoxIcon.Error
                     );
                 }
-            } 
+            }
         }
 
-        private void btnAction_Click(object sender, EventArgs e)
+        private void btnAction_Click(object sender, EventArgs ev)
         {
-            BLBairro bl = new BLBairro();
-            Bairro b = obterDadosPreenchidos();
+            BLEndereco bl = new BLEndereco();
+            Endereco e = obterDadosPreenchidos();
 
             try
             {
 
-                if (Bairro != null && bl.atualizarBairro(b) || Bairro == null && bl.cadastrarBairro(b))
+                if (Endereco != null && bl.atualizarEndereco(e) || Endereco == null && bl.cadastrarEndereco(e))
                 {
-                    bairroConfirmado = b;
+                    enderecoConfirmado = e;
 
                     Close();
                 }
@@ -146,11 +149,11 @@ namespace TBM.View
             }
         }
 
-        public Bairro exibirComRetorno()
+        public Endereco exibirComRetorno()
         {
             ShowDialog();
 
-            return bairroConfirmado;
+            return enderecoConfirmado;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -166,3 +169,4 @@ namespace TBM.View
         }
     }
 }
+

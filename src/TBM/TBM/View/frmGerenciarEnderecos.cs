@@ -176,12 +176,50 @@ namespace TBM.View
             {
                 Bairro b = new frmBairro(bairroSelecionado.Cidade, bairroSelecionado).exibirComRetorno();
 
-                carregarBairros(cidadeSelecionada, b);
+                carregarBairros(bairroSelecionado.Cidade, b);
             }
             else
             {
                 MessageBox.Show(
                     "É preciso selecionar um bairro para poder efetuar a edição.",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void btnEnderecoNovo_Click(object sender, EventArgs ev)
+        {
+            if (bairroSelecionado != null)
+            {
+                Endereco e = new frmEndereco(bairroSelecionado).exibirComRetorno();
+
+                carregarEnderecos(bairroSelecionado, e != null ? e : enderecoSelecionado);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "É preciso selecionar um bairro para poder efetuar o registro de endereços.",
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void btnEnderecoEditar_Click(object sender, EventArgs ev)
+        {
+            if (enderecoSelecionado != null)
+            {
+                Endereco e = new frmEndereco(enderecoSelecionado.Bairro, enderecoSelecionado).exibirComRetorno();
+
+                carregarEnderecos(enderecoSelecionado.Bairro, e);
+            }
+            else
+            {
+                MessageBox.Show(
+                    "É preciso selecionar um endereço para poder efetuar a edição.",
                     "Erro",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error

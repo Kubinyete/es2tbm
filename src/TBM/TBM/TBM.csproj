@@ -101,6 +101,12 @@
     <Compile Include="View\frmBairro.Designer.cs">
       <DependentUpon>frmBairro.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmEndereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmEndereco.Designer.cs">
+      <DependentUpon>frmEndereco.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmGerenciarEnderecos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\frmBairro.resx">
       <DependentUpon>frmBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmEndereco.resx">
+      <DependentUpon>frmEndereco.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmGerenciarEnderecos.resx">
       <DependentUpon>frmGerenciarEnderecos.cs</DependentUpon>
