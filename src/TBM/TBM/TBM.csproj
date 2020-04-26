@@ -107,6 +107,12 @@
     <Compile Include="View\frmEndereco.Designer.cs">
       <DependentUpon>frmEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmGerenciarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmGerenciarClientes.Designer.cs">
+      <DependentUpon>frmGerenciarClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmGerenciarEnderecos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmEndereco.resx">
       <DependentUpon>frmEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmGerenciarClientes.resx">
+      <DependentUpon>frmGerenciarClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmGerenciarEnderecos.resx">
       <DependentUpon>frmGerenciarEnderecos.cs</DependentUpon>
@@ -171,6 +180,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\location-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
