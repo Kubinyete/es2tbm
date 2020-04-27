@@ -90,5 +90,15 @@ namespace TBM.View
         {
 
         }
+
+        private void btnEndereco_Click(object sender, EventArgs e)
+        {
+            new frmGerenciarEnderecos().ShowDialog();
+        }
+
+        private void cbEndereco_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

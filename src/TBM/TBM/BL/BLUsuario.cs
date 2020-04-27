@@ -21,10 +21,10 @@ namespace TBM.BL
         {
             if (filtro == "Username")
             {
-                return new DAL.DALUsuario(Persistencia).obterUsuarios("where usuario.usr_name " +
+                return new DAL.DALUsuario(Persistencia).obterUsuarios("AND usuario.usr_username " +
                     "like '%"+src+"%'", null); 
             }else
-                return new DAL.DALUsuario(Persistencia).obterUsuarios("where pessoafisica.pes_nome " +
+                return new DAL.DALUsuario(Persistencia).obterUsuarios("AND pessoafisica.pes_nome " +
                     "like '%"+src+ "%'", null);
         }
 
@@ -32,5 +32,6 @@ namespace TBM.BL
         {
             return value > 3;
         }
+
     }
 }

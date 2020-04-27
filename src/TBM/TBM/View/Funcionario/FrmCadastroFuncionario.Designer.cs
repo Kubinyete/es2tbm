@@ -35,7 +35,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbCargo = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEndereco = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cbEndereco = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,12 +45,12 @@
             this.tbRG = new System.Windows.Forms.MaskedTextBox();
             this.tbCPF = new System.Windows.Forms.MaskedTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,7 +65,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cbCargo);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnEndereco);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cbEndereco);
             this.panel1.Controls.Add(this.label3);
@@ -132,14 +132,15 @@
             this.cbCargo.Size = new System.Drawing.Size(159, 21);
             this.cbCargo.TabIndex = 9;
             // 
-            // button1
+            // btnEndereco
             // 
-            this.button1.Location = new System.Drawing.Point(445, 134);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEndereco.Location = new System.Drawing.Point(445, 134);
+            this.btnEndereco.Name = "btnEndereco";
+            this.btnEndereco.Size = new System.Drawing.Size(27, 23);
+            this.btnEndereco.TabIndex = 8;
+            this.btnEndereco.Text = "+";
+            this.btnEndereco.UseVisualStyleBackColor = true;
+            this.btnEndereco.Click += new System.EventHandler(this.btnEndereco_Click);
             // 
             // label5
             // 
@@ -159,6 +160,7 @@
             this.cbEndereco.Name = "cbEndereco";
             this.cbEndereco.Size = new System.Drawing.Size(327, 21);
             this.cbEndereco.TabIndex = 6;
+            this.cbEndereco.SelectedIndexChanged += new System.EventHandler(this.cbEndereco_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -220,6 +222,15 @@
             this.panel3.Size = new System.Drawing.Size(503, 68);
             this.panel3.TabIndex = 9;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(181, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Obs: todos os dados são obrigatórios";
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(444, 13);
@@ -249,6 +260,15 @@
             this.panel2.Size = new System.Drawing.Size(503, 53);
             this.panel2.TabIndex = 10;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 53);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
@@ -260,24 +280,6 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "% action %";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 53);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Obs: todos os dados são obrigatórios";
             // 
             // FrmCadastroFuncionario
             // 
@@ -311,7 +313,7 @@
         private System.Windows.Forms.TextBox tbNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEndereco;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbEndereco;
         private System.Windows.Forms.Panel panel3;

@@ -71,12 +71,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLCadastrarAlterarUsuario.cs" />
     <Compile Include="BL\BLPesquisarFuncionario.cs" />
     <Compile Include="BL\BLLogin.cs" />
     <Compile Include="BL\BLCadastroeAlteracaoFuncionario.cs" />
     <Compile Include="BL\BLUsuario.cs" />
     <Compile Include="Controller\CadastroAlteracaoFuncionarioController.cs" />
-    <Compile Include="Controller\CadastroAlteracaoUsuario.cs" />
+    <Compile Include="Controller\CadastroAlteracaoUsuarioController.cs" />
     <Compile Include="Controller\PesquisarFuncionarioController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="BL\BLBairro.cs" />
@@ -149,6 +150,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.Designer.cs">
+      <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Outros\Outros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Outros\Outros.Designer.cs">
+      <DependentUpon>Outros.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Usuarios\FrmCadastrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +202,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.resx">
+      <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PrincipalViewUsuario\Outros\Outros.resx">
+      <DependentUpon>Outros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Usuarios\FrmCadastrarUsuario.resx">
       <DependentUpon>FrmCadastrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
