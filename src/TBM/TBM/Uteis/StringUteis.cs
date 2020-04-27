@@ -33,5 +33,15 @@ namespace TBM.Uteis
         {
             return Regex.IsMatch(alvo, @"^([0-9]{2})?[0-9]{9}$");
         }
+
+        public static bool validarCPF(string alvo)
+        {
+            return Regex.IsMatch(alvo, @"^[0-9]{11}$");
+        }
+
+        public static bool validarRG(string alvo)
+        {
+            return Regex.IsMatch(alvo, @"^[0-9]{8}$");
+        }
     }
 }

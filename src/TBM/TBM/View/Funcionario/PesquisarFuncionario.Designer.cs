@@ -135,6 +135,7 @@
             this.cbFiltros.Name = "cbFiltros";
             this.cbFiltros.Size = new System.Drawing.Size(118, 21);
             this.cbFiltros.TabIndex = 2;
+            this.cbFiltros.SelectedIndexChanged += new System.EventHandler(this.cbFiltros_SelectedIndexChanged);
             // 
             // groupBox1
             // 

@@ -29,19 +29,25 @@ namespace TBM.View.Funcionario
 
         private void btnPequisa_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void tbSrc_TextChanged(object sender, EventArgs e)
-        {
             if (bl_func.verificaSrc(tbSrc.Text))
             {
                 funcs = null;
-                funcs = bl_func.carregarFuncionarios(cbFiltros.SelectedItem.ToString(), 
+                funcs = bl_func.carregarFuncionarios(cbFiltros.SelectedItem.ToString(),
                     tbSrc.Text);
                 dgvFuncionarios.Rows.Clear();
                 dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
             }
+            else
+            {
+                dgvFuncionarios.Rows.Clear();
+                funcs = bl_func.carregarFuncionarios("", "");
+                dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+            }
+        }
+
+        private void tbSrc_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void dgvFuncionarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -55,18 +61,41 @@ namespace TBM.View.Funcionario
             if (bl_func.verificaAlt(index))
             {
                 FrmCadastroFuncionario.func_escolhido = funcs[index];
-                new FrmCadastroFuncionario().Show();
+                new FrmCadastroFuncionario().ShowDialog();
+                dgvFuncionarios.Rows.Clear();
+                funcs = bl_func.carregarFuncionarios("", "");
+                dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+                FrmCadastroFuncionario.func_escolhido = null;
             }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o funcionário selecionado?","Confirmar Exclusão?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
+            if(dialogResult == DialogResult.Yes)
+            {
+                int index = dgvFuncionarios.SelectedRows[0].Index;
+                Model.Funcionario f = funcs[index];
+                control.showInfoMessageBox(bl_func.excluiFuncionario(f),"Aviso");
+                dgvFuncionarios.Rows.Clear();
+                funcs = bl_func.carregarFuncionarios("", "");
+                dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            new FrmCadastroFuncionario().Show();
+            new FrmCadastroFuncionario().ShowDialog();
+            dgvFuncionarios.Rows.Clear();
+            funcs = bl_func.carregarFuncionarios("", "");
+            dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+        }
+
+        private void cbFiltros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

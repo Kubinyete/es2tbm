@@ -43,5 +43,13 @@ namespace TBM.BL
             return index >= 0;
         }
 
+        public string excluiFuncionario(Model.Funcionario f)
+        {
+            if (new DAL.DALFuncionario(Persistencia).excluirFuncionario(f))
+                return "Excluído com sucesso";
+            else
+                return "Erro no banco de dados!";
+        }
+
     }
 }

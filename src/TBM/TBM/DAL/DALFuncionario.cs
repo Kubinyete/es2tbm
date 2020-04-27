@@ -91,5 +91,91 @@ namespace TBM.DAL
 
             return funcionarios;
         }
+
+        public bool inserirFuncionario(Model.Funcionario f)
+        {
+            bool ret = true;
+
+            string sql = "CALL cadastrar_funcionario(@cpf,@rg,@nome,@datanasc,@end_id,@salario_atual,@cargo_id,@proc_result);" +
+                "select @proc_result";
+
+            var parametros = criarParametros();
+            parametros.Add("@cpf", f.Cpf);
+            parametros.Add("@rg", f.Rg);
+            parametros.Add("@nome", f.Nome);
+            parametros.Add("@datanasc", f.Data_nascimento);
+            parametros.Add("@end_id", f.Endereco.Id);
+            parametros.Add("@salario_atual", f.Salario_atual);
+            parametros.Add("@cargo_id", f.Cargo.Id);
+
+            Db.abrir();
+
+            DataTable dt = new DataTable();
+
+            dt = Db.executarSelect(sql, parametros);
+
+            if (dt.Rows[0]["@proc_result"].ToString() == "1")
+            {
+                return true;
+            }
+            else
+                return false;
+
+            Db.fechar();
+        }
+
+        public bool atualizarFuncionario(Funcionario f)
+        {
+            bool ret = true;
+
+            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base,@carid,@output); " +
+            "select @output;";
+
+            Db.abrir();
+
+            var parametros = criarParametros();
+            parametros.Add("@cpf", f.Cpf);
+            parametros.Add("@rg", f.Rg);
+            parametros.Add("@nome", f.Nome);
+            parametros.Add("@dt_nasc", f.Data_nascimento);
+            parametros.Add("@endid", f.Endereco.Id);
+            parametros.Add("@sal_base", f.Salario_atual);
+            parametros.Add("@carid", f.Cargo.Id);
+
+            DataTable dt = Db.executarSelect(sql, parametros);
+
+            Db.fechar();
+
+            ret = dt.Rows[0]["@output"].ToString() == "1" ? true : false;
+
+            return ret;
+        }
+
+        public bool excluirFuncionario(Funcionario f)
+        {
+            bool ret = true;
+
+            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base,NULL,@output); " +
+            "select @output;";
+
+            Db.abrir();
+
+            var parametros = criarParametros();
+            parametros.Add("@cpf", f.Cpf);
+            parametros.Add("@rg", f.Rg);
+            parametros.Add("@nome", f.Nome);
+            parametros.Add("@dt_nasc", f.Data_nascimento);
+            parametros.Add("@endid", f.Endereco.Id);
+            parametros.Add("@sal_base", f.Salario_atual);
+
+            DataTable dt = Db.executarSelect(sql, parametros);
+
+            Db.fechar();
+
+            ret = dt.Rows[0]["@output"].ToString() == "1" ? true : false;
+
+            return ret;
+        }
+
     }
 }

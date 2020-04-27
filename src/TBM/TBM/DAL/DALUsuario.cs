@@ -21,7 +21,7 @@ namespace TBM.DAL
             return new Usuario(
                 dt["usr_username"].ToString(),
                 "",
-                dt["usr_ativado"].ToString() == "1" ? true : false,
+                dt["usr_ativado"].ToString() == "True"? true : false,
                 funcionario != null ? funcionario : DALFuncionario.mapearObjeto(dt, null, null)
             );
         }
@@ -84,5 +84,46 @@ namespace TBM.DAL
 
             return ret;
         }
+
+        public List<Usuario> obterUsuarios(string arg, string pms)
+        {
+            List<Usuario> ret = new List<Usuario>();
+
+            Db.abrir();
+            Dictionary<string,object> parametros = null;
+            /*if (arg != null){
+                parametros = criarParametros();
+                parametros.Add("@param", pms);
+            }*/
+
+            DataTable dt = Db.executarSelect("select usuario.usr_username,usuario.usr_ativado,cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base," +
+"pessoafisica.pes_cpf," +
+"pessoafisica.pes_rg, pessoafisica.pes_nome, pessoafisica.pes_data_nascimento, funcionario.fun_salario_atual," +
+"pessoafisica.endereco_end_id, endereco.end_id, endereco.end_logradouro," +
+"endereco.end_observacoes, endereco.end_numero, bairro.bai_id," +
+"bairro.bai_nome, cidade.cid_id, cidade.cid_nome, estado.est_uf," +
+"estado.est_nome " +
+"from usuario " +
+"inner join funcionario on usuario.funcionario_pessoafisica_pes_cpf = funcionario_pessoafisica_pes_cpf " +
+"inner join pessoafisica on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf " +
+"inner join cargo on cargo.car_id = funcionario.cargo_car_id " +
+"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id " +
+"inner join bairro on bairro.bai_id = endereco.bairro_bai_id " +
+"inner join cidade on cidade.cid_id = bairro.bai_id " +
+"inner join estado on cidade.estado_est_uf = estado.est_uf " +
+arg +";", parametros); 
+
+            //@TODO 
+            //Corrigir pesquisa sem parametros
+
+            Db.fechar();
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                ret.Add(mapearObjeto(dr,null));
+            }
+            return ret;
+        }
+
     }
 }

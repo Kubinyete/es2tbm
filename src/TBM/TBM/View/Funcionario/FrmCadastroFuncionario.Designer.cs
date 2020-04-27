@@ -48,8 +48,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,10 +99,10 @@
             // tbSalario
             // 
             this.tbSalario.Location = new System.Drawing.Point(358, 179);
-            this.tbSalario.Mask = "0,00";
             this.tbSalario.Name = "tbSalario";
             this.tbSalario.Size = new System.Drawing.Size(114, 20);
             this.tbSalario.TabIndex = 12;
+            this.tbSalario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSalario_KeyPress);
             // 
             // label7
             // 
@@ -211,6 +212,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnConfirmar);
             this.panel3.Location = new System.Drawing.Point(13, 298);
@@ -247,15 +249,6 @@
             this.panel2.Size = new System.Drawing.Size(503, 53);
             this.panel2.TabIndex = 10;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 53);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
@@ -265,8 +258,26 @@
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(502, 53);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "label4";
+            this.lblTitulo.Text = "% action %";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 53);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(181, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Obs: todos os dados são obrigatórios";
             // 
             // FrmCadastroFuncionario
             // 
@@ -279,10 +290,12 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "FrmCadastroFuncionario";
+            this.Text = "% action %";
             this.Load += new System.EventHandler(this.FrmCadastroFuncionario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -313,5 +326,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
     }
 }

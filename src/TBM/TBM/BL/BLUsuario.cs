@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TBM.DAL;
+
+namespace TBM.BL
+{
+    class BLUsuario : BLBase
+    {
+        public BLUsuario(Persistencia p) : base(p)
+        {}
+
+        public List<Model.Usuario> carregarUsuarios()
+        {
+            return new DAL.DALUsuario(Persistencia).obterUsuarios(null, null);
+        }
+
+        public List<Model.Usuario> carregarUsuarios(string filtro,string src)
+        {
+            if (filtro == "Username")
+            {
+                return new DAL.DALUsuario(Persistencia).obterUsuarios("where usuario.usr_name " +
+                    "like '%"+src+"%'", null); 
+            }else
+                return new DAL.DALUsuario(Persistencia).obterUsuarios("where pessoafisica.pes_nome " +
+                    "like '%"+src+ "%'", null);
+        }
+
+        public bool validarSrc(int value)
+        {
+            return value > 3;
+        }
+    }
+}
