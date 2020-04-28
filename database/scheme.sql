@@ -685,8 +685,8 @@ BEGIN
 END//
 
 DROP PROCEDURE IF EXISTS `atualiza_funcionario`//
-CREATE PROCEDURE `atualiza_funcionario`(
-  in p_pes_cpf char(11), 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `atualiza_funcionario`(
+	in p_pes_cpf char(11), 
     in p_pes_rg char(9), 
     in p_pes_nome varchar(75),
     in p_pes_data_nascimento date,
@@ -696,24 +696,29 @@ CREATE PROCEDURE `atualiza_funcionario`(
     out p_sucess tinyint(1)
 )
 BEGIN 
-  -- funcionário existe? 
-  IF(select count(*) from funcionario where pessoafisica_pes_cpf = p_pes_cpf limit 1) = 1
-    then 
+	-- funcionário existe? 
+	IF(select count(*) from funcionario where pessoafisica_pes_cpf = p_pes_cpf limit 1) = 1
+		then 
         -- pessoafisica existe?
         if(select count(*) from pessoafisica where pes_cpf = p_pes_cpf limit 1) = 1
         then
-      update pessoafisica set pes_rg= p_pes_rg, pes_nome = p_pes_nome,
+			update pessoafisica set pes_rg= p_pes_rg, pes_nome = p_pes_nome,
             pes_data_nascimento = p_pes_data_nascimento,endereco_end_id = p_endereco_id
-        WHERE pes_cpf = p_pes_cpf; 
+				WHERE pes_cpf = p_pes_cpf; 
             update funcionario set fun_salario_atual = p_salario_atual, 
             cargo_car_id = p_cargo_id WHERE pessoafisica_pes_cpf = p_pes_cpf;
-      set p_sucess := 1; 
-    else
-      set p_sucess := 0;
-    end if;
-  else
-    set p_sucess := 0;
-  end if;
+            if p_cargo_id is null then 
+				update usuario set usr_ativado = 0 
+                where funcionario_pessoafisica_pes_cpf = p_pes_cpf;
+			end if;
+            COMMIT;
+			set p_sucess := 1; 
+		else
+			set p_sucess := 0;
+		end if;
+	else
+		set p_sucess := 0;
+	end if;
 END//
 
 -- END PROCEDURES -> Mauricio

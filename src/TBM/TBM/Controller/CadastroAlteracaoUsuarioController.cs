@@ -24,7 +24,7 @@ namespace TBM.Controller
 
         public string validarDados(string username,string password,string conf_password,string func)
         {
-            if(username!=""&&new BL.BLCadastrarAlterarUsuario(null).validarUsername(username))
+            if(username!=""&&!username.StartsWith("ADM")&&new BL.BLCadastrarAlterarUsuario(null).validarUsername(username))
             {
                 if (password != "" && new BL.BLCadastrarAlterarUsuario(null).validarPassword(password))
                 {
@@ -45,7 +45,7 @@ namespace TBM.Controller
             }
             else
             {
-                return "Username pequeno demais, deve possui no mínimo 3 caracteres!";
+                return "Username inválido, deve possui no mínimo 3 caracteres!";
             }
             return "OK";
         }
