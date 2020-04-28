@@ -24,7 +24,7 @@ namespace TBM.DAL
                 dr["pes_rg"].ToString(),
                 dr["pes_nome"].ToString(),
                 Convert.ToDateTime(dr["pes_data_nascimento"].ToString()),
-                endereco != null ? endereco : DALEndereco.mapearObjeto(dr)
+                endereco != null ? endereco : DALEndereco.mapearObjeto(dr, null)
                 );
         }
 
@@ -84,9 +84,12 @@ namespace TBM.DAL
 
             Db.fechar();
 
-            foreach(DataRow r in dt.Rows)
+            if (dt.Rows.Count > 0)
             {
-                funcionarios.Add(mapearObjeto(r, null, null));
+                foreach (DataRow r in dt.Rows)
+                {
+                    funcionarios.Add(mapearObjeto(r, null, null));
+                }
             }
 
             return funcionarios;

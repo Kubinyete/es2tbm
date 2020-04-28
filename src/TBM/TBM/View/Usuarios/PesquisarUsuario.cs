@@ -42,15 +42,29 @@ namespace TBM.View.Usuarios
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            DialogResult dr = MessageBox.Show("Deseja realmente desativar o usuário selecionado? ele perderá acesso ao sistema",
+                "Confirma Desativação?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if(dr == DialogResult.Yes)
+            {
+                control.showInfoMessageBox(bl_usr.excluirUsuario(usuarios[dgvUsuarios.SelectedRows[0].Index]),
+                    "Aviso");
+                dgvUsuarios.Rows.Clear();
+                control.carregarDgv(bl_usr.carregarUsuarios(cbFiltros.Text,
+                tbSrc.Text), dgvUsuarios);
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             int index = dgvUsuarios.SelectedRows[0].Index;
-            FrmCadastrarUsuario.usu_escolhido = usuarios[index];
-            new FrmCadastrarUsuario().ShowDialog();
-            FrmCadastrarUsuario.usu_escolhido = null;
+            if (usuarios[index].Ativado)
+            {
+                FrmCadastrarUsuario.usu_escolhido = usuarios[index];
+                new FrmCadastrarUsuario().ShowDialog();
+                FrmCadastrarUsuario.usu_escolhido = null;
+            }
+            else
+                control.showInfoMessageBox("Não é possível alterar um usuário desativado", "Aviso");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

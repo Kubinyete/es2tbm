@@ -15,8 +15,9 @@ namespace TBM.DAL
 
         }
 
-        public static Endereco mapearObjeto(DataRow dr, Bairro e = null)
+        public static Endereco mapearObjeto(DataRow dr, Bairro e)
         {
+            Bairro k = DALBairro.mapearObjeto(dr, null);
             return new Endereco(
                 (int)dr["end_id"],
                 (int)dr["end_numero"],

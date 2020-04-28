@@ -43,7 +43,7 @@ namespace TBM.DAL
 "bairro.bai_nome, cidade.cid_id, cidade.cid_nome, estado.est_uf," +
 "estado.est_nome" +
 " from usuario " +
-"inner join funcionario on usuario.funcionario_pessoafisica_pes_cpf = funcionario_pessoafisica_pes_cpf " +
+"inner join funcionario on usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf " +
 "inner join pessoafisica on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf " +
 "inner join cargo on cargo.car_id = funcionario.cargo_car_id " +
 "inner join endereco on endereco.end_id = pessoafisica.endereco_end_id " +
@@ -109,7 +109,8 @@ namespace TBM.DAL
 "inner join cidade on cidade.cid_id = bairro.cidade_cid_id "+
 "inner join estado on estado.est_uf = cidade.estado_est_uf "+
 "inner join cargo on cargo.car_id = funcionario.cargo_car_id "+
-"WHERE usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf " +
+"WHERE usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf AND " +
+"cargo.car_nome <> 'SYSADM'" +
 arg +";", parametros); 
 
             //@TODO 
@@ -171,6 +172,50 @@ arg +";", parametros);
             }
 
             Db.fechar();
+
+            return ret;
+        }
+
+        public string excluirUsuario(Usuario u)
+        {
+            string ret = "";
+
+            string sql = "UPDATE usuario set usr_ativado = 0 where " +
+                "funcionario_pessoafisica_pes_cpf = @cpf";
+
+            var parametros = criarParametros();
+            parametros.Add("@cpf", u.Funcionario.Cpf);
+            Db.abrir();
+
+            try
+            {
+                Db.executarNonQuery(sql, parametros);
+                ret = "Usuario Excluído!";
+            }catch(MySqlException e)
+            {
+                ret = e.Message;
+            }
+
+            Db.fechar();
+            return ret;
+        }
+
+        public string deletarAdmUser()
+        {
+            string ret = "";
+
+            string sql = "DELETE FROM `tbmdb`.`usuario` WHERE (`usr_username` = 'ADMUSER');";
+
+            Db.abrir();
+
+            try
+            {
+                Db.executarNonQuery(sql);
+                ret = "OK";
+            }catch(MySqlException e)
+            {
+                ret = "Erro ao se conectar com o banco de dados!";
+            }
 
             return ret;
         }

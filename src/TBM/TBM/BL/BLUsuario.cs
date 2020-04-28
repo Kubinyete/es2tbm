@@ -33,5 +33,17 @@ namespace TBM.BL
             return value > 3;
         }
 
+        public string excluirUsuario(Model.Usuario user)
+        {
+            if (user.Funcionario.Cargo.Nome == "Administrador")
+            {
+                return "Não é possível excluir usuário administrador!";
+            }
+            else
+            {
+                return new DAL.DALUsuario(Persistencia).excluirUsuario(user);
+            }
+        }
+
     }
 }

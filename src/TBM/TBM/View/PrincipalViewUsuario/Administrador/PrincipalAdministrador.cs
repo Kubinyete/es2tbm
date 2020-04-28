@@ -16,5 +16,20 @@ namespace TBM.View.PrincipalViewUsuario.Administrador
         {
             InitializeComponent();
         }
+
+        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new View.Usuarios.FrmCadastrarUsuario().Show();
+        }
+
+        private void parametrizaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmParametrizacao().Show();
+        }
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmCadastroFuncionario().Show();
+        }
     }
 }

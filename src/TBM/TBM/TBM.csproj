@@ -162,6 +162,12 @@
     <Compile Include="View\PrincipalViewUsuario\Outros\Outros.Designer.cs">
       <DependentUpon>Outros.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UserAdm\principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserAdm\principal.Designer.cs">
+      <DependentUpon>principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Usuarios\FrmCadastrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PrincipalViewUsuario\Outros\Outros.resx">
       <DependentUpon>Outros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserAdm\principal.resx">
+      <DependentUpon>principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Usuarios\FrmCadastrarUsuario.resx">
       <DependentUpon>FrmCadastrarUsuario.cs</DependentUpon>

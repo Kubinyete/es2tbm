@@ -664,3 +664,8 @@ INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Atendente','Aten
 INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Cozinheiro','Prepara Comidas', 1900.00);
 INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Administrador','Gerencia do Restaurante', 3000.00);
 
+INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('ADMSYS', '7c6c9a1d5a0883b054242422ebe4c799', '1', '11111111111');
+--senha : tbmgerencia1
+INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('ADMUSER', 'f89fa02b7d644e513115697aa9f7fb34', '1', '22222222222');
+--senha : tbm
+

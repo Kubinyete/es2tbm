@@ -35,6 +35,7 @@ namespace TBM.View.Usuarios
                     cbFuncionario.SelectedIndex = 0;
                 else
                     cbFuncionario.SelectedIndex = -1;
+                this.Text = "Cadastrar Usuário";
             }
             else
             {
@@ -45,6 +46,7 @@ namespace TBM.View.Usuarios
                 f.Add(usu_escolhido.Funcionario);
                 cbFuncionario.SelectedIndex = 0;
                 cbFuncionario.Enabled = false;
+                this.Text = "Atualizar Usuário";
             }
         }
 

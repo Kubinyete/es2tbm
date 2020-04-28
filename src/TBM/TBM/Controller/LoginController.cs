@@ -46,16 +46,40 @@ namespace TBM.Controller
         {
             if (u.Funcionario.Cargo.Nome.Equals("Administrador"))
             {
+                if (u.Username == "ADMUSER")
+                {
+                    new View.UserAdm.principal().ShowDialog();
+                    string msg = excluirUsuarioAdm();
+                    if (msg == "OK")
+                        exibirMessageBoxAsterisk("Feito!", "Aviso");
+                    else
+                        exibirMessageBoxError("erro!", "Aviso");
+                }else
+                    new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador().Show();
+            }
+            if (u.Funcionario.Cargo.Nome.Equals("SYSADM"))
+            {
                 new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador().Show();
             }
             else
                 new View.PrincipalViewUsuario.Outros.Outros().Show();
         }
 
+        public string excluirUsuarioAdm()
+        {
+            return new DAL.DALUsuario(DAL.PersistenciaFactory.criarConexaoPersistencia()).deletarAdmUser();
+        }
+
         public void exibirMessageBoxAsterisk(string msg, string sub)
         {
             MessageBox.Show(msg, sub,
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        public void exibirMessageBoxError(string msg, string sub)
+        {
+            MessageBox.Show(msg, sub,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
