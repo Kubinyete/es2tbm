@@ -25,10 +25,10 @@ namespace TBM.BL
             else if(src.Length > 3)
             {
                 if (filtro == "Nome")
-                    return dalfun.obterFuncionarios("where " +
+                    return dalfun.obterFuncionarios("AND " +
                         "pessoafisica.pes_nome like '%" + src + "%'");
                 else
-                    return dalfun.obterFuncionarios("where " +
+                    return dalfun.obterFuncionarios("AND " +
                         "pessoafisica.pes_cpf like '%" + src + "%'");
             }
             return null;     

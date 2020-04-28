@@ -64,7 +64,6 @@ namespace TBM.DAL
         public string Logar(string username, string password)
         {
             string ret = "Erro";
-            bool logou = false;
 
             Db.abrir();
 

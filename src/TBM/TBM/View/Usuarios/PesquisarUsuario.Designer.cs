@@ -247,7 +247,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "PesquisarUsuario";
-            this.Text = "PesquisarUsuario";
+            this.Text = "Gerenciar Usuário";
             this.Load += new System.EventHandler(this.PesquisarUsuario_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

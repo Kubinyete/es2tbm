@@ -17,7 +17,6 @@ namespace TBM.Controller
             foreach (Model.Funcionario f in obj)
             {
                 DataGridViewRow row = (DataGridViewRow)dgv.Rows[0].Clone();
-                row.Cells[0].Value = String.Format("{0:000\.000\.000\-00}");
                 row.Cells[0].Value = f.Cpf; 
                 row.Cells[1].Value = f.Nome;
                 row.Cells[2].Value = f.Cargo.Nome;

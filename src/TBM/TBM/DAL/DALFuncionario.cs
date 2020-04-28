@@ -50,7 +50,7 @@ namespace TBM.DAL
 "inner join bairro on bairro.bai_id = endereco.bairro_bai_id"+
 "inner join cidade on cidade.cid_id = bairro.bai_id"+
 "inner join estado on cidade.estado_est_uf = estado.est_uf"+
- "where pessoafisica_pes_cpf = @cpf;", param);
+ "where pessoafisica_pes_cpf = @cpf AND cargo.car_nome <> SYSADM;", param);
             if(dt.Rows.Count >= 1)
             {
                 ret = mapearObjeto(dt.Rows[0], cargo, endereco);
@@ -79,7 +79,8 @@ namespace TBM.DAL
 " inner join endereco on endereco.end_id = pessoafisica.endereco_end_id" +
 " inner join bairro on bairro.bai_id = endereco.bairro_bai_id" +
 " inner join cidade on cidade.cid_id = bairro.bai_id" +
-" inner join estado on cidade.estado_est_uf = estado.est_uf ";
+" inner join estado on cidade.estado_est_uf = estado.est_uf " +
+" where cargo.car_nome <> 'SYSADM' ";
             DataTable dt = Db.executarSelect(select + args + ";");
 
             Db.fechar();
