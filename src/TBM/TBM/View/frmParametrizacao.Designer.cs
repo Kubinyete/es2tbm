@@ -156,6 +156,7 @@
             this.cbEndereco.Name = "cbEndereco";
             this.cbEndereco.Size = new System.Drawing.Size(351, 21);
             this.cbEndereco.TabIndex = 20;
+            this.cbEndereco.SelectedIndexChanged += new System.EventHandler(this.cbEndereco_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -165,6 +166,7 @@
             this.label9.Size = new System.Drawing.Size(99, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "Endereço completo";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 

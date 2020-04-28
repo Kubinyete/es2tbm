@@ -49,24 +49,5 @@ namespace TBM.BL
             verificarConsistencia(p);
             return new DALParametrizacao(Persistencia).inserirParametrizacao(p);
         }
-
-        public Parametrizacao cadastrarParametrizacao(string nome_fantasia, string razao_social, string cnpj, long ie, string email, byte[] logomarca, string logomarca_path, string telefone, DateTime data_ativacao, Endereco endereco)
-        {
-            var p = new Parametrizacao(
-                0,
-                nome_fantasia,
-                razao_social,
-                cnpj,
-                ie,
-                email,
-                logomarca,
-                logomarca_path,
-                telefone,
-                data_ativacao,
-                endereco
-            );
-
-            return cadastrarParametrizacao(p) ? p : null;
-        }
     }
 }

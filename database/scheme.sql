@@ -624,8 +624,14 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 --- PROCEDURES
 -------- ------------ ------------- ---------------
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `login`(
-	IN P_USR_USERNAME VARCHAR(32), 
+-- Isso aqui é bizarro, mas fazer o que
+DELIMITER //
+
+-- BEGIN PROCEDURES -> Mauricio
+
+DROP PROCEDURE IF EXISTS `login`//
+CREATE PROCEDURE `login`(
+  IN P_USR_USERNAME VARCHAR(32), 
     IN P_USR_PASSWORD VARCHAR(32), 
     OUT P_SUCESSFUL tinyint, 
     OUT P_MSG VARCHAR(32)
@@ -639,21 +645,22 @@ BEGIN
     from usuario where usr_username = P_USR_USERNAME;
     
     IF usr_name is null OR usr_active <> 1 then 
-			SET P_SUCESSFUL := 0;
-			set P_MSG := 'Usuario não encontrado';
-	ELSE
-		SET P_PASSWORD_MD5 = md5(P_USR_PASSWORD);
-		IF usr_senha = P_PASSWORD_MD5 then 
-			SET P_SUCESSFUL := 1;
+      SET P_SUCESSFUL := 0;
+      set P_MSG := 'Usuario não encontrado';
+  ELSE
+    SET P_PASSWORD_MD5 = md5(P_USR_PASSWORD);
+    IF usr_senha = P_PASSWORD_MD5 then 
+      SET P_SUCESSFUL := 1;
             set P_MSG := 'OK';
-		else 
-			SET P_SUCESSFUL := 0;
-			set P_MSG := 'Usuário Inválido';
-		end if; 
-	END IF;
-END
+        else 
+            SET P_SUCESSFUL := 0;
+            set P_MSG := 'Usuário Inválido';
+        end if; 
+    END IF;
+END//
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insere_usuario`(
+DROP PROCEDURE IF EXISTS `insere_usuario`//
+CREATE PROCEDURE `insere_usuario`(
   in p_usr_username varchar(32), 
     in p_usr_password varchar(32), 
   in p_funcionario_pessoa_fisica_pes_cpf char(11), 
@@ -675,9 +682,10 @@ BEGIN
     set p_sucess := 0; 
         set p_msg := 'Username já está em uso, insira outro';
   END IF;
-END
+END//
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `atualiza_funcionario`(
+DROP PROCEDURE IF EXISTS `atualiza_funcionario`//
+CREATE PROCEDURE `atualiza_funcionario`(
   in p_pes_cpf char(11), 
     in p_pes_rg char(9), 
     in p_pes_nome varchar(75),
@@ -706,10 +714,13 @@ BEGIN
   else
     set p_sucess := 0;
   end if;
-END
+END//
 
+-- END PROCEDURES -> Mauricio
+-- BEGIN PROCEDURES -> Vitor
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cadastrar_funcionario`(IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, IN proc_fun_salario_atual DOUBLE, IN proc_cargo_car_id INT, OUT proc_result TINYINT(1))
+DROP PROCEDURE IF EXISTS `cadastrar_funcionario`//
+CREATE PROCEDURE `cadastrar_funcionario`(IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, IN proc_fun_salario_atual DOUBLE, IN proc_cargo_car_id INT, OUT proc_result TINYINT(1))
 BEGIN
   -- Funcionario não existe
   IF (SELECT COUNT(*) FROM funcionario WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
@@ -726,4 +737,28 @@ BEGIN
   ELSE
     SET proc_result := 0;
   END IF;
-END
+END//
+
+DROP PROCEDURE IF EXISTS `cadastrar_cliente`//
+CREATE PROCEDURE `cadastrar_cliente` (IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, OUT proc_result TINYINT(1))
+BEGIN
+  -- Cliente não existe
+  IF (SELECT COUNT(*) FROM cliente WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+    -- Se não temos uma PessoaFisica ainda
+    IF (SELECT COUNT(*) FROM pessoafisica WHERE pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+      INSERT INTO pessoafisica VALUES (proc_pes_cpf, proc_pes_rg, proc_pes_nome, proc_pes_data_nascimento, proc_endereco_end_id);
+    ELSE
+      UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
+    END IF;
+
+    INSERT INTO cliente VALUES (0, proc_pes_cpf);
+    SET proc_result := 1;
+    COMMIT;
+  ELSE
+    SET proc_result := 0;
+  END IF;
+END//
+
+-- END PROCEDURES -> Vitor
+
+DELIMITER ;

@@ -39,6 +39,11 @@ namespace TBM.View
             new Funcionario.PesquisarFuncionario().ShowDialog();
         }
 
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmGerenciarClientes().ShowDialog();
+        }
+        
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Usuarios.PesquisarUsuario().ShowDialog();

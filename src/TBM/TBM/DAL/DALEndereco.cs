@@ -98,7 +98,7 @@ namespace TBM.DAL
 
             var param = criarParametros();
             param.Add("bid", e.Id);
-            param.Add("busca", String.Format("%{0}%", busca));
+            param.Add("busca", String.Format("%{0}%", busca.Replace("%", "%%")));
 
             DataTable dt = Db.executarSelect("SELECT end_id, end_logradouro, end_numero, end_observacoes FROM endereco WHERE bairro_bai_id = @bid AND end_logradouro LIKE @busca", param);
 

@@ -19,6 +19,11 @@ namespace TBM.Uteis
             return true;
         }
 
+        public static bool validarRg(string rg)
+        {
+            return true;
+        }
+
         public static bool validarEmail(string email)
         {
             return Regex.IsMatch(email, @"^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+$");

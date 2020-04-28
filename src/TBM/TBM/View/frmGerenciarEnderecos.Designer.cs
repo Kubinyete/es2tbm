@@ -58,11 +58,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.cbCidade = new System.Windows.Forms.ComboBox();
+            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.gbDados.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -72,8 +72,8 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBairros)).BeginInit();
             this.gbFiltros.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -377,6 +377,18 @@
             this.cbCidade.Size = new System.Drawing.Size(217, 21);
             this.cbCidade.TabIndex = 0;
             // 
+            // pbIcone
+            // 
+            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
+            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbIcone.Image = global::TBM.Properties.Resources.location_icon;
+            this.pbIcone.Location = new System.Drawing.Point(0, 0);
+            this.pbIcone.Name = "pbIcone";
+            this.pbIcone.Size = new System.Drawing.Size(50, 50);
+            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIcone.TabIndex = 9;
+            this.pbIcone.TabStop = false;
+            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.IndianRed;
@@ -419,18 +431,6 @@
             this.panel2.Size = new System.Drawing.Size(984, 80);
             this.panel2.TabIndex = 5;
             // 
-            // pbIcone
-            // 
-            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
-            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbIcone.Image = global::TBM.Properties.Resources.location_icon;
-            this.pbIcone.Location = new System.Drawing.Point(0, 0);
-            this.pbIcone.Name = "pbIcone";
-            this.pbIcone.Size = new System.Drawing.Size(50, 50);
-            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbIcone.TabIndex = 9;
-            this.pbIcone.TabStop = false;
-            // 
             // frmGerenciarEnderecos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +438,7 @@
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1024, 768);
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "frmGerenciarEnderecos";
@@ -453,8 +454,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBairros)).EndInit();
             this.gbFiltros.ResumeLayout(false);
             this.gbFiltros.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

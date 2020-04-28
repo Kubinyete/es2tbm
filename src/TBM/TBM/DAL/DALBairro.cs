@@ -65,7 +65,7 @@ namespace TBM.DAL
 
             var param = criarParametros();
             param.Add("cid", e.Id);
-            param.Add("busca", String.Format("%{0}%", busca));
+            param.Add("busca", String.Format("%{0}%", busca.Replace("%", "%%")));
 
             DataTable dt = Db.executarSelect("SELECT bai_id, bai_nome FROM bairro WHERE cidade_cid_id = @cid AND bai_nome LIKE @busca", param);
 

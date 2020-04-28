@@ -39,7 +39,8 @@ namespace TBM.View
                 tbCPF.Text = func_escolhido.Cpf;
                 tbRG.Text = func_escolhido.Rg;
                 tbSalario.Text = func_escolhido.Salario_atual.ToString();
-                dtpDtNasc.Value = func_escolhido.Data_nascimento;
+                // Temos certeza que de um funcionário POSSUI uma data de nascimento!!!
+                dtpDtNasc.Value = func_escolhido.Data_nascimento.HasValue ? func_escolhido.Data_nascimento.Value : DateTime.Today;
                 lblTitulo.Text = "Alterar Funcionário";
                 cbEndereco.SelectedIndex = func_escolhido.Endereco.Id - 1;
                 cbCargo.SelectedIndex = func_escolhido.Cargo.Id - 1;
