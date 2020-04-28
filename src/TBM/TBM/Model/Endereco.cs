@@ -32,6 +32,15 @@ namespace TBM.Model
             Observacoes = String.Empty;
             Bairro = null;
         }
+        //fiz essa sobrecarga pra facilitar meu insert
+        public Endereco(int id)
+        {
+            Id = id;
+            Numero = 0;
+            Logradouro = String.Empty;
+            Observacoes = String.Empty;
+            Bairro = null;
+        }
 
         public int Id { get => _id; set => _id = value; }
         public string Logradouro { get => _logradouro; set => _logradouro = value; }

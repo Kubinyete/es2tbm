@@ -15,8 +15,9 @@ namespace TBM.DAL
 
         }
 
-        public static Endereco mapearObjeto(DataRow dr, Bairro e = null)
+        public static Endereco mapearObjeto(DataRow dr, Bairro e)
         {
+            Bairro k = DALBairro.mapearObjeto(dr, null);
             return new Endereco(
                 (int)dr["end_id"],
                 (int)dr["end_numero"],
@@ -70,12 +71,12 @@ namespace TBM.DAL
 
             Db.abrir();
 
-            DataTable dt = Db.executarSelect("select end_id,end_logradouro,end_observacoes, bairro.bai_id,bairro.bai_nome,"+ 
-"cidade.cid_id,endereco.end_numero ,cidade.cid_nome, estado.est_uf, estado.est_nome "+
-"from endereco "+
-"inner join bairro on endereco.bairro_bai_id = bairro_bai_id "+
+            DataTable dt = Db.executarSelect("select endereco.end_id,endereco.end_logradouro,endereco.end_observacoes, bairro.bai_id,bairro.bai_nome,"+
+"cidade.cid_id, endereco.end_numero, cidade.cid_nome, estado.est_uf, estado.est_nome" +
+" from endereco " +
+"inner join bairro on endereco.bairro_bai_id = bairro.bai_id "+
 "inner join cidade on cidade.cid_id = bairro.cidade_cid_id " +
-"inner join estado on estado.est_uf = cidade.estado_est_uf;");
+"inner join estado on estado.est_uf = cidade.estado_est_uf; ");
 
             foreach (DataRow dr in dt.Rows)
             {

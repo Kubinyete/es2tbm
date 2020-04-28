@@ -135,6 +135,7 @@
             this.cbFiltros.Name = "cbFiltros";
             this.cbFiltros.Size = new System.Drawing.Size(118, 21);
             this.cbFiltros.TabIndex = 2;
+            this.cbFiltros.SelectedIndexChanged += new System.EventHandler(this.cbFiltros_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -259,7 +260,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "PesquisarFuncionario";
-            this.Text = "Funcionários";
+            this.Text = "Gerenciar Funcionários";
             this.Load += new System.EventHandler(this.PesquisarFuncionario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

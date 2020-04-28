@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -71,10 +71,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLCadastrarAlterarUsuario.cs" />
     <Compile Include="BL\BLPesquisarFuncionario.cs" />
     <Compile Include="BL\BLLogin.cs" />
     <Compile Include="BL\BLCadastroeAlteracaoFuncionario.cs" />
-    <Compile Include="Controller\CadastroAlteracaoController.cs" />
+    <Compile Include="BL\BLUsuario.cs" />
+    <Compile Include="Controller\CadastroAlteracaoFuncionarioController.cs" />
+    <Compile Include="Controller\CadastroAlteracaoUsuarioController.cs" />
     <Compile Include="Controller\PesquisarFuncionarioController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="BL\BLBairro.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="BL\BLEstado.cs" />
     <Compile Include="BL\BLParametrizacao.cs" />
     <Compile Include="BL\Errors\BLValidationError.cs" />
+    <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Uteis\ControlUteis.cs" />
     <Compile Include="Uteis\StringUteis.cs" />
     <Compile Include="DAL\DALBairro.cs" />
@@ -146,6 +150,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.Designer.cs">
+      <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Outros\Outros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Outros\Outros.Designer.cs">
+      <DependentUpon>Outros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserAdm\principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserAdm\principal.Designer.cs">
+      <DependentUpon>principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usuarios\FrmCadastrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Usuarios\FrmCadastrarUsuario.Designer.cs">
+      <DependentUpon>FrmCadastrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usuarios\PesquisarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Usuarios\PesquisarUsuario.Designer.cs">
+      <DependentUpon>PesquisarUsuario.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\frmBairro.resx">
       <DependentUpon>frmBairro.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +208,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.resx">
+      <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PrincipalViewUsuario\Outros\Outros.resx">
+      <DependentUpon>Outros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserAdm\principal.resx">
+      <DependentUpon>principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Usuarios\FrmCadastrarUsuario.resx">
+      <DependentUpon>FrmCadastrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Usuarios\PesquisarUsuario.resx">
+      <DependentUpon>PesquisarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,9 +264,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\location-icon.png" />
   </ItemGroup>

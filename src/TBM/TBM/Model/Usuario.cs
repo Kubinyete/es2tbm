@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TBM.Model
 {
-    class Usuario
+    public class Usuario
     {
         private string _username;
         private string _password;

@@ -21,6 +21,14 @@ namespace TBM.Model
             Sal_base = sal_base;
         }
 
+        public Cargo(int id)
+        {
+            Id = id;
+            Nome = "";
+            Descricao = "";
+            Sal_base = 00.00;
+        }
+
         public int Id { get => _id; set => _id = value; }
         public string Nome { get => _nome; set => _nome = value; }
         public string Descricao { get => _descricao; set => _descricao = value; }

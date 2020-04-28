@@ -24,5 +24,21 @@ namespace TBM.BL
             cargos = new DALCargo(Persistencia).obterCargos();
             return cargos;
         }
+
+        public string inserirFuncionario(Model.Funcionario f)
+        {
+            if (new DAL.DALFuncionario(Persistencia).inserirFuncionario(f))
+                return "Inserido com sucesso!";
+            else
+                return "Erro na conexão com o banco de dados";
+        }
+
+        public string updateFuncionario(Model.Funcionario f)
+        {
+            if (new DAL.DALFuncionario(Persistencia).atualizarFuncionario(f))
+                return "Atualizado com sucesso";
+            else
+                return "Erro ao atualizar no banco de dados!";
+        }
     }
 }
