@@ -12,6 +12,7 @@ namespace TBM.View
 {
     public partial class frmLogin : Form
     {
+        private Controller.LoginController ctr_login = new Controller.LoginController();
         public frmLogin()
         {
             InitializeComponent();
@@ -29,34 +30,22 @@ namespace TBM.View
 
         private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            if (tbUsername.Text != null && tbUsername.Text != "")
+            string msg = ctr_login.validarDados(tbPassword.Text, tbUsername.Text);
+            if(msg == "OK")
             {
-                if(tbPassword.Text !=null && tbPassword.Text != "")
+                msg = ctr_login.logar(tbUsername.Text, tbPassword.Text); 
+                if(msg == "OK")
                 {
-                    Controller.LoginController con_log = 
-                        new Controller.LoginController();
-                    string msg = con_log.logar(tbUsername.Text, tbPassword.Text); 
-                    if(msg.Equals("OK"))
-                    {
-                        MessageBox.Show(this, "Você logou no sistema!", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    }
-                    else
-                    {
-                        MessageBox.Show(this, msg, "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(this, "A senha deve ser informada", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
+                    this.Close();
+                    Model.Usuario u = ctr_login.obterUsuario(tbUsername.Text);
+                    ctr_login.redirectUser(u);
+
+                }else
+                    ctr_login.exibirMessageBoxAsterisk(msg, "Aviso");
             }
             else
             {
-                MessageBox.Show(this, "O usuário deve ser informado", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                ctr_login.exibirMessageBoxAsterisk(msg, "Aviso");
             }
         }
     }

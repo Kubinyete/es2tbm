@@ -25,10 +25,10 @@ namespace TBM.BL
             else if(src.Length > 3)
             {
                 if (filtro == "Nome")
-                    return dalfun.obterFuncionarios("where " +
+                    return dalfun.obterFuncionarios("AND " +
                         "pessoafisica.pes_nome like '%" + src + "%'");
                 else
-                    return dalfun.obterFuncionarios("where " +
+                    return dalfun.obterFuncionarios("AND " +
                         "pessoafisica.pes_cpf like '%" + src + "%'");
             }
             return null;     
@@ -41,6 +41,14 @@ namespace TBM.BL
         public bool verificaAlt(int index)
         {
             return index >= 0;
+        }
+
+        public string excluiFuncionario(Model.Funcionario f)
+        {
+            if (new DAL.DALFuncionario(Persistencia).excluirFuncionario(f))
+                return "Excluído com sucesso";
+            else
+                return "Erro no banco de dados!";
         }
 
     }

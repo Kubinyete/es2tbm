@@ -43,5 +43,10 @@ namespace TBM.View
         {
             new frmGerenciarClientes().ShowDialog();
         }
+        
+        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Usuarios.PesquisarUsuario().ShowDialog();
+        }
     }
 }

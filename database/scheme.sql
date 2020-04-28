@@ -627,6 +627,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Isso aqui é bizarro, mas fazer o que
 DELIMITER //
 
+-- BEGIN PROCEDURES -> Mauricio
+
 DROP PROCEDURE IF EXISTS `login`//
 CREATE PROCEDURE `login`(
   IN P_USR_USERNAME VARCHAR(32), 
@@ -650,10 +652,90 @@ BEGIN
     IF usr_senha = P_PASSWORD_MD5 then 
       SET P_SUCESSFUL := 1;
             set P_MSG := 'OK';
-    else 
-      SET P_SUCESSFUL := 0;
-      set P_MSG := 'Usuário Inválido';
-    end if; 
+        else 
+            SET P_SUCESSFUL := 0;
+            set P_MSG := 'Usuário Inválido';
+        end if; 
+    END IF;
+END//
+
+DROP PROCEDURE IF EXISTS `insere_usuario`//
+CREATE PROCEDURE `insere_usuario`(
+  in p_usr_username varchar(32), 
+    in p_usr_password varchar(32), 
+  in p_funcionario_pessoa_fisica_pes_cpf char(11), 
+    out p_msg varchar(64), 
+    out p_sucess tinyint(1)
+)
+BEGIN 
+  IF(SELECT COUNT(*) FROM usuario where usuario.usr_username = p_usr_username) = 0 then
+    IF(SELECT COUNT(*) FROM usuario where usuario.funcionario_pessoafisica_pes_cpf = p_funcionario_pessoa_fisica_pes_cpf) = 0 then
+      insert into usuario(usr_username,usr_password,usr_ativado,funcionario_pessoafisica_pes_cpf) 
+            values(p_usr_username,md5(p_usr_password),1,p_funcionario_pessoa_fisica_pes_cpf);
+            set p_sucess := 1; 
+            set p_msg := 'OK';
+        ELSE
+        set p_sucess := 0; 
+        set p_msg := 'este funcionário já possui um usuário criado!';
+        END IF;
+    ELSE
+    set p_sucess := 0; 
+        set p_msg := 'Username já está em uso, insira outro';
+  END IF;
+END//
+
+DROP PROCEDURE IF EXISTS `atualiza_funcionario`//
+CREATE PROCEDURE `atualiza_funcionario`(
+  in p_pes_cpf char(11), 
+    in p_pes_rg char(9), 
+    in p_pes_nome varchar(75),
+    in p_pes_data_nascimento date,
+    in p_endereco_id int,
+    in p_salario_atual double,
+    in p_cargo_id int,
+    out p_sucess tinyint(1)
+)
+BEGIN 
+  -- funcionário existe? 
+  IF(select count(*) from funcionario where pessoafisica_pes_cpf = p_pes_cpf limit 1) = 1
+    then 
+        -- pessoafisica existe?
+        if(select count(*) from pessoafisica where pes_cpf = p_pes_cpf limit 1) = 1
+        then
+      update pessoafisica set pes_rg= p_pes_rg, pes_nome = p_pes_nome,
+            pes_data_nascimento = p_pes_data_nascimento,endereco_end_id = p_endereco_id
+        WHERE pes_cpf = p_pes_cpf; 
+            update funcionario set fun_salario_atual = p_salario_atual, 
+            cargo_car_id = p_cargo_id WHERE pessoafisica_pes_cpf = p_pes_cpf;
+      set p_sucess := 1; 
+    else
+      set p_sucess := 0;
+    end if;
+  else
+    set p_sucess := 0;
+  end if;
+END//
+
+-- END PROCEDURES -> Mauricio
+-- BEGIN PROCEDURES -> Vitor
+
+DROP PROCEDURE IF EXISTS `cadastrar_funcionario`//
+CREATE PROCEDURE `cadastrar_funcionario`(IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, IN proc_fun_salario_atual DOUBLE, IN proc_cargo_car_id INT, OUT proc_result TINYINT(1))
+BEGIN
+  -- Funcionario não existe
+  IF (SELECT COUNT(*) FROM funcionario WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+    -- Se não temos uma PessoaFisica ainda
+    IF (SELECT COUNT(*) FROM pessoafisica WHERE pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+      INSERT INTO pessoafisica VALUES (proc_pes_cpf, proc_pes_rg, proc_pes_nome, proc_pes_data_nascimento, proc_endereco_end_id);
+    ELSE
+      UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
+    END IF;
+
+    INSERT INTO funcionario VALUES (proc_fun_salario_atual, proc_cargo_car_id, proc_pes_cpf);
+    SET proc_result := 1;
+    COMMIT;
+  ELSE
+    SET proc_result := 0;
   END IF;
 END//
 
@@ -677,24 +759,6 @@ BEGIN
   END IF;
 END//
 
-DROP PROCEDURE IF EXISTS `cadastrar_funcionario`//
-CREATE PROCEDURE `cadastrar_funcionario` (IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, IN proc_fun_salario_atual DOUBLE, IN proc_cargo_car_id INT, OUT proc_result TINYINT(1))
-BEGIN
-  -- Funcionario não existe
-  IF (SELECT COUNT(*) FROM funcionario WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
-    -- Se não temos uma PessoaFisica ainda
-    IF (SELECT COUNT(*) FROM pessoafisica WHERE pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
-      INSERT INTO pessoafisica VALUES (proc_pes_cpf, proc_pes_rg, proc_pes_nome, proc_pes_data_nascimento, proc_endereco_end_id);
-    ELSE
-      UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
-    END IF;
-
-    INSERT INTO funcionario VALUES (proc_fun_salario_atual, proc_cargo_car_id, proc_pes_cpf);
-    SET proc_result := 1;
-    COMMIT;
-  ELSE
-    SET proc_result := 0;
-  END IF;
-END//
+-- END PROCEDURES -> Vitor
 
 DELIMITER ;

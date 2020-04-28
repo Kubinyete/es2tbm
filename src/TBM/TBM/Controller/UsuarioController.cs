@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +7,23 @@ using System.Windows.Forms;
 
 namespace TBM.Controller
 {
-    class PesquisarFuncionarioController
+    class UsuarioController
     {
-        public PesquisarFuncionarioController() { }
-
-        public DataGridView carregarDataGrid(List<Model.Funcionario> obj,DataGridView dgv)
+        public UsuarioController()
         {
-            foreach (Model.Funcionario f in obj)
+
+        }
+
+        public void carregarDgv(List<Model.Usuario> obj, DataGridView dgv)
+        {
+            foreach(var item in obj)
             {
                 DataGridViewRow row = (DataGridViewRow)dgv.Rows[0].Clone();
-                row.Cells[0].Value = f.Cpf; 
-                row.Cells[1].Value = f.Nome;
-                row.Cells[2].Value = f.Cargo.Nome;
-                row.Cells[3].Value = f.Salario_atual;
+                row.Cells[0].Value = item.Username;
+                row.Cells[1].Value = item.Funcionario.Nome;
+                row.Cells[2].Value = item.Ativado == true ? "Ativado" : "Desativado";
                 dgv.Rows.Add(row);
             }
-            return dgv;
         }
 
         public void showInfoMessageBox(string sub, string msg)
