@@ -34,6 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbParametros = new System.Windows.Forms.GroupBox();
             this.btnLogo = new System.Windows.Forms.Button();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnEndereco = new System.Windows.Forms.Button();
             this.cbEndereco = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,17 +50,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbCnpj = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.ofdAlterar = new System.Windows.Forms.OpenFileDialog();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.pbIcone = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.gbParametros.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbNomeFantasia
@@ -74,9 +74,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Nome fantasia";
+            this.label1.Text = "Nome fantasia*";
             // 
             // label2
             // 
@@ -138,6 +138,15 @@
             this.btnLogo.UseVisualStyleBackColor = true;
             this.btnLogo.Click += new System.EventHandler(this.btnLogo_Click);
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Location = new System.Drawing.Point(447, 32);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(300, 300);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 22;
+            this.pbLogo.TabStop = false;
+            // 
             // btnEndereco
             // 
             this.btnEndereco.Location = new System.Drawing.Point(366, 214);
@@ -163,9 +172,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 215);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 13);
+            this.label9.Size = new System.Drawing.Size(103, 13);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Endereço completo";
+            this.label9.Text = "Endereço completo*";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
@@ -198,18 +207,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 172);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Telefone";
+            this.label7.Text = "Telefone*";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 133);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 13;
-            this.label6.Text = "E-mail";
+            this.label6.Text = "E-mail*";
             // 
             // tbEmail
             // 
@@ -223,9 +232,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(121, 94);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 13);
+            this.label5.Size = new System.Drawing.Size(98, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Inscrição Estadual";
+            this.label5.Text = "Inscrição Estadual*";
             // 
             // tbInscricaoEstadual
             // 
@@ -247,9 +256,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Razão social";
+            this.label3.Text = "Razão social*";
             // 
             // tbCnpj
             // 
@@ -264,9 +273,21 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "CNPJ";
+            this.label4.Text = "CNPJ*";
+            // 
+            // pbIcone
+            // 
+            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
+            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbIcone.Image = global::TBM.Properties.Resources.settings_icon;
+            this.pbIcone.Location = new System.Drawing.Point(0, 0);
+            this.pbIcone.Name = "pbIcone";
+            this.pbIcone.Size = new System.Drawing.Size(50, 50);
+            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIcone.TabIndex = 9;
+            this.pbIcone.TabStop = false;
             // 
             // panel2
             // 
@@ -301,27 +322,6 @@
             // 
             this.ofdAlterar.Filter = "Arquivos PNG|*.png|Arquivos JPEG|*.jpeg|Arquivos JPG|*.jpg|Todos os arquivos|*.*";
             // 
-            // pbLogo
-            // 
-            this.pbLogo.Location = new System.Drawing.Point(447, 32);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(300, 300);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 22;
-            this.pbLogo.TabStop = false;
-            // 
-            // pbIcone
-            // 
-            this.pbIcone.BackColor = System.Drawing.Color.Transparent;
-            this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbIcone.Image = global::TBM.Properties.Resources.settings_icon;
-            this.pbIcone.Location = new System.Drawing.Point(0, 0);
-            this.pbIcone.Name = "pbIcone";
-            this.pbIcone.Size = new System.Drawing.Size(50, 50);
-            this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbIcone.TabIndex = 9;
-            this.pbIcone.TabStop = false;
-            // 
             // frmParametrizacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,9 +338,9 @@
             this.panel1.ResumeLayout(false);
             this.gbParametros.ResumeLayout(false);
             this.gbParametros.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -72,6 +72,8 @@ namespace TBM.View
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
+
+                return null;
             }
 
             e.Observacoes = tbObservacoes.Text;
@@ -122,47 +124,48 @@ namespace TBM.View
 
         private void btnAction_Click(object sender, EventArgs ev)
         {
-            BLEndereco bl = new BLEndereco();
             Endereco e = obterDadosPreenchidos();
 
-            if (e != null)
-            {
-                try
-                {
-                    if (Endereco != null && bl.atualizarEndereco(e) || Endereco == null && bl.cadastrarEndereco(e))
-                    {
-                        enderecoConfirmado = e;
+            if (e == null)
+                return;
 
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show(
-                            "Não foi possível atualizar o registro na base de dados.",
-                            "Erro",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                        );
-                    }
+            BLEndereco bl = new BLEndereco();
+
+            try
+            {
+                if (Endereco != null && bl.atualizarEndereco(e) || Endereco == null && bl.cadastrarEndereco(e))
+                {
+                    enderecoConfirmado = e;
+
+                    Close();
                 }
-                catch (BLValidationError err)
+                else
                 {
                     MessageBox.Show(
-                        err.Message,
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(
-                        String.Format("Não foi possível atualizar o registro na base de dados:\n{0}.", err.Message),
+                        "Não foi possível atualizar o registro na base de dados.",
                         "Erro",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                     );
                 }
+            }
+            catch (BLValidationError err)
+            {
+                MessageBox.Show(
+                    err.Message,
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(
+                    String.Format("Não foi possível atualizar o registro na base de dados:\n{0}.", err.Message),
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 

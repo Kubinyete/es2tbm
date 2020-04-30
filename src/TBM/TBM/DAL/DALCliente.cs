@@ -19,7 +19,7 @@ namespace TBM.DAL
         {
             return new Cliente(
                 (string)dr["pes_cpf"],
-                (string)dr["pes_rg"],
+                dr["pes_rg"] is DBNull ? null : (string)dr["pes_rg"],
                 (string)dr["pes_nome"],
                 // Pode ser NULL também
                 dr["pes_data_nascimento"] is DBNull ? null : (DateTime?)dr["pes_data_nascimento"],
