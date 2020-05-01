@@ -13,10 +13,10 @@
     - [ ] Utilizar a logo do sistema no login e tela inicial.
     - [ ] Utilizar o nome da empresa como título da tela inicial e em outros locais.
 
-- [ ] Permitir que clientes sejam desativados (utilizar um campo cli_ativado).
-    - [ ] Transformar o botão no formulário de cliente para que faça exclusão lógica.
+- [X] Permitir que clientes sejam desativados (utilizar um campo cli_ativado).
+    - [X] Transformar o botão no formulário de cliente para que faça exclusão lógica.
 
-- [ ] Adicionar campos telefone e email aos clientes.
+- [X] Adicionar campos telefone e email aos clientes.
 
 - [ ] Adicionar validações para dados críticos.
     - [X] Validar CPF corretamente através da StringUteis.validarCpf()

@@ -25,7 +25,11 @@ namespace TBM.DAL
                 dr["pes_data_nascimento"] is DBNull ? null : (DateTime?)dr["pes_data_nascimento"],
                 // Podemos também receber um Cliente sem endereço, se esse for o caso, não tente mapear (resultará em um objeto Endereco com valores NULL)
                 e != null ? e : (dr["endereco_end_id"] is DBNull ? null : DALEndereco.mapearObjeto(dr, null)),
-                (double)dr["cli_divida_acumulada"]
+                (double)dr["cli_divida_acumulada"],
+                (bool)dr["cli_ativado"],
+                // Pode ser NULL
+                dr["cli_email"] is DBNull ? null : (string)dr["cli_email"],
+                dr["cli_telefone"] is DBNull ? null : (string)dr["cli_telefone"]
             );
         }
 
@@ -40,6 +44,9 @@ namespace TBM.DAL
             // Podemos ter um Cliente sem endereço...
             param.Add("endereco", e.Endereco?.Id);
             param.Add("dividaacumulada", e.Divida_acumulada);
+            param.Add("ativado", e.Ativado);
+            param.Add("email", e.Email == String.Empty ? null : e.Email);
+            param.Add("telefone", e.Telefone == String.Empty ? null : e.Telefone);
 
             return param;
         }
@@ -55,7 +62,7 @@ namespace TBM.DAL
             param.Add("bcpf", String.Format("%{0}%", buscacpf.Replace("%", "%%")));
             param.Add("brg", String.Format("%{0}%", buscarg.Replace("%", "%%")));
 
-            DataTable dt = Db.executarSelect("SELECT * FROM cliente INNER JOIN pessoafisica ON cliente.pessoafisica_pes_cpf = pessoafisica.pes_cpf LEFT JOIN endereco ON pessoafisica.endereco_end_id = endereco.end_id INNER JOIN bairro ON endereco.bairro_bai_id = bairro.bai_id INNER JOIN cidade ON bairro.cidade_cid_id = cidade.cid_id INNER JOIN estado ON cidade.estado_est_uf = estado.est_uf WHERE pes_nome LIKE @bnome AND pes_cpf LIKE @bcpf AND (pes_rg IS NULL OR pes_rg LIKE @brg);", param);
+            DataTable dt = Db.executarSelect("SELECT * FROM cliente INNER JOIN pessoafisica ON cliente.pessoafisica_pes_cpf = pessoafisica.pes_cpf LEFT JOIN endereco ON pessoafisica.endereco_end_id = endereco.end_id INNER JOIN bairro ON endereco.bairro_bai_id = bairro.bai_id INNER JOIN cidade ON bairro.cidade_cid_id = cidade.cid_id INNER JOIN estado ON cidade.estado_est_uf = estado.est_uf WHERE cli_ativado = 1 AND pes_nome LIKE @bnome AND pes_cpf LIKE @bcpf AND (pes_rg IS NULL OR pes_rg LIKE @brg);", param);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -75,7 +82,7 @@ namespace TBM.DAL
 
             var param = mapearParametros(e);
 
-            DataTable dt = Db.executarSelect("CALL cadastrar_cliente(@cpf, @rg, @nome, @datanascimento, @endereco, @result); SELECT @result;", param);
+            DataTable dt = Db.executarSelect("CALL cadastrar_cliente(@cpf, @rg, @nome, @datanascimento, @endereco, @email, @telefone, @result); SELECT @result;", param);
 
             Db.fechar();
 
@@ -89,10 +96,11 @@ namespace TBM.DAL
 
             var param = mapearParametros(e);
 
-            bool ret = Db.executarNonQuery("UPDATE pessoafisica SET pes_rg = @rg, pes_nome = @nome, pes_data_nascimento = @datanascimento, endereco_end_id = @endereco WHERE pes_cpf = @cpf;", param) > 0;
+            DataTable dt = Db.executarSelect("CALL atualizar_cliente(@cpf, @rg, @nome, @datanascimento, @endereco, @ativado, @email, @telefone, @result); SELECT @result;", param);
+            
             Db.fechar();
 
-            return ret;
+            return dt.Rows.Count == 1 ? ((long)dt.Rows[0]["@result"]) == 1 : false;
         }
     }
 }

@@ -54,9 +54,12 @@
             this.cli_cpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cli_rg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cli_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cli_data_nascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cli_divida_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cli_endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cli_data_nascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cli_telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cli_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cli_divida_acumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cli_ativado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.gbDados.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -143,9 +146,12 @@
             this.cli_cpf,
             this.cli_rg,
             this.cli_nome,
+            this.cli_endereco,
             this.cli_data_nascimento,
+            this.cli_telefone,
+            this.cli_email,
             this.cli_divida_acumulada,
-            this.cli_endereco});
+            this.cli_ativado});
             this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.Location = new System.Drawing.Point(0, 0);
             this.dgvClientes.MultiSelect = false;
@@ -312,7 +318,7 @@
             // cli_cpf
             // 
             this.cli_cpf.DataPropertyName = "CpfMascarado";
-            this.cli_cpf.FillWeight = 15.22843F;
+            this.cli_cpf.FillWeight = 40F;
             this.cli_cpf.HeaderText = "CPF";
             this.cli_cpf.Name = "cli_cpf";
             this.cli_cpf.ReadOnly = true;
@@ -320,26 +326,53 @@
             // cli_rg
             // 
             this.cli_rg.DataPropertyName = "RgMascarado";
-            this.cli_rg.FillWeight = 15.22843F;
+            this.cli_rg.FillWeight = 40F;
             this.cli_rg.HeaderText = "RG";
             this.cli_rg.Name = "cli_rg";
             this.cli_rg.ReadOnly = true;
+            this.cli_rg.Visible = false;
             // 
             // cli_nome
             // 
             this.cli_nome.DataPropertyName = "Nome";
-            this.cli_nome.FillWeight = 15.22843F;
+            this.cli_nome.FillWeight = 70F;
             this.cli_nome.HeaderText = "Nome completo";
             this.cli_nome.Name = "cli_nome";
             this.cli_nome.ReadOnly = true;
             // 
+            // cli_endereco
+            // 
+            this.cli_endereco.DataPropertyName = "Endereco";
+            this.cli_endereco.FillWeight = 70F;
+            this.cli_endereco.HeaderText = "Endereço";
+            this.cli_endereco.Name = "cli_endereco";
+            this.cli_endereco.ReadOnly = true;
+            // 
             // cli_data_nascimento
             // 
             this.cli_data_nascimento.DataPropertyName = "Data_nascimento";
-            this.cli_data_nascimento.FillWeight = 15.22843F;
+            this.cli_data_nascimento.FillWeight = 40F;
             this.cli_data_nascimento.HeaderText = "Data de nascimento";
             this.cli_data_nascimento.Name = "cli_data_nascimento";
             this.cli_data_nascimento.ReadOnly = true;
+            this.cli_data_nascimento.Visible = false;
+            // 
+            // cli_telefone
+            // 
+            this.cli_telefone.DataPropertyName = "Telefone";
+            this.cli_telefone.FillWeight = 40F;
+            this.cli_telefone.HeaderText = "Telefone";
+            this.cli_telefone.Name = "cli_telefone";
+            this.cli_telefone.ReadOnly = true;
+            // 
+            // cli_email
+            // 
+            this.cli_email.DataPropertyName = "Email";
+            this.cli_email.FillWeight = 40F;
+            this.cli_email.HeaderText = "Email";
+            this.cli_email.Name = "cli_email";
+            this.cli_email.ReadOnly = true;
+            this.cli_email.Visible = false;
             // 
             // cli_divida_acumulada
             // 
@@ -348,14 +381,15 @@
             this.cli_divida_acumulada.HeaderText = "Dívida acumulada";
             this.cli_divida_acumulada.Name = "cli_divida_acumulada";
             this.cli_divida_acumulada.ReadOnly = true;
+            this.cli_divida_acumulada.Visible = false;
             // 
-            // cli_endereco
+            // cli_ativado
             // 
-            this.cli_endereco.DataPropertyName = "Endereco";
-            this.cli_endereco.FillWeight = 50F;
-            this.cli_endereco.HeaderText = "Endereço";
-            this.cli_endereco.Name = "cli_endereco";
-            this.cli_endereco.ReadOnly = true;
+            this.cli_ativado.DataPropertyName = "Ativado";
+            this.cli_ativado.HeaderText = "Ativado";
+            this.cli_ativado.Name = "cli_ativado";
+            this.cli_ativado.ReadOnly = true;
+            this.cli_ativado.Visible = false;
             // 
             // frmGerenciarClientes
             // 
@@ -411,8 +445,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cli_cpf;
         private System.Windows.Forms.DataGridViewTextBoxColumn cli_rg;
         private System.Windows.Forms.DataGridViewTextBoxColumn cli_nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cli_data_nascimento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cli_divida_acumulada;
         private System.Windows.Forms.DataGridViewTextBoxColumn cli_endereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cli_data_nascimento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cli_telefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cli_email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cli_divida_acumulada;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cli_ativado;
     }
 }

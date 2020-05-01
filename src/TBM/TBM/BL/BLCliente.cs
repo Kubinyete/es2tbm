@@ -14,6 +14,9 @@ namespace TBM.BL
     {
         private void verificarConsistencia(Cliente c)
         {
+            if (!c.Ativado)
+                throw new BLValidationError("Você não pode alterar os dados de um cliente já desativado.");
+
             if (c.Cpf.Length != 11 || !StringUteis.validarCpf(c.Cpf))
                 throw new BLValidationError("O CPF informado não é válido.");
 
@@ -31,6 +34,12 @@ namespace TBM.BL
 
             if (c.Endereco == null)
                 throw new BLValidationError("É preciso informar um endereço ao cliente.");
+
+            if (c.Email != null && c.Email != String.Empty && !StringUteis.validarEmail(c.Email))
+                throw new BLValidationError("É preciso informar um email válido para o cliente.");
+
+            if (c.Telefone == null || !(StringUteis.validarTelefone(c.Telefone) || StringUteis.validarCelular(c.Telefone)))
+                throw new BLValidationError("É preciso informar um telefone ou celular válido para o cliente.");
         }
 
         public bool atualizarCliente(Cliente c)
@@ -43,6 +52,18 @@ namespace TBM.BL
         {
             verificarConsistencia(c);
             return new DALCliente(Persistencia).inserirCliente(c);
+        }
+
+        public bool removerCliente(Cliente c)
+        {
+            c.Ativado = false;
+            
+            bool ret = new DALCliente(Persistencia).atualizarCliente(c);
+
+            if (!ret)
+                c.Ativado = true;
+
+            return ret;
         }
 
         public List<Cliente> pesquisarClientes(string buscanome, string buscacpf, string buscarg)

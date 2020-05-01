@@ -100,6 +100,7 @@ namespace TBM.View
                 try
                 {
                     new BLEndereco().removerEndereco(Endereco);
+                    Close();
                 }
                 catch (BLValidationError err)
                 {

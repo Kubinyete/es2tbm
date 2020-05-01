@@ -148,7 +148,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `tbmdb`.`cliente` ;
 
 CREATE TABLE IF NOT EXISTS `tbmdb`.`cliente` (
-  `cli_divida_acumulada` DOUBLE NOT NULL,
+  `cli_divida_acumulada` DOUBLE NOT NULL DEFAULT 0,
+  `cli_email` VARCHAR(64) NULL,
+  `cli_telefone` VARCHAR(16) NULL,
+  `cli_ativado` TINYINT(1) NOT NULL DEFAULT 1,
   `pessoafisica_pes_cpf` CHAR(11) NOT NULL,
   PRIMARY KEY (`pessoafisica_pes_cpf`),
   CONSTRAINT `fk_cliente_PessoaFisica1`
@@ -605,7 +608,7 @@ DROP TABLE IF EXISTS `tbmdb`.`usuario` ;
 CREATE TABLE IF NOT EXISTS `tbmdb`.`usuario` (
   `usr_username` VARCHAR(32) NOT NULL,
   `usr_password` VARCHAR(32) NOT NULL,
-  `usr_ativado` TINYINT(1) NOT NULL,
+  `usr_ativado` TINYINT(1) NOT NULL DEFAULT 1,
   `funcionario_pessoafisica_pes_cpf` CHAR(11) NOT NULL,
   PRIMARY KEY (`usr_username`),
   CONSTRAINT `fk_usuario_funcionario1`
@@ -740,22 +743,45 @@ BEGIN
 END//
 
 DROP PROCEDURE IF EXISTS `cadastrar_cliente`//
-CREATE PROCEDURE `cadastrar_cliente` (IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, OUT proc_result TINYINT(1))
+CREATE PROCEDURE `cadastrar_cliente` (IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, IN proc_cli_email VARCHAR(64), IN proc_cli_telefone VARCHAR(16), OUT proc_result TINYINT(1))
 BEGIN
-  -- Cliente não existe
-  IF (SELECT COUNT(*) FROM cliente WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
-    -- Se não temos uma PessoaFisica ainda
-    IF (SELECT COUNT(*) FROM pessoafisica WHERE pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
-      INSERT INTO pessoafisica VALUES (proc_pes_cpf, proc_pes_rg, proc_pes_nome, proc_pes_data_nascimento, proc_endereco_end_id);
-    ELSE
-      UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
-    END IF;
+  SET proc_result := 0;
 
-    INSERT INTO cliente VALUES (0, proc_pes_cpf);
+  -- Se não temos uma PessoaFisica ainda
+  IF (SELECT COUNT(*) FROM pessoafisica WHERE pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+    -- Crie uma nova
+    INSERT INTO pessoafisica VALUES (proc_pes_cpf, proc_pes_rg, proc_pes_nome, proc_pes_data_nascimento, proc_endereco_end_id);
+  ELSE
+    -- Atualize a existente
+    UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
+  END IF;
+
+  -- Se nunca registramos esse cliente
+  IF (SELECT COUNT(*) FROM cliente WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+    -- Insere um novo registro apontado pra essa pessoa
+    INSERT INTO cliente (pessoafisica_pes_cpf, cli_email, cli_telefone) VALUES (proc_pes_cpf, proc_cli_email, proc_cli_telefone);
+    SET proc_result := 1;  
+  ELSE
+    -- Existe um cliente já registrado (pode estar ativo ou não)
+    -- Ele está desativado no momento?
+    IF (SELECT cli_ativado FROM cliente WHERE pessoafisica_pes_cpf = proc_pes_cpf LIMIT 1) = 0 THEN
+      UPDATE cliente SET cli_ativado = 1, cli_email = proc_cli_email, cli_telefone = proc_cli_telefone WHERE pessoafisica_pes_cpf = proc_pes_cpf;
+      SET proc_result := 1;  
+    END IF;
+  END IF;
+  COMMIT;
+END//
+
+DROP PROCEDURE IF EXISTS `atualizar_cliente`//
+CREATE PROCEDURE `atualizar_cliente` (IN proc_pes_cpf CHAR(11), IN proc_pes_rg CHAR(9), IN proc_pes_nome VARCHAR(75), IN proc_pes_data_nascimento DATE, IN proc_endereco_end_id INT, IN proc_cli_ativado TINYINT(1), IN proc_cli_email VARCHAR(64), IN proc_cli_telefone VARCHAR(16), OUT proc_result TINYINT(1))
+BEGIN
+  SET proc_result := 0;
+  -- Cliente existe
+  IF (SELECT COUNT(*) FROM cliente WHERE pessoafisica_pes_cpf = proc_pes_cpf AND cli_ativado = 1 LIMIT 1) = 1 THEN
+    UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
+    UPDATE cliente SET cli_ativado = proc_cli_ativado, cli_email = proc_cli_email, cli_telefone = proc_cli_telefone WHERE pessoafisica_pes_cpf = proc_pes_cpf;
     SET proc_result := 1;
     COMMIT;
-  ELSE
-    SET proc_result := 0;
   END IF;
 END//
 

@@ -48,6 +48,10 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAction = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.tbTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.gbParametros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
@@ -66,6 +70,10 @@
             // 
             // gbParametros
             // 
+            this.gbParametros.Controls.Add(this.tbTelefone);
+            this.gbParametros.Controls.Add(this.label7);
+            this.gbParametros.Controls.Add(this.label6);
+            this.gbParametros.Controls.Add(this.tbEmail);
             this.gbParametros.Controls.Add(this.checkDataNascimento);
             this.gbParametros.Controls.Add(this.btnEndereco);
             this.gbParametros.Controls.Add(this.cbEndereco);
@@ -98,7 +106,7 @@
             // 
             // btnEndereco
             // 
-            this.btnEndereco.Location = new System.Drawing.Point(385, 115);
+            this.btnEndereco.Location = new System.Drawing.Point(385, 149);
             this.btnEndereco.Name = "btnEndereco";
             this.btnEndereco.Size = new System.Drawing.Size(75, 38);
             this.btnEndereco.TabIndex = 24;
@@ -110,7 +118,7 @@
             // 
             this.cbEndereco.Enabled = false;
             this.cbEndereco.FormattingEnabled = true;
-            this.cbEndereco.Location = new System.Drawing.Point(6, 131);
+            this.cbEndereco.Location = new System.Drawing.Point(6, 165);
             this.cbEndereco.Name = "cbEndereco";
             this.cbEndereco.Size = new System.Drawing.Size(373, 21);
             this.cbEndereco.TabIndex = 23;
@@ -118,7 +126,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 115);
+            this.label9.Location = new System.Drawing.Point(3, 149);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 13);
             this.label9.TabIndex = 22;
@@ -258,6 +266,39 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // tbTelefone
+            // 
+            this.tbTelefone.Location = new System.Drawing.Point(294, 110);
+            this.tbTelefone.Mask = "(00)00000-0000";
+            this.tbTelefone.Name = "tbTelefone";
+            this.tbTelefone.Size = new System.Drawing.Size(164, 20);
+            this.tbTelefone.TabIndex = 29;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(291, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Telefone*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 94);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "E-mail";
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Location = new System.Drawing.Point(6, 110);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(282, 20);
+            this.tbEmail.TabIndex = 26;
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,5 +343,9 @@
         private System.Windows.Forms.ComboBox cbEndereco;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkDataNascimento;
+        private System.Windows.Forms.MaskedTextBox tbTelefone;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbEmail;
     }
 }

@@ -62,8 +62,8 @@ namespace TBM.Uteis
 
         public static bool validarRg(string rg)
         {
-            // @TODO: Utilizar um algoritmo que faz o calculo matemático real e verifica o dado corretamente.
-            return Regex.IsMatch(rg, @"^[0-9]{8}$");
+            // @TODO: Utilizar um algoritmo que faz o calculo matemático real e verifica o dado corretamente
+            return Regex.IsMatch(rg, @"^[0-9]{9}$");
         }
 
         // @DEPRECATED: Por favor, utilize a versão da função em camelCase
