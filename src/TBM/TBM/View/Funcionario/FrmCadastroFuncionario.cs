@@ -43,7 +43,7 @@ namespace TBM.View
                 dtpDtNasc.Value = func_escolhido.Data_nascimento.HasValue ? func_escolhido.Data_nascimento.Value : DateTime.Today;
                 lblTitulo.Text = "Alterar Funcionário";
                 cbEndereco.SelectedIndex = func_escolhido.Endereco.Id - 1;
-                cbCargo.SelectedIndex = func_escolhido.Cargo.Id - 1;
+                cbCargo.SelectedIndex = func_escolhido.Cargo.Id -4;
                 alterando = true;
                 this.Text = "Alterar Funcionário";
                 tbCPF.Enabled = false;
@@ -71,17 +71,17 @@ namespace TBM.View
             {
                 Model.Funcionario func = new Model.Funcionario(
                         Convert.ToDouble(tbSalario.Text),
-                        new Model.Cargo(cbCargo.SelectedIndex + 1),
+                        new Model.Cargo(cbCargo.SelectedIndex + 4),
                         Uteis.ControlUteis.obterStringSemMascara(tbCPF),
                         Uteis.ControlUteis.obterStringSemMascara(tbRG),
-                        tbNome.Text,
+                        tbNome.Text.ToUpper(),
                         dtpDtNasc.Value,
                         new Model.Endereco(cbEndereco.SelectedIndex + 1)
                     );
                 if (func_escolhido == null)
-                    control.showInfoMessageBox(bl_cadalt.inserirFuncionario(func), "Aviso");
+                    bl_cadalt.inserirFuncionario(func);
                 else
-                    control.showInfoMessageBox(bl_cadalt.updateFuncionario(func), "Sucesso!");
+                    bl_cadalt.updateFuncionario(func);
                 this.Close();
             } else
                 control.showInfoMessageBox(msg, "Aviso");
@@ -98,6 +98,11 @@ namespace TBM.View
         }
 
         private void cbEndereco_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

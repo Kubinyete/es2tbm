@@ -58,7 +58,7 @@ namespace TBM.View.Funcionario
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             int index = dgvFuncionarios.SelectedRows[0].Index;
-            if (index > 0 && index < funcs.Count)
+            if (index >= 0 && index < funcs.Count)
             {
                 if (bl_func.verificaAlt(index))
                 {
@@ -80,7 +80,7 @@ namespace TBM.View.Funcionario
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
             int index = dgvFuncionarios.SelectedRows[0].Index;
-            if (index > 0 && index < funcs.Count)
+            if (index >= 0 && index < funcs.Count)
             {
                 if (dialogResult == DialogResult.Yes)
                 {

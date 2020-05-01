@@ -26,5 +26,10 @@ namespace TBM.View.UserAdm
         {
             new View.Usuarios.FrmCadastrarUsuario().Show();
         }
+
+        private void principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -160,13 +160,18 @@
             // 
             // dgvUsuarios
             // 
+            this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_usuario,
             this.col_nome_func,
             this.col_status});
+            this.dgvUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgvUsuarios.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvUsuarios.Location = new System.Drawing.Point(13, 20);
             this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(552, 192);
             this.dgvUsuarios.TabIndex = 0;
@@ -175,18 +180,21 @@
             // 
             this.col_usuario.HeaderText = "Username";
             this.col_usuario.Name = "col_usuario";
+            this.col_usuario.ReadOnly = true;
             this.col_usuario.Width = 140;
             // 
             // col_nome_func
             // 
             this.col_nome_func.HeaderText = "Funcionário";
             this.col_nome_func.Name = "col_nome_func";
+            this.col_nome_func.ReadOnly = true;
             this.col_nome_func.Width = 250;
             // 
             // col_status
             // 
             this.col_status.HeaderText = "Status";
             this.col_status.Name = "col_status";
+            this.col_status.ReadOnly = true;
             this.col_status.Width = 120;
             // 
             // panel3
@@ -202,14 +210,14 @@
             this.panel4.Controls.Add(this.btnAdd);
             this.panel4.Controls.Add(this.btnExcluir);
             this.panel4.Controls.Add(this.btnAlterar);
-            this.panel4.Location = new System.Drawing.Point(306, 3);
+            this.panel4.Location = new System.Drawing.Point(311, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(250, 59);
+            this.panel4.Size = new System.Drawing.Size(255, 59);
             this.panel4.TabIndex = 6;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
+            this.btnAdd.Location = new System.Drawing.Point(10, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 53);
             this.btnAdd.TabIndex = 4;
@@ -219,7 +227,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(165, 3);
+            this.btnExcluir.Location = new System.Drawing.Point(172, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 53);
             this.btnExcluir.TabIndex = 3;
@@ -229,7 +237,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(84, 3);
+            this.btnAlterar.Location = new System.Drawing.Point(91, 3);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 53);
             this.btnAlterar.TabIndex = 2;

@@ -37,7 +37,7 @@ namespace TBM.View.Usuarios
         {
             dgvUsuarios.Rows.Clear();
             control.carregarDgv(bl_usr.carregarUsuarios(cbFiltros.Text,
-                tbSrc.Text), dgvUsuarios);
+                tbSrc.Text.ToUpper()), dgvUsuarios);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace TBM.View.Usuarios
                 "Confirma Desativação?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             int index = dgvUsuarios.SelectedRows[0].Index;
 
-            if (index > 0 && index < usuarios.Count)
+            if (index >= 0 && index < usuarios.Count)
             {
                 if (dr == DialogResult.Yes)
                 {
@@ -63,7 +63,7 @@ namespace TBM.View.Usuarios
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             int index = dgvUsuarios.SelectedRows[0].Index;
-            if (index > 0 && index < usuarios.Count)
+            if (index >= 0 && index < usuarios.Count)
             {
                 if (usuarios[index].Ativado)
                 {
@@ -81,6 +81,10 @@ namespace TBM.View.Usuarios
         private void btnAdd_Click(object sender, EventArgs e)
         {
             new FrmCadastrarUsuario().ShowDialog();
+            dgvUsuarios.Rows.Clear();
+            usuarios = bl_usr.carregarUsuarios(cbFiltros.Text,
+                    tbSrc.Text);
+            control.carregarDgv(usuarios, dgvUsuarios);
         }
     }
 }

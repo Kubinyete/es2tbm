@@ -33,14 +33,15 @@ namespace TBM.View
             string msg = ctr_login.validarDados(tbPassword.Text, tbUsername.Text);
             if(msg == "OK")
             {
-                msg = ctr_login.logar(tbUsername.Text, tbPassword.Text); 
+                msg = ctr_login.logar(tbUsername.Text.ToUpper(), tbPassword.Text); 
                 if(msg == "OK")
                 {
                     this.Close();
-                    Model.Usuario u = ctr_login.obterUsuario(tbUsername.Text);
+                    Model.Usuario u = ctr_login.obterUsuario(tbUsername.Text.ToUpper());
                     ctr_login.redirectUser(u);
-
-                }else
+                    this.Close();
+                }
+                else
                     ctr_login.exibirMessageBoxAsterisk(msg, "Aviso");
             }
             else
