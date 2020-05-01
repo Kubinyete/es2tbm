@@ -19,7 +19,7 @@
 - [ ] Adicionar campos telefone e email aos clientes.
 
 - [ ] Adicionar validações para dados críticos.
-    - [ ] Validar CPF corretamente através da StringUteis.validarCpf()
+    - [X] Validar CPF corretamente através da StringUteis.validarCpf()
     - [ ] Validar CNPJ corretamente através da StringUteis.validarCnpj()
     - [ ] Validar RG corretamente através da StringUteis.validarRg()
     
