@@ -7,11 +7,11 @@
 - [X] Sinalizar os campos que são obrigatórios.
     Feito através da adição de uma * ao final do label de cada campo.
 
-- [ ] Chamar a tela de parametrização após primeiro login do sistema, ao detectar a falta do objeto em banco.
+- [X] Chamar a tela de parametrização após primeiro login do sistema, ao detectar a falta do objeto em banco.
 
-- [ ] Usar dois parâmetros configurados na parametrização em algum local do sistema.
-    - [ ] Utilizar a logo do sistema no login e tela inicial.
-    - [ ] Utilizar o nome da empresa como título da tela inicial e em outros locais.
+- [X] Usar dois parâmetros configurados na parametrização em algum local do sistema.
+    - [X] Utilizar a logo do sistema no login e tela inicial.
+    - [X] Utilizar o nome da empresa como título da tela inicial e em outros locais.
 
 - [X] Permitir que clientes sejam desativados (utilizar um campo cli_ativado).
     - [X] Transformar o botão no formulário de cliente para que faça exclusão lógica.
