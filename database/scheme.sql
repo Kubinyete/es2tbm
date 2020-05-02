@@ -128,6 +128,8 @@ DROP TABLE IF EXISTS `tbmdb`.`funcionario` ;
 CREATE TABLE IF NOT EXISTS `tbmdb`.`funcionario` (
   `fun_salario_atual` DOUBLE NOT NULL,
   `cargo_car_id` INT NULL,
+  `fun_email` VARCHAR(64) NULL,
+  `fun_telefone` VARCHAR(16) NULL,
   `pessoafisica_pes_cpf` CHAR(11) NOT NULL,
   PRIMARY KEY (`pessoafisica_pes_cpf`),
   CONSTRAINT `fk_funcionario_Cargo`
@@ -688,42 +690,45 @@ BEGIN
   END IF;
 END//
 
-DROP PROCEDURE IF EXISTS `atualiza_funcionario`//
-CREATE DEFINER=`root`@`localhost` PROCEDURE `atualiza_funcionario`(
-	in p_pes_cpf char(11), 
+DROP PROCEDURE IF EXISTS `atualiza_funcionario`
+CREATE PROCEDURE `atualiza_funcionario`(
+  in p_pes_cpf char(11), 
     in p_pes_rg char(9), 
     in p_pes_nome varchar(75),
     in p_pes_data_nascimento date,
     in p_endereco_id int,
     in p_salario_atual double,
+    in p_fun_email varchar(64), 
+    in p_fun_telefone varchar(16),
     in p_cargo_id int,
     out p_sucess tinyint(1)
 )
 BEGIN 
-	-- funcionário existe? 
-	IF(select count(*) from funcionario where pessoafisica_pes_cpf = p_pes_cpf limit 1) = 1
-		then 
+  -- funcionário existe? 
+  IF(select count(*) from funcionario where pessoafisica_pes_cpf = p_pes_cpf limit 1) = 1
+    then 
         -- pessoafisica existe?
         if(select count(*) from pessoafisica where pes_cpf = p_pes_cpf limit 1) = 1
         then
-			update pessoafisica set pes_rg= p_pes_rg, pes_nome = p_pes_nome,
+      update pessoafisica set pes_rg= p_pes_rg, pes_nome = p_pes_nome,
             pes_data_nascimento = p_pes_data_nascimento,endereco_end_id = p_endereco_id
-				WHERE pes_cpf = p_pes_cpf; 
-            update funcionario set fun_salario_atual = p_salario_atual, 
+        WHERE pes_cpf = p_pes_cpf; 
+            update funcionario set fun_salario_atual = p_salario_atual, fun_email = p_fun_email, 
+            fun_telefone = fun_telefone,
             cargo_car_id = p_cargo_id WHERE pessoafisica_pes_cpf = p_pes_cpf;
             if p_cargo_id is null then 
-				update usuario set usr_ativado = 0 
+        update usuario set usr_ativado = 0 
                 where funcionario_pessoafisica_pes_cpf = p_pes_cpf;
-			end if;
+      end if;
             COMMIT;
-			set p_sucess := 1; 
-		else
-			set p_sucess := 0;
-		end if;
-	else
-		set p_sucess := 0;
-	end if;
-END//
+      set p_sucess := 1; 
+    else
+      set p_sucess := 0;
+    end if;
+  else
+    set p_sucess := 0;
+  end if;
+END
 
 -- END PROCEDURES -> Mauricio
 -- BEGIN PROCEDURES -> Vitor

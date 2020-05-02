@@ -23,7 +23,7 @@ namespace TBM.BL
             if (new DAL.DALFuncionario(Persistencia).inserirFuncionario(f))
                 return "Inserido com sucesso!";
             else
-                return "Erro na conexão com o banco de dados";
+                return "Já há um funcionário registrado com este cpf!";
         }
 
         public string updateFuncionario(Model.Funcionario f)

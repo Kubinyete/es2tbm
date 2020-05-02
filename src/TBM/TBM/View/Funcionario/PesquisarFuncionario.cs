@@ -76,12 +76,11 @@ namespace TBM.View.Funcionario
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o funcionário selecionado?","Confirmar Exclusão?",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
             int index = dgvFuncionarios.SelectedRows.Count > 0 ? dgvFuncionarios.SelectedRows[0].Index : -1;
             if (index >= 0 && index < funcs.Count)
             {
+                DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o funcionário selecionado?", "Confirmar Exclusão?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Model.Funcionario f = funcs[index];

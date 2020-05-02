@@ -25,14 +25,16 @@ namespace TBM.Controller
 
         }
 
-        public void carregarCargoComboBox(List<Model.Cargo> car, ComboBox cb_cargos)
+        public int buscarIndice(List<Model.Cargo> car, Model.Cargo e)
         {
-            /*foreach(var c in car)
+            int index = 0;
+            foreach(Model.Cargo c in car)
             {
-                cb_cargos.Items.Add(""+c.Nome);
-            }*/
-
-            cb_cargos.DataSource = car;
+                if (c.Id == e.Id)
+                    return index;
+                index++;
+            }
+            return index;
         }
 
         public void showInfoMessageBox(string sub, string msg)
@@ -41,69 +43,108 @@ namespace TBM.Controller
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public string validarDados(string tbNome, MaskedTextBox tbCPF,MaskedTextBox tbRG,string tbSalario,
-            int cbEndereco, int cbCargo, DateTime dt_nasc)
+ //      ==========    VALIDAR DADOS     =================
+
+        public bool validarNome(string nome)
         {
-            if (tbNome != "" && tbNome.Length > 3)
+            return nome != "" && nome.Length > 3;
+        }
+
+        public bool validarCPF(string cpf)
+        {
+            return cpf != "" && Uteis.StringUteis.validarCPF(cpf);
+        }
+
+        public bool validarRG(string rg)
+        {
+            return rg != "" && Uteis.StringUteis.validarRG(rg);
+        }
+
+        public bool validarSalario(string salario)
+        {
+            try
             {
-                if (tbCPF.Text != "" && Uteis.StringUteis.validarCPF(Uteis.ControlUteis.
-                    obterStringSemMascara(tbCPF)))
-                {
-                    if (tbRG.Text != "" && Uteis.StringUteis.validarRG(Uteis.ControlUteis.
-                    obterStringSemMascara(tbRG)))
-                    {
-                        if (tbSalario != "")
-                        {
-                            try
-                            {
-                                double b = Convert.ToDouble(tbSalario);
-                                if (b > 0)
-                                {
-                                    if (cbEndereco >= 0 && cbCargo >= 0)
-                                    {
-                                        TimeSpan tsp = dt_nasc - DateTime.Now;
-                                        if(tsp.Days > 0)
-                                        {
-                                            return "data em formato inválido, verifique novamente";
-                                        }
-                                        else
-                                        { //Botar na camada Negócio
-                                            string msg = new BL.BLCadastroeAlteracaoFuncionario(null).validarIdade(dt_nasc) 
-                                                == true ? "OK" : "Erro, funcionário deve possuir mais de 16 anos!";
-                                            return msg;
-                                        }
-                                    }
-                                    else
-                                        return "erro na aplicação!";
-                                }
-                                else
-                                    return "Salário inválido";
-                            }
-                            catch (Exception e)
-                            {
-                                return "Salário inválido";
-                            }
-                        }
-                        else
-                        {
-                            return "Informe o salário!";
-                        }
-                    }
-                    else
-                    {
-                        return "O RG está em um formato inválido, verifique se inseriu corretamente";
-                    }
-                }
-                else
-                {
-                    return "O CPF está em um formato inválido, verifique se inseriu corretamente";
-                }
+                double b = Convert.ToDouble(salario);
+                return true;
+            }catch(Exception e)
+            {
+                return false;
             }
-            else
+        }
+
+        public bool validarData(DateTime d)
+        {
+            TimeSpan tsp = d - DateTime.Now;
+            return tsp.Days > 0;
+        }
+
+        public bool verificarCBs(int a, int b)
+        {
+            return a >= 0 && b >= 0;
+        }
+
+        public bool validarEmail(string email)
+        {
+            return email != "" || Uteis.StringUteis.
+                validarEmail(email);
+        }
+
+        public bool validarTelefone(string telefone)
+        {
+            return telefone != "" || Uteis.StringUteis.
+                validarTelefone(telefone);
+        }
+
+        //==================================    =======================//
+
+        public string validarDados(string tbNome, MaskedTextBox tbCPF,MaskedTextBox tbRG,string tbSalario,
+            int cbEndereco, int cbCargo, DateTime dt_nasc, string tbEmail, string tbTelefone)
+        {
+            if (!validarNome(tbNome))
             {
                 return "Nome inválido, verifique se inseriu corretamente";
             }
-            return "OK";
+
+            if(!validarCPF(Uteis.ControlUteis.
+                obterStringSemMascara(tbCPF)))
+            {
+                return "O CPF está em um formato inválido, " +
+                    "verifique se inseriu corretamente";
+            }
+
+            if (!validarRG(tbRG.Text))
+            {
+                return "O RG está em um formato inválido, verifique se " +
+                    "inseriu corretamente";
+            }
+
+            if (!validarSalario(tbSalario))
+            {
+                return "Salário inválido!";
+            }
+
+            if (!verificarCBs(cbEndereco, cbCargo))
+            {
+                return "Não há endereço selecionado!";
+            }
+
+            if(!new BL.BLCadastroeAlteracaoFuncionario(null).
+                validarIdade(dt_nasc))
+            {
+                return "Erro, o funcionário deve possuir mais de 16 anos!";
+            }
+
+            if (!validarTelefone(tbTelefone))
+            {
+                return "Telefone em formato inválido!";
+            }
+
+            if (!validarEmail(tbEmail))
+            {
+                return "Email em formato inválido!";
+            }
+
+            return "OK";    
         }
     }
 }

@@ -23,8 +23,10 @@ namespace TBM.View
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            // Pegar o Usuario logado atualmente...
-            // chamar metodo interno atualizarContextoUsuario(usuarioLogado);
+            Controller.mainController.montarTela(Controller.LoginController.usuario_logado,  
+                this);  //vamos montar a tela do usuário, primeiramente, passo a tela atual e o 
+            //usuário que está logado
+
             // atualizarContextoUsuario();
 
             var p = new BLParametrizacao().obterParametrizacao();

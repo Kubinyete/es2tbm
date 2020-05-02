@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\BLCliente.cs" />
+    <Compile Include="Controller\mainController.cs" />
     <Compile Include="DAL\DALCliente.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="BL\BLCadastrarAlterarUsuario.cs" />
@@ -285,7 +286,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\location-icon.png" />
   </ItemGroup>

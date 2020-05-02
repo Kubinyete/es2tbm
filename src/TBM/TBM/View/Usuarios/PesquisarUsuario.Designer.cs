@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFiltros = new System.Windows.Forms.ComboBox();
             this.tbSrc = new System.Windows.Forms.TextBox();
-            this.btnPequisa = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.col_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,14 +45,17 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnAtivar = new System.Windows.Forms.Button();
+            this.btnPequisa = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -65,16 +66,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(571, 50);
             this.panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 52);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -138,16 +129,6 @@
             this.tbSrc.TabIndex = 0;
             this.tbSrc.TextChanged += new System.EventHandler(this.tbSrc_TextChanged);
             // 
-            // btnPequisa
-            // 
-            this.btnPequisa.Location = new System.Drawing.Point(493, 17);
-            this.btnPequisa.Name = "btnPequisa";
-            this.btnPequisa.Size = new System.Drawing.Size(37, 31);
-            this.btnPequisa.TabIndex = 1;
-            this.btnPequisa.Text = "SRC";
-            this.btnPequisa.UseVisualStyleBackColor = true;
-            this.btnPequisa.Click += new System.EventHandler(this.btnPequisa_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvUsuarios);
@@ -207,12 +188,13 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnAtivar);
             this.panel4.Controls.Add(this.btnAdd);
             this.panel4.Controls.Add(this.btnExcluir);
             this.panel4.Controls.Add(this.btnAlterar);
-            this.panel4.Location = new System.Drawing.Point(311, 3);
+            this.panel4.Location = new System.Drawing.Point(203, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(255, 59);
+            this.panel4.Size = new System.Drawing.Size(363, 59);
             this.panel4.TabIndex = 6;
             // 
             // btnAdd
@@ -221,17 +203,17 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 53);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "ADD";
+            this.btnAdd.Text = "Adicionar";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(172, 3);
+            this.btnExcluir.Location = new System.Drawing.Point(199, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 53);
             this.btnExcluir.TabIndex = 3;
-            this.btnExcluir.Text = "EXC";
+            this.btnExcluir.Text = "Desativar";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -241,9 +223,39 @@
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 53);
             this.btnAlterar.TabIndex = 2;
-            this.btnAlterar.Text = "ALT";
+            this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnAtivar
+            // 
+            this.btnAtivar.Location = new System.Drawing.Point(280, 3);
+            this.btnAtivar.Name = "btnAtivar";
+            this.btnAtivar.Size = new System.Drawing.Size(75, 53);
+            this.btnAtivar.TabIndex = 5;
+            this.btnAtivar.Text = "Ativar";
+            this.btnAtivar.UseVisualStyleBackColor = true;
+            this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
+            // 
+            // btnPequisa
+            // 
+            this.btnPequisa.Image = global::TBM.Properties.Resources.search;
+            this.btnPequisa.Location = new System.Drawing.Point(493, 12);
+            this.btnPequisa.Name = "btnPequisa";
+            this.btnPequisa.Size = new System.Drawing.Size(55, 45);
+            this.btnPequisa.TabIndex = 1;
+            this.btnPequisa.UseVisualStyleBackColor = true;
+            this.btnPequisa.Click += new System.EventHandler(this.btnPequisa_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(62, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // PesquisarUsuario
             // 
@@ -258,7 +270,6 @@
             this.Text = "Gerenciar Usuário";
             this.Load += new System.EventHandler(this.PesquisarUsuario_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -266,6 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +303,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_nome_func;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_status;
+        private System.Windows.Forms.Button btnAtivar;
     }
 }

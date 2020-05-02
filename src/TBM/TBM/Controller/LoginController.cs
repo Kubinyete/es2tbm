@@ -10,6 +10,7 @@ namespace TBM.Controller
     public class LoginController
     {
         public static Form ret = null;
+        public static Model.Usuario usuario_logado = null;
         public LoginController() { }
 
         public string logar(string username, string senha)
@@ -43,31 +44,9 @@ namespace TBM.Controller
             }
         }
 
-        public void redirectUser(Model.Usuario u)
+        public void setUser(Model.Usuario u)
         {
-            switch (u.Funcionario.Cargo.Nome) 
-            {
-                case "ADMSYS":
-                    ret = new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador();
-                break;
-                case "DEVSYS":
-                    ret = new View.PrincipalViewUsuario.Desenvolvimento.desenvolvedor();
-                break;
-                case "TBM":
-                    ret = new View.UserAdm.principal();
-                break;
-                case "Administrador":
-                    ret = new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador();
-                break;
-                default:
-                    ret = new View.PrincipalViewUsuario.Outros.Outros();
-                break;
-            }
-        }
-
-        public string excluirUsuarioAdm()
-        {
-            return new DAL.DALUsuario(DAL.PersistenciaFactory.criarConexaoPersistencia()).deletarAdmUser();
+            usuario_logado = u;
         }
 
         public void exibirMessageBoxAsterisk(string msg, string sub)

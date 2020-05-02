@@ -38,7 +38,7 @@ namespace TBM.View
                 {
                     this.Close();
                     Model.Usuario u = ctr_login.obterUsuario(tbUsername.Text.ToUpper());
-                    ctr_login.redirectUser(u);
+                    ctr_login.setUser(u);
                     this.Close();
                 }
                 else
