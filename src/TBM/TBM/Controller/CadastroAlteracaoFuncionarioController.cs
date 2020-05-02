@@ -27,10 +27,12 @@ namespace TBM.Controller
 
         public void carregarCargoComboBox(List<Model.Cargo> car, ComboBox cb_cargos)
         {
-            foreach(var c in car)
+            /*foreach(var c in car)
             {
                 cb_cargos.Items.Add(""+c.Nome);
-            }
+            }*/
+
+            cb_cargos.DataSource = car;
         }
 
         public void showInfoMessageBox(string sub, string msg)

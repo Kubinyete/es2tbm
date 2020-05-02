@@ -16,11 +16,11 @@ namespace TBM.DAL
         public static Cargo mapearObjeto(DataRow dr)
         {
             return new Cargo(
-                Convert.ToInt32(dr["car_id"].ToString()),
-                dr["car_nome"].ToString(),
-                dr["car_descricao"].ToString(),
-                Convert.ToDouble(dr["car_sal_base"].ToString()),
-                (NivelAcesso)dr["car_nivel_permissao"]
+                Convert.ToInt32(dr["car_id"]),
+                (string)dr["car_nome"],
+                dr["car_descricao"] is DBNull ? null : (string)dr["car_descricao"],
+                Convert.ToDouble(dr["car_sal_base"]),
+                (NivelAcesso)Convert.ToInt32(dr["car_nivel_permissao"])
             );
         }
 

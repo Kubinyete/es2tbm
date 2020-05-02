@@ -659,10 +659,10 @@ INSERT INTO endereco (end_logradouro, end_numero, end_observacoes, bairro_bai_id
 
 INSERT INTO parametrizacao (par_nome_fantasia, par_razao_social, par_cnpj, par_ie, par_email, par_telefone, par_data_ativacao, endereco_end_id) VALUES ('Top Burguer', 'TOP BURGUER LTDA.', '62246009000134', 225450934645, 'contato@topburguer.com.br', '1832639999', NOW(), (SELECT end_id FROM endereco WHERE end_logradouro = 'Av. Teste'));
 
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Garçom','Entrega Comidas', 1200.00);
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Atendente','Atende clientes', 1200.00);
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Cozinheiro','Prepara Comidas', 1900.00);
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Administrador','Gerencia do Restaurante', 3000.00);
+INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Administrador','Gerencia do Restaurante', 3000.00, 0);
+INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Atendente','Atende clientes', 1200.00, 1);
+INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Garçom','Entrega Comidas', 1200.00, 2);
+INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Cozinheiro','Prepara Comidas', 1900.00, 3);
 
 -- pessoas fisicas iniciais
 INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('1', '1', 'ADMSYS', '2011-11-11', '1');

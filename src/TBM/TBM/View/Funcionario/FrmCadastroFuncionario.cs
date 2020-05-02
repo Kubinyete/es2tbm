@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TBM.Model;
 
 namespace TBM.View
 {
@@ -31,7 +32,7 @@ namespace TBM.View
 
         private void FrmCadastroFuncionario_Load(object sender, EventArgs e)
         {
-            control.carregarEnderecoComboBox(bl_cadalt.obterEnderecos(),cbEndereco);
+            // control.carregarEnderecoComboBox(bl_cadalt.obterEnderecos(),cbEndereco);
             control.carregarCargoComboBox(bl_cadalt.obterCargos(), cbCargo);
             if (!control.Load(func_escolhido))
             {
@@ -42,8 +43,15 @@ namespace TBM.View
                 // Temos certeza que de um funcionário POSSUI uma data de nascimento!!!
                 dtpDtNasc.Value = func_escolhido.Data_nascimento.HasValue ? func_escolhido.Data_nascimento.Value : DateTime.Today;
                 lblTitulo.Text = "Alterar Funcionário";
-                cbEndereco.SelectedIndex = func_escolhido.Endereco.Id - 1;
-                cbCargo.SelectedIndex = func_escolhido.Cargo.Id -4;
+                //cbEndereco.SelectedIndex = func_escolhido.Endereco.Id - 1;
+                //cbCargo.SelectedIndex = func_escolhido.Cargo.Id -4;
+
+                cbEndereco.Items.Clear();
+                cbEndereco.Items.Add(func_escolhido.Endereco);
+                cbEndereco.SelectedIndex = 0;
+
+                cbCargo.SelectedItem = func_escolhido.Cargo;
+
                 alterando = true;
                 this.Text = "Alterar Funcionário";
                 tbCPF.Enabled = false;
@@ -52,7 +60,6 @@ namespace TBM.View
             {
                 this.Text = "Cadastrar Funcionário";
                 lblTitulo.Text = "Cadastro de Funcionário";
-                cbEndereco.SelectedIndex = 0;
                 cbCargo.SelectedIndex = 0;
             }
         }
@@ -71,12 +78,12 @@ namespace TBM.View
             {
                 Model.Funcionario func = new Model.Funcionario(
                         Convert.ToDouble(tbSalario.Text),
-                        new Model.Cargo(cbCargo.SelectedIndex + 4),
+                        (Cargo)cbCargo.SelectedItem,
                         Uteis.ControlUteis.obterStringSemMascara(tbCPF),
                         Uteis.ControlUteis.obterStringSemMascara(tbRG),
                         tbNome.Text.ToUpper(),
                         dtpDtNasc.Value,
-                        new Model.Endereco(cbEndereco.SelectedIndex + 1)
+                        (Endereco)cbEndereco.SelectedItem
                     );
                 if (func_escolhido == null)
                     bl_cadalt.inserirFuncionario(func);
@@ -92,9 +99,16 @@ namespace TBM.View
 
         }
 
-        private void btnEndereco_Click(object sender, EventArgs e)
+        private void btnEndereco_Click(object sender, EventArgs ev)
         {
-            new frmGerenciarEnderecos().ShowDialog();
+            Endereco e = new frmGerenciarEnderecos().exibirComRetorno();
+
+            if (e != null)
+            {
+                cbEndereco.Items.Clear();
+                cbEndereco.Items.Add(e);
+                cbEndereco.SelectedIndex = 0;
+            }
         }
 
         private void cbEndereco_SelectedIndexChanged(object sender, EventArgs e)

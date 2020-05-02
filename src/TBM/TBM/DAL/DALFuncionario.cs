@@ -37,7 +37,7 @@ namespace TBM.DAL
             var param = criarParametros();
             param.Add("cpf", cpf);
 
-            DataTable dt = Db.executarSelect("select fun_salario_atual,cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base,pessoafisica.pes_cpf,"+
+            DataTable dt = Db.executarSelect("select fun_salario_atual,cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base,cargo.car_nivel_permissao,pessoafisica.pes_cpf,"+
 "pessoafisica.pes_rg, pessoafisica.pes_nome, pessoafisica.pes_data_nascimento,"+
 "pessoafisica.endereco_end_id, endereco.end_id, endereco.end_logradouro,"+
 "endereco.end_observacoes, endereco.end_numero, bairro.bai_id,"+
@@ -68,7 +68,7 @@ namespace TBM.DAL
             Db.abrir();
 
             string select = "select fun_salario_atual,cargo.car_id, cargo.car_nome, cargo.car_descricao," +
-"cargo.car_sal_base,pessoafisica.pes_cpf,pessoafisica.pes_rg, pessoafisica.pes_nome," +
+"cargo.car_sal_base,cargo.car_nivel_permissao,pessoafisica.pes_cpf,pessoafisica.pes_rg, pessoafisica.pes_nome," +
 "pessoafisica.pes_data_nascimento,pessoafisica.endereco_end_id, endereco.end_id," +
 "endereco.end_logradouro,endereco.end_observacoes, endereco.end_numero," +
 "bairro.bai_id,bairro.bai_nome, cidade.cid_id, cidade.cid_nome," +
@@ -185,7 +185,7 @@ namespace TBM.DAL
         {
             List<Funcionario> ret = new List<Funcionario>();
 
-            string sql = "select cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base,"+
+            string sql = "select cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base,cargo.car_nivel_permissao," +
 "pessoafisica.pes_cpf,"+
 "pessoafisica.pes_rg, pessoafisica.pes_nome, pessoafisica.pes_data_nascimento, funcionario.fun_salario_atual,"+
 "pessoafisica.endereco_end_id, endereco.end_id, endereco.end_logradouro,"+

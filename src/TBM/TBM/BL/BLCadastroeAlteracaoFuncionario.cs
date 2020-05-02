@@ -11,13 +11,6 @@ namespace TBM.BL
     {
         public BLCadastroeAlteracaoFuncionario(Persistencia p) : base(p) { }
 
-        public List<Model.Endereco> obterEnderecos()
-        {
-            List<Model.Endereco> enderecos = new List<Model.Endereco>();
-            enderecos = new DALEndereco(Persistencia).obterEnderecos();
-            return enderecos;
-        }
-
         public List<Model.Cargo> obterCargos()
         {
             List<Model.Cargo> cargos = new List<Model.Cargo>();

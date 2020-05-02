@@ -57,7 +57,7 @@ namespace TBM.View.Funcionario
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            int index = dgvFuncionarios.SelectedRows[0].Index;
+            int index = dgvFuncionarios.SelectedRows.Count > 0 ? dgvFuncionarios.SelectedRows[0].Index : -1;
             if (index >= 0 && index < funcs.Count)
             {
                 if (bl_func.verificaAlt(index))
@@ -79,7 +79,7 @@ namespace TBM.View.Funcionario
             DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o funcionário selecionado?","Confirmar Exclusão?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-            int index = dgvFuncionarios.SelectedRows[0].Index;
+            int index = dgvFuncionarios.SelectedRows.Count > 0 ? dgvFuncionarios.SelectedRows[0].Index : -1;
             if (index >= 0 && index < funcs.Count)
             {
                 if (dialogResult == DialogResult.Yes)

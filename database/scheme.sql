@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `tbmdb`.`cargo` (
   `car_id` INT NOT NULL AUTO_INCREMENT,
   `car_nome` VARCHAR(32) NOT NULL,
   `car_descricao` VARCHAR(256) NULL,
-  `car_nivel_permissao` TINYINT(1) NOT NULL DEFAULT 0,
+  `car_nivel_permissao` TINYINT(8) NOT NULL DEFAULT 0,
   `car_sal_base` DOUBLE NOT NULL,
   PRIMARY KEY (`car_id`))
 ENGINE = InnoDB;

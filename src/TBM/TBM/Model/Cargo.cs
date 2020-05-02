@@ -50,5 +50,10 @@ namespace TBM.Model
         {
             return Nome;
         }
+
+        public bool Equals(Cargo obj)
+        {
+            return Id == obj.Id;
+        }
     }
 }
