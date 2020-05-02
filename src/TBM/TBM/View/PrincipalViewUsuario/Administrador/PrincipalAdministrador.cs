@@ -19,7 +19,7 @@ namespace TBM.View.PrincipalViewUsuario.Administrador
 
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new View.Usuarios.FrmCadastrarUsuario().Show();
+            new View.Usuarios.PesquisarUsuario().Show();
         }
 
         private void parametrizaçãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace TBM.View.PrincipalViewUsuario.Administrador
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FrmCadastroFuncionario().Show();
+            new View.Funcionario.PesquisarFuncionario().Show();
         }
     }
 }

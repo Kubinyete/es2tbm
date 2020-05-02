@@ -94,6 +94,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "PrincipalAdministrador";
             this.Text = "PrincipalAdministrador";
+            this.Load += new System.EventHandler(this.PrincipalAdministrador_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

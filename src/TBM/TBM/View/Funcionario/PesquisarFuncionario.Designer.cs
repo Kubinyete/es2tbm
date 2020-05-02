@@ -159,9 +159,9 @@
             // 
             // dgvFuncionarios
             // 
-            this.dgvFuncionarios.AllowUserToDeleteRows = false;
+            this.dgvFuncionarios.AllowUserToAddRows = false;
             this.dgvFuncionarios.AllowUserToOrderColumns = true;
-            this.dgvFuncionarios.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvFuncionarios.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFuncionarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_cpf,

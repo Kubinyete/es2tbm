@@ -49,8 +49,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -131,6 +131,7 @@
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(159, 21);
             this.cbCargo.TabIndex = 9;
+            this.cbCargo.SelectedIndexChanged += new System.EventHandler(this.cbCargo_SelectedIndexChanged);
             // 
             // btnEndereco
             // 
@@ -199,7 +200,6 @@
             // tbRG
             // 
             this.tbRG.Location = new System.Drawing.Point(358, 64);
-            this.tbRG.Mask = "00.000.000-x";
             this.tbRG.Name = "tbRG";
             this.tbRG.Size = new System.Drawing.Size(114, 20);
             this.tbRG.TabIndex = 1;
@@ -260,15 +260,6 @@
             this.panel2.Size = new System.Drawing.Size(503, 53);
             this.panel2.TabIndex = 10;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 53);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
@@ -280,6 +271,15 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "% action %";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TBM.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 53);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmCadastroFuncionario
             // 

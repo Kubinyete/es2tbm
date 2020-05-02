@@ -664,8 +664,22 @@ INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Atendente','Aten
 INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Cozinheiro','Prepara Comidas', 1900.00);
 INSERT INTO cargo (car_nome,car_descricao,car_sal_base) VALUES('Administrador','Gerencia do Restaurante', 3000.00);
 
-INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('ADMSYS', '7c6c9a1d5a0883b054242422ebe4c799', '1', '11111111111');
---senha : tbmgerencia1
-INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('ADMUSER', 'f89fa02b7d644e513115697aa9f7fb34', '1', '22222222222');
---senha : tbm
+-- pessoas fisicas iniciais
+INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('1', '1', 'ADMSYS', '2011-11-11', '1');
+INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('2', '2', 'DEVSYS', '2011-11-11', '1');
+INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('3', '3', 'TBM', '2011-11-11', '1');
 
+--cargos iniciais
+INSERT INTO `tbmdb`.`cargo` (`car_id`, `car_nome`, `car_descricao`, `car_sal_base`) VALUES ('1', 'ADMSYS', 'System', '0');
+INSERT INTO `tbmdb`.`cargo` (`car_id`, `car_nome`, `car_descricao`, `car_sal_base`) VALUES ('2', 'DEVSYS', 'System', '0');
+INSERT INTO `tbmdb`.`cargo` (`car_id`, `car_nome`, `car_descricao`, `car_sal_base`) VALUES ('3', 'TBM', 'System', '0');
+
+--funcionarios iniciais
+INSERT INTO `tbmdb`.`funcionario` (`fun_salario_atual`, `cargo_car_id`, `pessoafisica_pes_cpf`) VALUES ('0000.5', '5', '11111111111');
+INSERT INTO `tbmdb`.`funcionario` (`fun_salario_atual`, `cargo_car_id`, `pessoafisica_pes_cpf`) VALUES ('0000.5', '4', '22222222222');
+INSERT INTO `tbmdb`.`funcionario` (`fun_salario_atual`, `cargo_car_id`, `pessoafisica_pes_cpf`) VALUES ('0', '3', '3');
+
+-- senha : tbm
+INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('ADMSYS', md5('tbmgerencia1'), '1', '1');
+INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('DEVSYS', md5('desenvolvimento1'), '1', '2');
+INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('TBM', md5('tbm'), '1', '3');

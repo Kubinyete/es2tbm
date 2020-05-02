@@ -18,14 +18,11 @@ namespace TBM.Controller
         {
             foreach(var item in obj)
             {
-                DataGridViewRow row = (DataGridViewRow)dgv.Rows[0].Clone();
-                row.Cells[0].Value = item.Username;
-                row.Cells[1].Value = item.Funcionario.Nome;
-                row.Cells[2].Value = item.Ativado == true ? "Ativado" : "Desativado";
-                dgv.Rows.Add(row);
+                dgv.Rows.Add(item.Username, 
+                    item.Funcionario.Nome, 
+                    item.Ativado == true ? "Ativado" : "Desativado");
             }
         }
-
         public void showInfoMessageBox(string sub, string msg)
         {
             MessageBox.Show(sub, msg,

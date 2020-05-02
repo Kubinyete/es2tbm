@@ -42,7 +42,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnDesativar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -147,7 +146,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnDesativar);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnConfirmar);
             this.panel3.Location = new System.Drawing.Point(11, 301);
@@ -183,15 +181,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(55, 53);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnDesativar
-            // 
-            this.btnDesativar.Location = new System.Drawing.Point(25, 13);
-            this.btnDesativar.Name = "btnDesativar";
-            this.btnDesativar.Size = new System.Drawing.Size(51, 41);
-            this.btnDesativar.TabIndex = 4;
-            this.btnDesativar.Text = "DESAT";
-            this.btnDesativar.UseVisualStyleBackColor = true;
             // 
             // FrmCadastrarUsuario
             // 
@@ -229,6 +218,5 @@
         private System.Windows.Forms.TextBox tbConfirmarPassword;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnDesativar;
     }
 }

@@ -109,7 +109,7 @@ namespace TBM.DAL
 "inner join estado on estado.est_uf = cidade.estado_est_uf "+
 "inner join cargo on cargo.car_id = funcionario.cargo_car_id "+
 "WHERE usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf AND " +
-"cargo.car_nome <> 'SYSADM'" +
+"cargo.car_id > 3 " +
 arg +";", parametros); 
 
             //@TODO 
