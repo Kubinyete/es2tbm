@@ -80,7 +80,7 @@ namespace TBM.DAL
 " inner join bairro on bairro.bai_id = endereco.bairro_bai_id" +
 " inner join cidade on cidade.cid_id = bairro.bai_id" +
 " inner join estado on cidade.estado_est_uf = estado.est_uf " +
-" where cargo.car_nome <> 'SYSADM' ";
+" where pes_cpf > 100000 ";
             DataTable dt = Db.executarSelect(select + args + ";");
 
             Db.fechar();

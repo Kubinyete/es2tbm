@@ -40,5 +40,10 @@ namespace TBM.BL
             else
                 return "Erro ao atualizar no banco de dados!";
         }
+
+        public bool validarIdade(DateTime datanasc)
+        {
+            return (DateTime.Now.Year - datanasc.Year) > 16;
+        }
     }
 }

@@ -7,8 +7,9 @@ using System.Windows.Forms;
 
 namespace TBM.Controller
 {
-    class LoginController
+    public class LoginController
     {
+        public static Form ret = null;
         public LoginController() { }
 
         public string logar(string username, string senha)
@@ -44,25 +45,24 @@ namespace TBM.Controller
 
         public void redirectUser(Model.Usuario u)
         {
-            if (u.Funcionario.Cargo.Nome.Equals("Administrador"))
+            switch (u.Funcionario.Cargo.Nome) 
             {
-                if (u.Username == "ADMUSER")
-                {
-                    new View.UserAdm.principal().ShowDialog();
-                    string msg = excluirUsuarioAdm();
-                    if (msg == "OK")
-                        exibirMessageBoxAsterisk("Feito!", "Aviso");
-                    else
-                        exibirMessageBoxError("erro!", "Aviso");
-                }else
-                    new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador().Show();
+                case "ADMSYS":
+                    ret = new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador();
+                break;
+                case "DEVSYS":
+                    ret = new View.PrincipalViewUsuario.Desenvolvimento.desenvolvedor();
+                break;
+                case "TBM":
+                    ret = new View.UserAdm.principal();
+                break;
+                case "Administrador":
+                    ret = new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador();
+                break;
+                default:
+                    ret = new View.PrincipalViewUsuario.Outros.Outros();
+                break;
             }
-            if (u.Funcionario.Cargo.Nome.Equals("SYSADM"))
-            {
-                new View.PrincipalViewUsuario.Administrador.PrincipalAdministrador().Show();
-            }
-            else
-                new View.PrincipalViewUsuario.Outros.Outros().Show();
         }
 
         public string excluirUsuarioAdm()

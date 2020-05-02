@@ -69,7 +69,7 @@ namespace TBM.View.Usuarios
                 if (cadalt_usr.match_Passwords(tbPassword.Text, tbConfirmarPassword.Text))
                 {
                     Model.Usuario usr = new Model.Usuario(
-                        tbUsername.Text.Trim().ToLower(),
+                        tbUsername.Text.Trim().ToUpper(),
                         tbPassword.Text.Trim().ToLower(),
                         true,
                         f[cbFuncionario.SelectedIndex]

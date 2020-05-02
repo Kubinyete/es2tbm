@@ -49,6 +49,7 @@ namespace TBM.DAL
             Db.abrir();
 
             DataTable dt = Db.executarSelect("select * from cargo;");
+            
             foreach(DataRow r in dt.Rows)
             {
                 ret.Add(mapearObjeto(r));

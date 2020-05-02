@@ -58,15 +58,20 @@ namespace TBM.View.Funcionario
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             int index = dgvFuncionarios.SelectedRows[0].Index;
-            if (bl_func.verificaAlt(index))
+            if (index >= 0 && index < funcs.Count)
             {
-                FrmCadastroFuncionario.func_escolhido = funcs[index];
-                new FrmCadastroFuncionario().ShowDialog();
-                dgvFuncionarios.Rows.Clear();
-                funcs = bl_func.carregarFuncionarios("", "");
-                dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
-                FrmCadastroFuncionario.func_escolhido = null;
+                if (bl_func.verificaAlt(index))
+                {
+                    FrmCadastroFuncionario.func_escolhido = funcs[index];
+                    new FrmCadastroFuncionario().ShowDialog();
+                    dgvFuncionarios.Rows.Clear();
+                    funcs = bl_func.carregarFuncionarios("", "");
+                    dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+                    FrmCadastroFuncionario.func_escolhido = null;
+                }
             }
+            else
+                control.showInfoMessageBox("Deve haver um funcionário selecionado!", "Aviso");
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -74,15 +79,20 @@ namespace TBM.View.Funcionario
             DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o funcionário selecionado?","Confirmar Exclusão?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-            if(dialogResult == DialogResult.Yes)
+            int index = dgvFuncionarios.SelectedRows[0].Index;
+            if (index >= 0 && index < funcs.Count)
             {
-                int index = dgvFuncionarios.SelectedRows[0].Index;
-                Model.Funcionario f = funcs[index];
-                control.showInfoMessageBox(bl_func.excluiFuncionario(f),"Aviso");
-                dgvFuncionarios.Rows.Clear();
-                funcs = bl_func.carregarFuncionarios("", "");
-                dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Model.Funcionario f = funcs[index];
+                    control.showInfoMessageBox(bl_func.excluiFuncionario(f), "Aviso");
+                    dgvFuncionarios.Rows.Clear();
+                    funcs = bl_func.carregarFuncionarios("", "");
+                    dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);
+                }
             }
+            else
+                control.showInfoMessageBox("Deve haver um funcionário selecionado!", "Erro");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

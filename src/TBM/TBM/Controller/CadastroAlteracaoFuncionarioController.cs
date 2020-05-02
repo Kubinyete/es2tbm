@@ -64,6 +64,12 @@ namespace TBM.Controller
                                         {
                                             return "data em formato inválido, verifique novamente";
                                         }
+                                        else
+                                        { //Botar na camada Negócio
+                                            string msg = new BL.BLCadastroeAlteracaoFuncionario(null).validarIdade(dt_nasc) 
+                                                == true ? "OK" : "Erro, funcionário deve possuir mais de 16 anos!";
+                                            return msg;
+                                        }
                                     }
                                     else
                                         return "erro na aplicação!";

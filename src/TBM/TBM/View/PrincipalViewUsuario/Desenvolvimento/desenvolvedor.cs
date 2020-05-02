@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TBM.View.PrincipalViewUsuario.Outros
+namespace TBM.View.PrincipalViewUsuario.Desenvolvimento
 {
-    public partial class Outros : Form
+    public partial class desenvolvedor : Form
     {
-        public Outros()
+        public desenvolvedor()
         {
             InitializeComponent();
         }
 
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void desenvolvedor_Load(object sender, EventArgs e)
         {
-            new View.frmGerenciarClientes().ShowDialog();
+
         }
     }
 }

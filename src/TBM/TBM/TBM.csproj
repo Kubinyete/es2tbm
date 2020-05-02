@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -165,16 +165,22 @@
     <Compile Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.Designer.cs">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Desenvolvimento\desenvolvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrincipalViewUsuario\Desenvolvimento\desenvolvedor.Designer.cs">
+      <DependentUpon>desenvolvedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\PrincipalViewUsuario\Outros\Outros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\PrincipalViewUsuario\Outros\Outros.Designer.cs">
       <DependentUpon>Outros.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UserAdm\principal.cs">
+    <Compile Include="View\PrincipalViewUsuario\UserAdm\principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\UserAdm\principal.Designer.cs">
+    <Compile Include="View\PrincipalViewUsuario\UserAdm\principal.Designer.cs">
       <DependentUpon>principal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Usuarios\FrmCadastrarUsuario.cs">
@@ -223,10 +229,13 @@
     <EmbeddedResource Include="View\PrincipalViewUsuario\Administrador\PrincipalAdministrador.resx">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\PrincipalViewUsuario\Desenvolvimento\desenvolvedor.resx">
+      <DependentUpon>desenvolvedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\PrincipalViewUsuario\Outros\Outros.resx">
       <DependentUpon>Outros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UserAdm\principal.resx">
+    <EmbeddedResource Include="View\PrincipalViewUsuario\UserAdm\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Usuarios\FrmCadastrarUsuario.resx">
