@@ -32,6 +32,7 @@ namespace TBM.View
             Text = Text.Replace("%action%", actionStr);
             lblTitulo.Text = lblTitulo.Text.Replace("%action%", actionStr);
             btnAction.Text = btnAction.Text.Replace("%action%", actionStr);
+            btnExcluir.Enabled = Cliente != null;
         }
 
         private void preencherDados(Cliente c)
@@ -43,6 +44,8 @@ namespace TBM.View
                 tbCpf.Text = c.Cpf;
                 tbRg.Text = c.Rg;
                 tbNome.Text = c.Nome;
+                tbEmail.Text = c.Email;
+                tbTelefone.Text = c.Telefone;
                 
                 checkDataNascimento.Checked = c.Data_nascimento.HasValue;
                 
@@ -75,6 +78,8 @@ namespace TBM.View
             e.Nome = tbNome.Text;
             e.Endereco = (Endereco)cbEndereco.SelectedItem;
             e.Data_nascimento = checkDataNascimento.Checked ? dtpDataNascimento.Value : (DateTime?)null;
+            e.Email = tbEmail.Text;
+            e.Telefone = ControlUteis.obterStringSemMascara(tbTelefone);
 
             return e;
         }
@@ -100,7 +105,32 @@ namespace TBM.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            // Impossível excluir um Cliente!!!
+            if (MessageBox.Show("Tem certeza que deseja excluir o registro atual?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    new BLCliente().removerCliente(Cliente);
+                    Close();
+                }
+                catch (BLValidationError err)
+                {
+                    MessageBox.Show(
+                        err.Message,
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(
+                        String.Format("Não foi possível excluir o registro da base de dados:\n{0}.", err.Message),
+                        "Erro",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+            }
         }
 
         private void btnAction_Click(object sender, EventArgs ev)
@@ -137,7 +167,7 @@ namespace TBM.View
                         MessageBoxIcon.Warning
                     );
                 }
-                /*catch (Exception err)
+                catch (Exception err)
                 {
                     MessageBox.Show(
                         String.Format("Não foi possível atualizar o registro na base de dados:\n{0}.", err.Message),
@@ -145,7 +175,7 @@ namespace TBM.View
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                     );
-                }*/
+                }
             }
         }
 

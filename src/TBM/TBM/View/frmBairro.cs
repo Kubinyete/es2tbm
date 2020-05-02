@@ -80,6 +80,7 @@ namespace TBM.View
                 try
                 {
                     new BLBairro().removerBairro(Bairro);
+                    Close();
                 }
                 catch (BLValidationError err)
                 {

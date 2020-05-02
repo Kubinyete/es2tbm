@@ -68,7 +68,22 @@ namespace TBM.View
             p.Nome_fantasia = tbNomeFantasia.Text;
             p.Razao_social = tbRazaoSocial.Text;
             p.Cnpj = ControlUteis.obterStringSemMascara(tbCnpj);
-            p.Ie = Convert.ToInt64(ControlUteis.obterStringSemMascara(tbInscricaoEstadual));
+            
+            try
+            {
+                p.Ie = Convert.ToInt64(ControlUteis.obterStringSemMascara(tbInscricaoEstadual));
+            } catch
+            {
+                MessageBox.Show(
+                    "O número da IE informado não é um número válido.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return null;
+            }
+            
             p.Email = tbEmail.Text;
             p.Telefone = ControlUteis.obterStringSemMascara(tbTelefone);
             p.Endereco = (Endereco)cbEndereco.SelectedItem;
@@ -90,6 +105,10 @@ namespace TBM.View
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             Parametrizacao p = obterDadosPreenchidos();
+
+            if (p == null)
+                return;
+
             var bl = new BLParametrizacao();
 
             try
@@ -176,16 +195,6 @@ namespace TBM.View
                 cbEndereco.Items.Add(novo);
                 cbEndereco.SelectedIndex = 0;
             }
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbEndereco_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

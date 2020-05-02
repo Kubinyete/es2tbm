@@ -35,7 +35,7 @@ namespace TBM.Model
 
         public string RgMascarado
         {
-            get { return String.Format("{0}.{1}.{2}-{3}", Rg.Substring(0, 2), Rg.Substring(2, 3), Rg.Substring(5, 3), Rg.Substring(8)); }
+            get { return Rg != null ? String.Format("{0}.{1}.{2}-{3}", Rg.Substring(0, 2), Rg.Substring(2, 3), Rg.Substring(5, 3), Rg.Substring(8)) : null; }
         }
     }
 }

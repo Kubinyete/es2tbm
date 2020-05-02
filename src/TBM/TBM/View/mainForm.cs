@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using TBM.DAL;
 using TBM.Model;
+using TBM.BL;
 
 namespace TBM.View
 {
@@ -21,7 +23,45 @@ namespace TBM.View
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            
+            // Pegar o Usuario logado atualmente...
+            // chamar metodo interno atualizarContextoUsuario(usuarioLogado);
+            // atualizarContextoUsuario();
+
+            var p = new BLParametrizacao().obterParametrizacao();
+
+            if (p == null)
+            {
+                // Primeiro acesso no sistema, não temos dados parametrizados
+                // @TODO: Não deixar cancelar?
+                while (p == null)
+                {
+                    new frmParametrizacao().ShowDialog();
+                    p = new BLParametrizacao().obterParametrizacao();
+                }
+
+            }
+
+            atualizarDadosParametrizados(p);
+        }
+
+        private void atualizarDadosParametrizados(Parametrizacao p)
+        {
+            Text = Text.Replace("%nome%", p.Nome_fantasia);
+            lblNomeInferior.Text = lblNomeInferior.Text.Replace("%nome%", p.Nome_fantasia).Replace("%cnpj%", p.Cnpj).Replace("%hoje%", DateTime.Now.ToString("dd/MM/yyyy"));
+
+            if (p.Logomarca != null)
+            {
+                try
+                {
+                    pbLogo.Image = Image.FromStream(new MemoryStream(p.Logomarca));
+                } catch (ArgumentException) { }
+            }
+        }
+
+        private void atualizarContextoUsuario(Usuario logado)
+        {
+            // @TODO:
+            // Remover opções que não são acessiveis ao usuário atualmente logado...
         }
 
         private void parametrizaçãoToolStripMenuItem_Click(object sender, EventArgs e)

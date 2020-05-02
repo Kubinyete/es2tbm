@@ -91,9 +91,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(226, 55);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Bairro";
+            this.label3.Text = "Bairro*";
             // 
             // label2
             // 
@@ -126,18 +126,18 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 55);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 13);
+            this.label9.Size = new System.Drawing.Size(101, 13);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Número residencial";
+            this.label9.Text = "Número residencial*";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Logradouro";
+            this.label1.Text = "Logradouro*";
             // 
             // tbLogradouro
             // 

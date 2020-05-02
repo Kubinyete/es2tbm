@@ -30,24 +30,28 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbParametros = new System.Windows.Forms.GroupBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
+            this.checkDataNascimento = new System.Windows.Forms.CheckBox();
+            this.btnEndereco = new System.Windows.Forms.Button();
+            this.cbEndereco = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbRg = new System.Windows.Forms.MaskedTextBox();
+            this.tbCpf = new System.Windows.Forms.MaskedTextBox();
+            this.tbNome = new System.Windows.Forms.TextBox();
             this.pbIcone = new System.Windows.Forms.PictureBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAction = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.tbRg = new System.Windows.Forms.MaskedTextBox();
-            this.tbCpf = new System.Windows.Forms.MaskedTextBox();
-            this.tbNome = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnEndereco = new System.Windows.Forms.Button();
-            this.cbEndereco = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.checkDataNascimento = new System.Windows.Forms.CheckBox();
+            this.tbTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.gbParametros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
@@ -66,6 +70,10 @@
             // 
             // gbParametros
             // 
+            this.gbParametros.Controls.Add(this.tbTelefone);
+            this.gbParametros.Controls.Add(this.label7);
+            this.gbParametros.Controls.Add(this.label6);
+            this.gbParametros.Controls.Add(this.tbEmail);
             this.gbParametros.Controls.Add(this.checkDataNascimento);
             this.gbParametros.Controls.Add(this.btnEndereco);
             this.gbParametros.Controls.Add(this.cbEndereco);
@@ -85,17 +93,113 @@
             this.gbParametros.TabStop = false;
             this.gbParametros.Text = "Parâmetros";
             // 
-            // lblTitulo
+            // checkDataNascimento
             // 
-            this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(472, 50);
-            this.lblTitulo.TabIndex = 2;
-            this.lblTitulo.Text = "%action% Cliente";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkDataNascimento.AutoSize = true;
+            this.checkDataNascimento.Location = new System.Drawing.Point(294, 32);
+            this.checkDataNascimento.Name = "checkDataNascimento";
+            this.checkDataNascimento.Size = new System.Drawing.Size(164, 17);
+            this.checkDataNascimento.TabIndex = 25;
+            this.checkDataNascimento.Text = "Registrar data de nascimento";
+            this.checkDataNascimento.UseVisualStyleBackColor = true;
+            this.checkDataNascimento.CheckedChanged += new System.EventHandler(this.checkDataNascimento_CheckedChanged);
+            // 
+            // btnEndereco
+            // 
+            this.btnEndereco.Location = new System.Drawing.Point(385, 149);
+            this.btnEndereco.Name = "btnEndereco";
+            this.btnEndereco.Size = new System.Drawing.Size(75, 38);
+            this.btnEndereco.TabIndex = 24;
+            this.btnEndereco.Text = "Procurar";
+            this.btnEndereco.UseVisualStyleBackColor = true;
+            this.btnEndereco.Click += new System.EventHandler(this.btnEndereco_Click);
+            // 
+            // cbEndereco
+            // 
+            this.cbEndereco.Enabled = false;
+            this.cbEndereco.FormattingEnabled = true;
+            this.cbEndereco.Location = new System.Drawing.Point(6, 165);
+            this.cbEndereco.Name = "cbEndereco";
+            this.cbEndereco.Size = new System.Drawing.Size(373, 21);
+            this.cbEndereco.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 149);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Endereço completo*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(291, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Data de nascimento";
+            // 
+            // dtpDataNascimento
+            // 
+            this.dtpDataNascimento.Enabled = false;
+            this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataNascimento.Location = new System.Drawing.Point(294, 71);
+            this.dtpDataNascimento.Name = "dtpDataNascimento";
+            this.dtpDataNascimento.Size = new System.Drawing.Size(166, 20);
+            this.dtpDataNascimento.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Nome completo*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "CPF*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(109, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "RG";
+            // 
+            // tbRg
+            // 
+            this.tbRg.Location = new System.Drawing.Point(112, 32);
+            this.tbRg.Mask = "00.000.000-0";
+            this.tbRg.Name = "tbRg";
+            this.tbRg.Size = new System.Drawing.Size(100, 20);
+            this.tbRg.TabIndex = 14;
+            // 
+            // tbCpf
+            // 
+            this.tbCpf.Enabled = false;
+            this.tbCpf.Location = new System.Drawing.Point(6, 32);
+            this.tbCpf.Mask = "000.000.000-00";
+            this.tbCpf.Name = "tbCpf";
+            this.tbCpf.Size = new System.Drawing.Size(100, 20);
+            this.tbCpf.TabIndex = 13;
+            // 
+            // tbNome
+            // 
+            this.tbNome.Location = new System.Drawing.Point(6, 71);
+            this.tbNome.Name = "tbNome";
+            this.tbNome.Size = new System.Drawing.Size(282, 20);
+            this.tbNome.TabIndex = 12;
             // 
             // pbIcone
             // 
@@ -108,6 +212,18 @@
             this.pbIcone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbIcone.TabIndex = 9;
             this.pbIcone.TabStop = false;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.BackColor = System.Drawing.Color.IndianRed;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(472, 50);
+            this.lblTitulo.TabIndex = 2;
+            this.lblTitulo.Text = "%action% Cliente";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel2
             // 
@@ -150,113 +266,38 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // tbRg
+            // tbTelefone
             // 
-            this.tbRg.Location = new System.Drawing.Point(112, 32);
-            this.tbRg.Mask = "00.000.000-0";
-            this.tbRg.Name = "tbRg";
-            this.tbRg.Size = new System.Drawing.Size(100, 20);
-            this.tbRg.TabIndex = 14;
+            this.tbTelefone.Location = new System.Drawing.Point(294, 110);
+            this.tbTelefone.Mask = "(00)00000-0000";
+            this.tbTelefone.Name = "tbTelefone";
+            this.tbTelefone.Size = new System.Drawing.Size(164, 20);
+            this.tbTelefone.TabIndex = 29;
             // 
-            // tbCpf
+            // label7
             // 
-            this.tbCpf.Enabled = false;
-            this.tbCpf.Location = new System.Drawing.Point(6, 32);
-            this.tbCpf.Mask = "000.000.000-00";
-            this.tbCpf.Name = "tbCpf";
-            this.tbCpf.Size = new System.Drawing.Size(100, 20);
-            this.tbCpf.TabIndex = 13;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(291, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Telefone*";
             // 
-            // tbNome
+            // label6
             // 
-            this.tbNome.Location = new System.Drawing.Point(6, 71);
-            this.tbNome.Name = "tbNome";
-            this.tbNome.Size = new System.Drawing.Size(282, 20);
-            this.tbNome.TabIndex = 12;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 94);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "E-mail";
             // 
-            // label1
+            // tbEmail
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(109, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "RG";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "CPF";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Nome completo";
-            // 
-            // dtpDataNascimento
-            // 
-            this.dtpDataNascimento.Enabled = false;
-            this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataNascimento.Location = new System.Drawing.Point(294, 71);
-            this.dtpDataNascimento.Name = "dtpDataNascimento";
-            this.dtpDataNascimento.Size = new System.Drawing.Size(166, 20);
-            this.dtpDataNascimento.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(291, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Data de nascimento";
-            // 
-            // btnEndereco
-            // 
-            this.btnEndereco.Location = new System.Drawing.Point(385, 115);
-            this.btnEndereco.Name = "btnEndereco";
-            this.btnEndereco.Size = new System.Drawing.Size(75, 38);
-            this.btnEndereco.TabIndex = 24;
-            this.btnEndereco.Text = "Procurar";
-            this.btnEndereco.UseVisualStyleBackColor = true;
-            this.btnEndereco.Click += new System.EventHandler(this.btnEndereco_Click);
-            // 
-            // cbEndereco
-            // 
-            this.cbEndereco.Enabled = false;
-            this.cbEndereco.FormattingEnabled = true;
-            this.cbEndereco.Location = new System.Drawing.Point(6, 131);
-            this.cbEndereco.Name = "cbEndereco";
-            this.cbEndereco.Size = new System.Drawing.Size(373, 21);
-            this.cbEndereco.TabIndex = 23;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 115);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Endereço completo";
-            // 
-            // checkDataNascimento
-            // 
-            this.checkDataNascimento.AutoSize = true;
-            this.checkDataNascimento.Location = new System.Drawing.Point(294, 32);
-            this.checkDataNascimento.Name = "checkDataNascimento";
-            this.checkDataNascimento.Size = new System.Drawing.Size(164, 17);
-            this.checkDataNascimento.TabIndex = 25;
-            this.checkDataNascimento.Text = "Registrar data de nascimento";
-            this.checkDataNascimento.UseVisualStyleBackColor = true;
-            this.checkDataNascimento.CheckedChanged += new System.EventHandler(this.checkDataNascimento_CheckedChanged);
+            this.tbEmail.Location = new System.Drawing.Point(6, 110);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(282, 20);
+            this.tbEmail.TabIndex = 26;
             // 
             // frmCliente
             // 
@@ -302,5 +343,9 @@
         private System.Windows.Forms.ComboBox cbEndereco;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkDataNascimento;
+        private System.Windows.Forms.MaskedTextBox tbTelefone;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbEmail;
     }
 }

@@ -17,12 +17,11 @@ namespace TBM.DAL
 
         public static Endereco mapearObjeto(DataRow dr, Bairro e)
         {
-            Bairro k = DALBairro.mapearObjeto(dr, null);
             return new Endereco(
                 (int)dr["end_id"],
                 (int)dr["end_numero"],
                 (string)dr["end_logradouro"],
-                (string)dr["end_observacoes"],
+                dr["end_observacoes"] is DBNull ? null : (string)dr["end_observacoes"],
                 e != null ? e : DALBairro.mapearObjeto(dr, null)
             );
         }
