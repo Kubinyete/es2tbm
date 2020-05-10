@@ -204,6 +204,7 @@ CREATE TABLE IF NOT EXISTS `tbmdb`.`comanda` (
   `funcionario_pessoafisica_pes_cpf` CHAR(11) NOT NULL,
   `cliente_pessoafisica_pes_cpf` CHAR(11) NULL,
   `mesa_mes_id` INT NOT NULL,
+  `com_data_abertura` DATE NOT NULL DEFAULT CURDATE(),
   PRIMARY KEY (`com_id`),
   CONSTRAINT `fk_comanda_funcionario1`
     FOREIGN KEY (`funcionario_pessoafisica_pes_cpf`)
@@ -691,7 +692,7 @@ BEGIN
 END//
 
 DROP PROCEDURE IF EXISTS `atualiza_funcionario`//
-CREATE DEFINER=`root`@`localhost` PROCEDURE `atualiza_funcionario`(
+CREATE PROCEDURE `atualiza_funcionario`(
 	in p_pes_cpf char(11), 
     in p_pes_rg char(9), 
     in p_pes_nome varchar(75),
@@ -796,6 +797,3 @@ END//
 -- END PROCEDURES -> Vitor
 
 DELIMITER ;
-
-ALTER TABLE `tbmdb`.`comanda` 
-ADD COLUMN `com_data_abertura` DATE NOT NULL DEFAULT CURDATE() AFTER `mesa_mes_id`;
