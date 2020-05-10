@@ -133,6 +133,12 @@
     <Compile Include="View\frmEndereco.Designer.cs">
       <DependentUpon>frmEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmFecharComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmFecharComanda.Designer.cs">
+      <DependentUpon>frmFecharComanda.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmGerenciarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmEndereco.resx">
       <DependentUpon>frmEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmFecharComanda.resx">
+      <DependentUpon>frmFecharComanda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmGerenciarClientes.resx">
       <DependentUpon>frmGerenciarClientes.cs</DependentUpon>
@@ -285,7 +294,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\comanda-icon.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\location-icon.png" />
   </ItemGroup>

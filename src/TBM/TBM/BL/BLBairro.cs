@@ -20,6 +20,14 @@ namespace TBM.BL
                 throw new BLValidationError("A cidade precisa ser informada.");
         }
 
+        private void verificarConsistenciaExclusao(Bairro b)
+        {
+            if (new DALBairro(Persistencia).quantidadeEnderecosBairro(b) > 0)
+            {
+                throw new BLValidationError("O bairro não pode ser excluido pois existem endereços cadastrados.");
+            }
+        }
+
         public List<Bairro> obterBairros(Cidade c)
         {
             return new DALBairro(Persistencia).obterBairros(c);
@@ -46,6 +54,8 @@ namespace TBM.BL
 
         public bool removerBairro(Bairro b)
         {
+            verificarConsistenciaExclusao(b);
+
             return new DALBairro(Persistencia).excluirBairro(b);
         }
     }
