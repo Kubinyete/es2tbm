@@ -42,16 +42,16 @@ namespace TBM.View.Usuarios
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Deseja realmente desativar o usuário selecionado? ele perderá acesso ao sistema",
-                "Confirma Desativação?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             int index = dgvUsuarios.SelectedRows[0].Index;
 
             if (index >= 0 && index < usuarios.Count)
             {
+                DialogResult dr = MessageBox.Show("Deseja realmente desativar o usuário selecionado? ele perderá acesso ao sistema",
+                "Confirma Desativação?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
                 if (dr == DialogResult.Yes)
                 {
-                    control.showInfoMessageBox(bl_usr.excluirUsuario(usuarios[dgvUsuarios.SelectedRows[0].Index]),
-                        "Aviso");
+                    bl_usr.excluirUsuario(usuarios[dgvUsuarios.SelectedRows[0].Index]);
                     dgvUsuarios.Rows.Clear();
                     control.carregarDgv(bl_usr.carregarUsuarios(cbFiltros.Text,
                     tbSrc.Text), dgvUsuarios);
@@ -86,5 +86,26 @@ namespace TBM.View.Usuarios
                     tbSrc.Text);
             control.carregarDgv(usuarios, dgvUsuarios);
         }
+
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+            int index = dgvUsuarios.SelectedRows[0].Index;
+
+            if (index >= 0 && index < usuarios.Count)
+            {
+                DialogResult dr = MessageBox.Show("Deseja realmente reativar o usuário selecionado?",
+                "Confirma Ativação?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (dr == DialogResult.Yes)
+                {
+                    bl_usr.ativarUsuario(usuarios[dgvUsuarios.SelectedRows[0].Index]);
+                    dgvUsuarios.Rows.Clear();
+                    control.carregarDgv(bl_usr.carregarUsuarios(cbFiltros.Text,
+                    tbSrc.Text), dgvUsuarios);
+                }
+            }
+            else
+                control.showInfoMessageBox("Um usuário deve ser selecionado!", "Aviso");
+        }
     }
-}
+ }

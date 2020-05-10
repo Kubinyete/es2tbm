@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TBM.View.PrincipalViewUsuario.Outros
+namespace TBM.View.Estoque
 {
-    public partial class Outros : Form
+    public partial class FrmEfetuarBaixaProdutoSelecionado : Form
     {
-        public Outros()
+        public FrmEfetuarBaixaProdutoSelecionado()
         {
             InitializeComponent();
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new View.frmGerenciarClientes().ShowDialog();
         }
     }
 }

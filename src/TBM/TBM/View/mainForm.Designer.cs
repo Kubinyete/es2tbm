@@ -29,18 +29,24 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gerenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parametrizaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.financeiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirComandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.telaGerenciarComandaExperimentalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.efetuarBaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deliveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcPrincipal = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblNomeInferior = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.lblNomeInferior = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tbcPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -50,24 +56,27 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configuraçõesToolStripMenuItem,
-            this.sobreToolStripMenuItem});
+            this.gerenciaToolStripMenuItem,
+            this.financeiroToolStripMenuItem,
+            this.comandaToolStripMenuItem,
+            this.estoqueToolStripMenuItem,
+            this.deliveryToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // configuraçõesToolStripMenuItem
+            // gerenciaToolStripMenuItem
             // 
-            this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gerenciaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.parametrizaçãoToolStripMenuItem,
             this.usuárioToolStripMenuItem,
             this.funcionárioToolStripMenuItem,
             this.clienteToolStripMenuItem});
-            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
-            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.configuraçõesToolStripMenuItem.Text = "Gerência";
+            this.gerenciaToolStripMenuItem.Name = "gerenciaToolStripMenuItem";
+            this.gerenciaToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.gerenciaToolStripMenuItem.Text = "Gerência";
             // 
             // parametrizaçãoToolStripMenuItem
             // 
@@ -75,6 +84,13 @@
             this.parametrizaçãoToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.parametrizaçãoToolStripMenuItem.Text = "Configurar parametrização";
             this.parametrizaçãoToolStripMenuItem.Click += new System.EventHandler(this.parametrizaçãoToolStripMenuItem_Click);
+            // 
+            // usuárioToolStripMenuItem
+            // 
+            this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
+            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.usuárioToolStripMenuItem.Text = "Usuário";
+            this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
             // 
             // funcionárioToolStripMenuItem
             // 
@@ -90,18 +106,56 @@
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
-            // usuárioToolStripMenuItem
+            // financeiroToolStripMenuItem
             // 
-            this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.usuárioToolStripMenuItem.Text = "Usuário";
-            this.usuárioToolStripMenuItem.Click += new System.EventHandler(this.usuárioToolStripMenuItem_Click);
+            this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
+            this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.financeiroToolStripMenuItem.Text = "Financeiro";
             // 
-            // sobreToolStripMenuItem
+            // comandaToolStripMenuItem
             // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.sobreToolStripMenuItem.Text = "Sobre";
+            this.comandaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abrirComandaToolStripMenuItem,
+            this.telaGerenciarComandaExperimentalToolStripMenuItem});
+            this.comandaToolStripMenuItem.Name = "comandaToolStripMenuItem";
+            this.comandaToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.comandaToolStripMenuItem.Text = "Comanda";
+            this.comandaToolStripMenuItem.Click += new System.EventHandler(this.comandaToolStripMenuItem_Click);
+            // 
+            // abrirComandaToolStripMenuItem
+            // 
+            this.abrirComandaToolStripMenuItem.Name = "abrirComandaToolStripMenuItem";
+            this.abrirComandaToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
+            this.abrirComandaToolStripMenuItem.Text = "Tela Abertura de Comanda(Experimental)";
+            this.abrirComandaToolStripMenuItem.Click += new System.EventHandler(this.abrirComandaToolStripMenuItem_Click);
+            // 
+            // telaGerenciarComandaExperimentalToolStripMenuItem
+            // 
+            this.telaGerenciarComandaExperimentalToolStripMenuItem.Name = "telaGerenciarComandaExperimentalToolStripMenuItem";
+            this.telaGerenciarComandaExperimentalToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
+            this.telaGerenciarComandaExperimentalToolStripMenuItem.Text = "Tela Gerenciar Comanda(Experimental)";
+            this.telaGerenciarComandaExperimentalToolStripMenuItem.Click += new System.EventHandler(this.telaGerenciarComandaExperimentalToolStripMenuItem_Click);
+            // 
+            // estoqueToolStripMenuItem
+            // 
+            this.estoqueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.efetuarBaixaToolStripMenuItem});
+            this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.estoqueToolStripMenuItem.Text = "Estoque";
+            // 
+            // efetuarBaixaToolStripMenuItem
+            // 
+            this.efetuarBaixaToolStripMenuItem.Name = "efetuarBaixaToolStripMenuItem";
+            this.efetuarBaixaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.efetuarBaixaToolStripMenuItem.Text = "Efetuar Baixa";
+            this.efetuarBaixaToolStripMenuItem.Click += new System.EventHandler(this.efetuarBaixaToolStripMenuItem_Click);
+            // 
+            // deliveryToolStripMenuItem
+            // 
+            this.deliveryToolStripMenuItem.Name = "deliveryToolStripMenuItem";
+            this.deliveryToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.deliveryToolStripMenuItem.Text = "Delivery";
             // 
             // tbcPrincipal
             // 
@@ -127,6 +181,29 @@
             this.tabPage1.Text = "Início";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblNomeInferior
+            // 
+            this.lblNomeInferior.BackColor = System.Drawing.Color.IndianRed;
+            this.lblNomeInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblNomeInferior.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeInferior.ForeColor = System.Drawing.Color.White;
+            this.lblNomeInferior.Location = new System.Drawing.Point(3, 656);
+            this.lblNomeInferior.Name = "lblNomeInferior";
+            this.lblNomeInferior.Size = new System.Drawing.Size(994, 20);
+            this.lblNomeInferior.TabIndex = 1;
+            this.lblNomeInferior.Text = "%nome% - %cnpj% - %hoje%";
+            this.lblNomeInferior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLogo.Location = new System.Drawing.Point(3, 3);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(994, 673);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -146,29 +223,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Visualização de pedidos";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(994, 673);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
-            // 
-            // lblNomeInferior
-            // 
-            this.lblNomeInferior.BackColor = System.Drawing.Color.IndianRed;
-            this.lblNomeInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblNomeInferior.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeInferior.ForeColor = System.Drawing.Color.White;
-            this.lblNomeInferior.Location = new System.Drawing.Point(3, 656);
-            this.lblNomeInferior.Name = "lblNomeInferior";
-            this.lblNomeInferior.Size = new System.Drawing.Size(994, 20);
-            this.lblNomeInferior.TabIndex = 1;
-            this.lblNomeInferior.Text = "%nome% - %cnpj% - %hoje%";
-            this.lblNomeInferior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // mainForm
             // 
@@ -196,18 +250,24 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem parametrizaçãoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem funcionárioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuárioToolStripMenuItem;
-        private System.Windows.Forms.TabControl tbcPrincipal;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.PictureBox pbLogo;
-        private System.Windows.Forms.Label lblNomeInferior;
+        public System.Windows.Forms.ToolStripMenuItem gerenciaToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem parametrizaçãoToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem funcionárioToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem usuárioToolStripMenuItem;
+        public System.Windows.Forms.TabControl tbcPrincipal;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.PictureBox pbLogo;
+        public System.Windows.Forms.Label lblNomeInferior;
+        private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comandaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem abrirComandaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem efetuarBaixaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deliveryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem telaGerenciarComandaExperimentalToolStripMenuItem;
     }
 }
 

@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TBM.View.PrincipalViewUsuario.Desenvolvimento
+namespace TBM.View.Estoque
 {
-    public partial class desenvolvedor : Form
+    public partial class FrmEfetuarBaixaDeProduto : Form
     {
-        public desenvolvedor()
+        public FrmEfetuarBaixaDeProduto()
         {
             InitializeComponent();
-        }
-
-        private void desenvolvedor_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

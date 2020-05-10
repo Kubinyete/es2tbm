@@ -18,7 +18,6 @@ namespace TBM.View
             control = new Controller.CadastroAlteracaoFuncionarioController();
         private BL.BLCadastroeAlteracaoFuncionario 
             bl_cadalt = new BL.BLCadastroeAlteracaoFuncionario(null);
-        private bool alterando = false;
 
         public FrmCadastroFuncionario()
         {
@@ -33,13 +32,16 @@ namespace TBM.View
         private void FrmCadastroFuncionario_Load(object sender, EventArgs e)
         {
             // control.carregarEnderecoComboBox(bl_cadalt.obterEnderecos(),cbEndereco);
-            control.carregarCargoComboBox(bl_cadalt.obterCargos(), cbCargo);
+            List<Model.Cargo> cargos = bl_cadalt.obterCargos();
+            cbCargo.DataSource = cargos;
             if (!control.Load(func_escolhido))
             {
                 tbNome.Text = func_escolhido.Nome;
                 tbCPF.Text = func_escolhido.Cpf;
                 tbRG.Text = func_escolhido.Rg;
                 tbSalario.Text = func_escolhido.Salario_atual.ToString();
+                tbEmail.Text = func_escolhido.Email;
+                tbTelefone.Text = func_escolhido.Telefone;
                 // Temos certeza que de um funcionário POSSUI uma data de nascimento!!!
                 dtpDtNasc.Value = func_escolhido.Data_nascimento.HasValue ? func_escolhido.Data_nascimento.Value : DateTime.Today;
                 lblTitulo.Text = "Alterar Funcionário";
@@ -49,10 +51,9 @@ namespace TBM.View
                 cbEndereco.Items.Clear();
                 cbEndereco.Items.Add(func_escolhido.Endereco);
                 cbEndereco.SelectedIndex = 0;
+                cbCargo.SelectedIndex = control.buscarIndice(cargos, func_escolhido.Cargo);
 
-                cbCargo.SelectedItem = func_escolhido.Cargo;
 
-                alterando = true;
                 this.Text = "Alterar Funcionário";
                 tbCPF.Enabled = false;
             }
@@ -73,22 +74,29 @@ namespace TBM.View
         {
             string msg = control.validarDados(tbNome.Text, tbCPF, tbRG, tbSalario.Text,
                 cbEndereco.SelectedIndex, cbCargo.SelectedIndex,
-                dtpDtNasc.Value);
+                dtpDtNasc.Value, tbEmail.Text, tbTelefone.Text);
             if(msg == "OK")
             {
                 Model.Funcionario func = new Model.Funcionario(
                         Convert.ToDouble(tbSalario.Text),
                         (Cargo)cbCargo.SelectedItem,
+                        tbEmail.Text,
+                        Uteis.ControlUteis.obterStringSemMascara(tbTelefone),
                         Uteis.ControlUteis.obterStringSemMascara(tbCPF),
                         Uteis.ControlUteis.obterStringSemMascara(tbRG),
                         tbNome.Text.ToUpper(),
                         dtpDtNasc.Value,
-                        (Endereco)cbEndereco.SelectedItem
-                    );
+                        (Endereco)cbEndereco.SelectedItem);
+                msg = "";
                 if (func_escolhido == null)
-                    bl_cadalt.inserirFuncionario(func);
+                    msg = bl_cadalt.inserirFuncionario(func);
                 else
-                    bl_cadalt.updateFuncionario(func);
+                    msg = bl_cadalt.updateFuncionario(func);
+
+                if (msg != "OK")
+                {
+                    control.showInfoMessageBox(msg, "Aviso");
+                }
                 this.Close();
             } else
                 control.showInfoMessageBox(msg, "Aviso");

@@ -29,8 +29,10 @@ namespace TBM.View
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            // Pegar o Usuario logado atualmente...
-            // chamar metodo interno atualizarContextoUsuario(usuarioLogado);
+            Controller.mainController.montarTela(Controller.LoginController.usuario_logado,  
+                this);  //vamos montar a tela do usuário, primeiramente, passo a tela atual e o 
+            //usuário que está logado
+
             // atualizarContextoUsuario();
 
             checkEstadoParametrizacao();
@@ -102,6 +104,26 @@ namespace TBM.View
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Usuarios.PesquisarUsuario().ShowDialog();
+        }
+
+        private void abrirComandaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Comanda.frmAbrirComanda().Show();
+        }
+
+        private void efetuarBaixaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Estoque.FrmEfetuarBaixaDeProduto().Show();
+        }
+
+        private void comandaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void telaGerenciarComandaExperimentalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Comanda.FrmGerenciarComandas().Show();
         }
     }
 }

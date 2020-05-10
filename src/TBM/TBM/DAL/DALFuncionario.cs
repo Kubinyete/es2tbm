@@ -20,12 +20,14 @@ namespace TBM.DAL
             return new Funcionario(Convert.ToDouble(
                 dr["fun_salario_atual"].ToString()),
                 cargo != null ? cargo : DALCargo.mapearObjeto(dr),
+                dr["fun_email"] is DBNull ? "" : dr["fun_email"].ToString(),
+                dr["fun_telefone"] is DBNull ? "" : dr["fun_telefone"].ToString(),
                 dr["pes_cpf"].ToString(),
                 dr["pes_rg"].ToString(),
                 dr["pes_nome"].ToString(),
                 Convert.ToDateTime(dr["pes_data_nascimento"].ToString()),
                 endereco != null ? endereco : DALEndereco.mapearObjeto(dr, null)
-                );
+                ) ;
         }
 
         public Funcionario obterFuncionario(string cpf,Endereco endereco,Cargo cargo)
@@ -37,9 +39,8 @@ namespace TBM.DAL
             var param = criarParametros();
             param.Add("cpf", cpf);
 
-            DataTable dt = Db.executarSelect("select fun_salario_atual,cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base,cargo.car_nivel_permissao,pessoafisica.pes_cpf,"+
-"pessoafisica.pes_rg, pessoafisica.pes_nome, pessoafisica.pes_data_nascimento,"+
-"pessoafisica.endereco_end_id, endereco.end_id, endereco.end_logradouro,"+
+            DataTable dt = Db.executarSelect("select funcionario.*,cargo.*,pessoafisica.*,"+
+"endereco.end_id, endereco.end_logradouro,"+
 "endereco.end_observacoes, endereco.end_numero, bairro.bai_id,"+
 "bairro.bai_nome, cidade.cid_id, cidade.cid_nome, estado.est_uf,"+
 "estado.est_nome"+
@@ -67,12 +68,9 @@ namespace TBM.DAL
 
             Db.abrir();
 
-            string select = "select fun_salario_atual,cargo.car_id, cargo.car_nome, cargo.car_descricao," +
-"cargo.car_sal_base,cargo.car_nivel_permissao,pessoafisica.pes_cpf,pessoafisica.pes_rg, pessoafisica.pes_nome," +
-"pessoafisica.pes_data_nascimento,pessoafisica.endereco_end_id, endereco.end_id," +
-"endereco.end_logradouro,endereco.end_observacoes, endereco.end_numero," +
-"bairro.bai_id,bairro.bai_nome, cidade.cid_id, cidade.cid_nome," +
-"estado.est_uf,estado.est_nome" +
+            string select = "select funcionario.*,cargo.*,pessoafisica.*, endereco.*," +
+"bairro.*, cidade.*," +
+"estado.* " +
 " from pessoafisica" +
 " inner join funcionario on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf" +
 " inner join cargo on cargo.car_id = funcionario.cargo_car_id" +
@@ -98,9 +96,8 @@ namespace TBM.DAL
 
         public bool inserirFuncionario(Model.Funcionario f)
         {
-            bool ret = true;
-
-            string sql = "CALL cadastrar_funcionario(@cpf,@rg,@nome,@datanasc,@end_id,@salario_atual,@cargo_id,@proc_result);" +
+            string sql = "CALL cadastrar_funcionario(@cpf,@rg,@nome,@datanasc,@end_id," +
+                "@salario_atual,@email,@telefone,@cargo_id,@proc_result);" +
                 "select @proc_result";
 
             var parametros = criarParametros();
@@ -109,6 +106,8 @@ namespace TBM.DAL
             parametros.Add("@nome", f.Nome);
             parametros.Add("@datanasc", f.Data_nascimento);
             parametros.Add("@end_id", f.Endereco.Id);
+            parametros.Add("@email", f.Email);
+            parametros.Add("@telefone", f.Telefone);
             parametros.Add("@salario_atual", f.Salario_atual);
             parametros.Add("@cargo_id", f.Cargo.Id);
 
@@ -117,6 +116,7 @@ namespace TBM.DAL
             DataTable dt = new DataTable();
 
             dt = Db.executarSelect(sql, parametros);
+            Db.fechar();
 
             if (dt.Rows[0]["@proc_result"].ToString() == "1")
             {
@@ -124,15 +124,14 @@ namespace TBM.DAL
             }
             else
                 return false;
-
-            Db.fechar();
         }
 
         public bool atualizarFuncionario(Funcionario f)
         {
             bool ret = true;
 
-            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base,@carid,@output); " +
+            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc," +
+                "@endid,@sal_base,@email,@telefone,@carid,@output); " +
             "select @output;";
 
             Db.abrir();
@@ -143,8 +142,11 @@ namespace TBM.DAL
             parametros.Add("@nome", f.Nome);
             parametros.Add("@dt_nasc", f.Data_nascimento);
             parametros.Add("@endid", f.Endereco.Id);
+            parametros.Add("@email", f.Email);
+            parametros.Add("@telefone", f.Telefone);
             parametros.Add("@sal_base", f.Salario_atual);
             parametros.Add("@carid", f.Cargo.Id);
+     
 
             DataTable dt = Db.executarSelect(sql, parametros);
 
@@ -159,7 +161,8 @@ namespace TBM.DAL
         {
             bool ret = true;
 
-            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base,NULL,@output); " +
+            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base," +
+                "@email,@telefone,@carid,@output); " +
             "select @output;";
 
             Db.abrir();
@@ -170,7 +173,10 @@ namespace TBM.DAL
             parametros.Add("@nome", f.Nome);
             parametros.Add("@dt_nasc", f.Data_nascimento);
             parametros.Add("@endid", f.Endereco.Id);
+            parametros.Add("@email", f.Email);
+            parametros.Add("@telefone", f.Telefone);
             parametros.Add("@sal_base", f.Salario_atual);
+            parametros.Add("@carid", null);
 
             DataTable dt = Db.executarSelect(sql, parametros);
 
@@ -185,12 +191,9 @@ namespace TBM.DAL
         {
             List<Funcionario> ret = new List<Funcionario>();
 
-            string sql = "select cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base,cargo.car_nivel_permissao," +
-"pessoafisica.pes_cpf,"+
-"pessoafisica.pes_rg, pessoafisica.pes_nome, pessoafisica.pes_data_nascimento, funcionario.fun_salario_atual,"+
-"pessoafisica.endereco_end_id, endereco.end_id, endereco.end_logradouro,"+
-"endereco.end_observacoes, endereco.end_numero, bairro.bai_id, "+
-"bairro.bai_nome, cidade.cid_id, cidade.cid_nome, estado.est_nome,estado.est_uf "+
+            string sql = "select cargo.*," +
+"pessoafisica.*, funcionario.*,"+
+"endereco.*, bairro.*, cidade.*, estado.* "+
 "from funcionario "+
 "left join usuario on usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf " +
 "inner join pessoafisica on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf " +
@@ -216,5 +219,30 @@ namespace TBM.DAL
             return ret;
         }
 
+        public List<Model.Funcionario> obterGarcons()
+        {
+            List<Model.Funcionario> ret = new List<Model.Funcionario>();
+
+            string sql = "select funcionario.*,cargo.*,pessoafisica.*, " +
+                "endereco.*, bairro.*,cidade.*,estado.* "+
+"from funcionario " +
+"inner join cargo on cargo.car_id = funcionario.cargo_car_id " +
+"inner join pessoafisica on pessoafisica.pes_cpf = funcionario.pessoafisica_pes_cpf "+
+"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id "+
+"inner join bairro on bairro.bai_id = endereco.bairro_bai_id "+
+"inner join cidade on cidade.cid_id = bairro.cidade_cid_id "+
+"inner join estado on estado.est_uf = cidade.estado_est_uf "+
+"where cargo.car_nome = 'Garçom'; ";
+
+            Db.abrir();
+
+            DataTable dt = Db.executarSelect(sql);
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                ret.Add(mapearObjeto(dr,null, null));
+            }
+            return ret;
+        }
     }
 }

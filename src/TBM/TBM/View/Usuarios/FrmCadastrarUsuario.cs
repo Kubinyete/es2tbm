@@ -75,10 +75,13 @@ namespace TBM.View.Usuarios
                         f[cbFuncionario.SelectedIndex]
                     );
                     if (usu_escolhido == null)
-                        cadalt_usr.showInfoMessageBox(bl_cadalt.cadastrarUsuario(usr),
-                        "Aviso");
+                        msg = bl_cadalt.cadastrarUsuario(usr);
                     else
-                        cadalt_usr.showInfoMessageBox(bl_cadalt.alterarUsuario(usr), "Aviso");
+                        msg = bl_cadalt.alterarUsuario(usr);
+                    if(msg == "OK")
+                    {
+                        cadalt_usr.showInfoMessageBox(msg, "Aviso");
+                    }
                     this.Close();
                 }
                 else

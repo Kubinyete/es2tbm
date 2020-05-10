@@ -35,13 +35,11 @@ namespace TBM.DAL
             var parametros = criarParametros();
             parametros.Add("@username", username);
 
-            DataTable dt = Db.executarSelect("select usuario.usr_username,usuario.usr_ativado,cargo.car_id, cargo.car_nome, cargo.car_descricao,cargo.car_sal_base," +
-"pessoafisica.pes_cpf, funcionario.fun_salario_atual, " +
-"pessoafisica.pes_rg, pessoafisica.pes_nome, pessoafisica.pes_data_nascimento," +
-"pessoafisica.endereco_end_id, endereco.end_id, endereco.end_logradouro," +
-"endereco.end_observacoes, endereco.end_numero, bairro.bai_id," +
-"bairro.bai_nome, cidade.cid_id, cidade.cid_nome, estado.est_uf," +
-"estado.est_nome" +
+            DataTable dt = Db.executarSelect("select usuario.*,cargo.*," +
+"pessoafisica.*, funcionario.*," +
+"endereco.*," +
+"bairro.*," +
+"cidade.*, estado.* " +
 " from usuario " +
 "inner join funcionario on usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf " +
 "inner join pessoafisica on funcionario.pessoafisica_pes_cpf = pessoafisica.pes_cpf " +
@@ -95,8 +93,8 @@ namespace TBM.DAL
                 parametros.Add("@param", pms);
             }*/
 
-            DataTable dt = Db.executarSelect("select usr_username, usr_ativado, funcionario.fun_salario_atual,"+
-"pessoafisica.pes_cpf,pessoafisica.pes_nome, pessoafisica.pes_rg,pessoafisica.pes_data_nascimento, cargo.car_id, cargo.car_nome, cargo.car_descricao, cargo.car_sal_base,"+
+            DataTable dt = Db.executarSelect("select usuario.*, funcionario.*,"+
+"pessoafisica.*, cargo.*," +
 "endereco.end_id, endereco.end_logradouro, endereco.end_observacoes,endereco.end_numero,"+
 "bairro.bai_id, bairro.bai_nome, cidade.cid_id, cidade.cid_nome,"+
 "estado.est_uf, estado.est_nome "+
@@ -108,8 +106,7 @@ namespace TBM.DAL
 "inner join cidade on cidade.cid_id = bairro.cidade_cid_id "+
 "inner join estado on estado.est_uf = cidade.estado_est_uf "+
 "inner join cargo on cargo.car_id = funcionario.cargo_car_id "+
-"WHERE usuario.funcionario_pessoafisica_pes_cpf = funcionario.pessoafisica_pes_cpf AND " +
-"cargo.car_id > 3 " +
+"WHERE usuario.usr_username <> 'TBM' " +
 arg +";", parametros); 
 
             //@TODO 
@@ -175,11 +172,11 @@ arg +";", parametros);
             return ret;
         }
 
-        public string excluirUsuario(Usuario u)
+        public string atualizarEstadoUsuario(Usuario u, int val)
         {
             string ret = "";
 
-            string sql = "UPDATE usuario set usr_ativado = 0 where " +
+            string sql = "UPDATE usuario set usr_ativado = "+val+" where " +
                 "funcionario_pessoafisica_pes_cpf = @cpf";
 
             var parametros = criarParametros();
@@ -189,7 +186,6 @@ arg +";", parametros);
             try
             {
                 Db.executarNonQuery(sql, parametros);
-                ret = "Usuario Excluído!";
             }catch(MySqlException e)
             {
                 ret = e.Message;
@@ -199,24 +195,5 @@ arg +";", parametros);
             return ret;
         }
 
-        public string deletarAdmUser()
-        {
-            string ret = "";
-
-            string sql = "DELETE FROM `tbmdb`.`usuario` WHERE (`usr_username` = 'ADMUSER');";
-
-            Db.abrir();
-
-            try
-            {
-                Db.executarNonQuery(sql);
-                ret = "OK";
-            }catch(MySqlException e)
-            {
-                ret = "Erro ao se conectar com o banco de dados!";
-            }
-
-            return ret;
-        }
     }
 }

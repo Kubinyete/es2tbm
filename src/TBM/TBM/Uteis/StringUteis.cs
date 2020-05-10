@@ -63,7 +63,7 @@ namespace TBM.Uteis
         public static bool validarRg(string rg)
         {
             // @TODO: Utilizar um algoritmo que faz o calculo matemático real e verifica o dado corretamente
-            return Regex.IsMatch(rg, @"^[0-9]{9}$");
+            return Regex.IsMatch(rg, @"^[0-9]{8}$");
         }
 
         // @DEPRECATED: Por favor, utilize a versão da função em camelCase
@@ -84,6 +84,11 @@ namespace TBM.Uteis
         public static bool validarCelular(string alvo)
         {
             return Regex.IsMatch(alvo, @"^([0-9]{2})?[0-9]{9}$");
+        }
+
+        public static bool hasNumersOnly(string alvo)
+        {
+            return Regex.IsMatch(alvo, @"^([0-9])$");
         }
     }
 }

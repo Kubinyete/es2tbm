@@ -205,7 +205,6 @@
             // 
             this.pbIcone.BackColor = System.Drawing.Color.Transparent;
             this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbIcone.Image = global::TBM.Properties.Resources.user_icon;
             this.pbIcone.Location = new System.Drawing.Point(0, 0);
             this.pbIcone.Name = "pbIcone";
             this.pbIcone.Size = new System.Drawing.Size(50, 50);

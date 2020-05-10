@@ -31,9 +31,9 @@ namespace TBM.DAL
             Db.abrir();
 
             var param = criarParametros();
-            param.Add("id",Id);
+            param.Add("@id",Id);
 
-            DataTable dt = Db.executarSelect("SELECT car_id,car_nome,car_descricao,car_sal_base,car_nivel_permissao " +
+            DataTable dt = Db.executarSelect("SELECT from cargo " +
                 "FROM cargo where car_id = @id;",param);
             if(dt.Rows.Count >= 1)
             {
@@ -52,6 +52,7 @@ namespace TBM.DAL
             
             foreach(DataRow r in dt.Rows)
             {
+                string c = r["car_nivel_permissao"].ToString();
                 ret.Add(mapearObjeto(r));
             }
             return ret;

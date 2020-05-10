@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.dtpDtNasc = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.tbSalario = new System.Windows.Forms.MaskedTextBox();
@@ -45,7 +49,6 @@
             this.tbRG = new System.Windows.Forms.MaskedTextBox();
             this.tbCPF = new System.Windows.Forms.MaskedTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -59,6 +62,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tbTelefone);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.lblEmail);
+            this.panel1.Controls.Add(this.tbEmail);
             this.panel1.Controls.Add(this.dtpDtNasc);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.tbSalario);
@@ -76,8 +83,41 @@
             this.panel1.Controls.Add(this.tbCPF);
             this.panel1.Location = new System.Drawing.Point(12, 62);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(504, 230);
+            this.panel1.Size = new System.Drawing.Size(504, 255);
             this.panel1.TabIndex = 0;
+            // 
+            // tbTelefone
+            // 
+            this.tbTelefone.Location = new System.Drawing.Point(359, 218);
+            this.tbTelefone.Mask = "(00)00000-0000";
+            this.tbTelefone.Name = "tbTelefone";
+            this.tbTelefone.Size = new System.Drawing.Size(113, 20);
+            this.tbTelefone.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(300, 221);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Telefone ";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(70, 221);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.TabIndex = 17;
+            this.lblEmail.Text = "Email";
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Location = new System.Drawing.Point(112, 218);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(159, 20);
+            this.tbEmail.TabIndex = 16;
             // 
             // dtpDtNasc
             // 
@@ -215,40 +255,30 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnConfirmar);
-            this.panel3.Location = new System.Drawing.Point(13, 298);
+            this.panel3.Location = new System.Drawing.Point(12, 333);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(503, 68);
             this.panel3.TabIndex = 9;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Obs: todos os dados são obrigatórios";
-            // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(444, 13);
+            this.btnCancelar.Location = new System.Drawing.Point(413, 13);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(46, 41);
+            this.btnCancelar.Size = new System.Drawing.Size(59, 41);
             this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "CANC";
+            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(387, 13);
+            this.btnConfirmar.Location = new System.Drawing.Point(346, 13);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(51, 41);
+            this.btnConfirmar.Size = new System.Drawing.Size(61, 41);
             this.btnConfirmar.TabIndex = 1;
-            this.btnConfirmar.Text = "CONF";
+            this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
@@ -288,7 +318,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(572, 391);
+            this.ClientSize = new System.Drawing.Size(545, 407);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -298,7 +328,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -329,6 +358,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.MaskedTextBox tbTelefone;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox tbEmail;
     }
 }

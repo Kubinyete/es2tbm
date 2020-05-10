@@ -127,6 +127,8 @@ DROP TABLE IF EXISTS `tbmdb`.`funcionario` ;
 
 CREATE TABLE IF NOT EXISTS `tbmdb`.`funcionario` (
   `fun_salario_atual` DOUBLE NOT NULL,
+  `fun_email` VARCHAR(64) NULL,
+  `fun_telefone` VARCHAR(16) NULL,
   `cargo_car_id` INT NULL,
   `pessoafisica_pes_cpf` CHAR(11) NOT NULL,
   PRIMARY KEY (`pessoafisica_pes_cpf`),
@@ -794,3 +796,6 @@ END//
 -- END PROCEDURES -> Vitor
 
 DELIMITER ;
+
+ALTER TABLE `tbmdb`.`comanda` 
+ADD COLUMN `com_data_abertura` DATE NOT NULL DEFAULT CURDATE() AFTER `mesa_mes_id`;
