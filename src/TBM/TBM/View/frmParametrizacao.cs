@@ -21,9 +21,11 @@ namespace TBM.View
 
         protected Parametrizacao Parametrizacao { get => _parametrizacao; set => _parametrizacao = value; }
 
-        public frmParametrizacao()
+        public frmParametrizacao(Parametrizacao p = null)
         {
             InitializeComponent();
+
+            Parametrizacao = p;
         }
 
         private void preencherDados(Parametrizacao p)
@@ -160,7 +162,17 @@ namespace TBM.View
 
         private void frmParametrizacao_Load(object sender, EventArgs e)
         {
-            Parametrizacao = new BLParametrizacao().obterParametrizacao();
+            if (Parametrizacao == null)
+            {
+                Parametrizacao = new BLParametrizacao().obterParametrizacao();
+
+                if (Parametrizacao == null)
+                {
+                    // Caso não tenha nada recebido por construtor, nem nada do banco
+                    // não deixe o usuário cancelar, pois quer dizer que ele está inserindo o primeiro cadastro.
+                    btnCancelar.Enabled = false;
+                }
+            }
 
             preencherDados(Parametrizacao);
         }

@@ -16,9 +16,15 @@ namespace TBM.View
 {
     public partial class mainForm : Form
     {
+        private readonly string DefaultTitle;
+        private readonly string DefaultFooter;
+
         public mainForm()
         {
             InitializeComponent();
+
+            DefaultTitle = Text;
+            DefaultFooter = lblNomeInferior.Text;
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -29,6 +35,11 @@ namespace TBM.View
 
             // atualizarContextoUsuario();
 
+            checkEstadoParametrizacao();
+        }
+
+        private void checkEstadoParametrizacao()
+        {
             var p = new BLParametrizacao().obterParametrizacao();
 
             if (p == null)
@@ -38,6 +49,7 @@ namespace TBM.View
                 while (p == null)
                 {
                     new frmParametrizacao().ShowDialog();
+
                     p = new BLParametrizacao().obterParametrizacao();
                 }
 
@@ -48,8 +60,8 @@ namespace TBM.View
 
         private void atualizarDadosParametrizados(Parametrizacao p)
         {
-            Text = Text.Replace("%nome%", p.Nome_fantasia);
-            lblNomeInferior.Text = lblNomeInferior.Text.Replace("%nome%", p.Nome_fantasia).Replace("%cnpj%", p.Cnpj).Replace("%hoje%", DateTime.Now.ToString("dd/MM/yyyy"));
+            Text = DefaultTitle.Replace("%nome%", p.Nome_fantasia);
+            lblNomeInferior.Text = DefaultFooter.Replace("%nome%", p.Nome_fantasia).Replace("%cnpj%", p.Cnpj).Replace("%hoje%", DateTime.Now.ToString("dd/MM/yyyy"));
 
             if (p.Logomarca != null)
             {
@@ -69,6 +81,9 @@ namespace TBM.View
         private void parametrizaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmParametrizacao().ShowDialog();
+
+            // Isso vai forçar que tudo seja recarregado na tela inicial..
+            checkEstadoParametrizacao();
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)

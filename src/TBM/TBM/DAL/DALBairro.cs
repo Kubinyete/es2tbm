@@ -122,5 +122,25 @@ namespace TBM.DAL
 
             return ret;
         }
+
+        public int quantidadeEnderecosBairro(Bairro b)
+        {
+            int quant = 0;
+            
+            Db.abrir();
+
+            var param = mapearParametros(b);
+
+            DataTable dt = Db.executarSelect("SELECT COUNT(*) AS count FROM endereco WHERE bairro_bai_id = @id", param);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                quant = Convert.ToInt32(dr["count"]);
+            }
+
+            Db.fechar();
+
+            return quant;
+        }
     }
 }
