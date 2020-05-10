@@ -84,7 +84,7 @@ namespace TBM.View.Funcionario
                 if (dialogResult == DialogResult.Yes)
                 {
                     Model.Funcionario f = funcs[index];
-                    control.showInfoMessageBox(bl_func.excluiFuncionario(f), "Aviso");
+                    bl_func.excluiFuncionario(f);
                     dgvFuncionarios.Rows.Clear();
                     funcs = bl_func.carregarFuncionarios("", "");
                     dgvFuncionarios = control.carregarDataGrid(funcs, dgvFuncionarios);

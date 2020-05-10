@@ -27,5 +27,10 @@ namespace TBM.Model
         public Cargo Cargo { get => _cargo; set => _cargo = value; }
         public string Email { get => _email; set => _email = value; }
         public string Telefone { get => _telefone; set => _telefone = value; }
+
+        public override string ToString()
+        {
+            return this.Nome;
+        }
     }
 }

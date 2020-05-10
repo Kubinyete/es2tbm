@@ -46,7 +46,7 @@ namespace TBM.BL
         public string excluiFuncionario(Model.Funcionario f)
         {
             if (new DAL.DALFuncionario(Persistencia).excluirFuncionario(f))
-                return "Excluído com sucesso";
+                return "OK";
             else
                 return "Erro no banco de dados!";
         }

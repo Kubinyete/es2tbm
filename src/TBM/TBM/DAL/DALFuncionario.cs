@@ -161,7 +161,8 @@ namespace TBM.DAL
         {
             bool ret = true;
 
-            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base,NULL,@output); " +
+            string sql = "CALL atualiza_funcionario(@cpf,@rg,@nome,@dt_nasc,@endid,@sal_base," +
+                "@email,@telefone,@carid,@output); " +
             "select @output;";
 
             Db.abrir();
@@ -172,7 +173,10 @@ namespace TBM.DAL
             parametros.Add("@nome", f.Nome);
             parametros.Add("@dt_nasc", f.Data_nascimento);
             parametros.Add("@endid", f.Endereco.Id);
+            parametros.Add("@email", f.Email);
+            parametros.Add("@telefone", f.Telefone);
             parametros.Add("@sal_base", f.Salario_atual);
+            parametros.Add("@carid", null);
 
             DataTable dt = Db.executarSelect(sql, parametros);
 
@@ -215,5 +219,30 @@ namespace TBM.DAL
             return ret;
         }
 
+        public List<Model.Funcionario> obterGarcons()
+        {
+            List<Model.Funcionario> ret = new List<Model.Funcionario>();
+
+            string sql = "select funcionario.*,cargo.*,pessoafisica.*, " +
+                "endereco.*, bairro.*,cidade.*,estado.* "+
+"from funcionario " +
+"inner join cargo on cargo.car_id = funcionario.cargo_car_id " +
+"inner join pessoafisica on pessoafisica.pes_cpf = funcionario.pessoafisica_pes_cpf "+
+"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id "+
+"inner join bairro on bairro.bai_id = endereco.bairro_bai_id "+
+"inner join cidade on cidade.cid_id = bairro.cidade_cid_id "+
+"inner join estado on estado.est_uf = cidade.estado_est_uf "+
+"where cargo.car_nome = 'Garçom'; ";
+
+            Db.abrir();
+
+            DataTable dt = Db.executarSelect(sql);
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                ret.Add(mapearObjeto(dr,null, null));
+            }
+            return ret;
+        }
     }
 }

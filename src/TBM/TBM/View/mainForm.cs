@@ -90,5 +90,25 @@ namespace TBM.View
         {
             new Usuarios.PesquisarUsuario().ShowDialog();
         }
+
+        private void abrirComandaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Comanda.frmAbrirComanda().Show();
+        }
+
+        private void efetuarBaixaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Estoque.FrmEfetuarBaixaDeProduto().Show();
+        }
+
+        private void comandaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void telaGerenciarComandaExperimentalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Comanda.FrmGerenciarComandas().Show();
+        }
     }
 }

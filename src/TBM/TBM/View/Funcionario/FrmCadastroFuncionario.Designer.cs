@@ -49,7 +49,6 @@
             this.tbRG = new System.Windows.Forms.MaskedTextBox();
             this.tbCPF = new System.Windows.Forms.MaskedTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -256,7 +255,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.btnCancelar);
             this.panel3.Controls.Add(this.btnConfirmar);
             this.panel3.Location = new System.Drawing.Point(12, 333);
@@ -264,32 +262,23 @@
             this.panel3.Size = new System.Drawing.Size(503, 68);
             this.panel3.TabIndex = 9;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Obs: todos os dados são obrigatórios";
-            // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(426, 13);
+            this.btnCancelar.Location = new System.Drawing.Point(413, 13);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(46, 41);
+            this.btnCancelar.Size = new System.Drawing.Size(59, 41);
             this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "CANC";
+            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(369, 13);
+            this.btnConfirmar.Location = new System.Drawing.Point(346, 13);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(51, 41);
+            this.btnConfirmar.Size = new System.Drawing.Size(61, 41);
             this.btnConfirmar.TabIndex = 1;
-            this.btnConfirmar.Text = "CONF";
+            this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
@@ -339,7 +328,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -370,7 +358,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox tbTelefone;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblEmail;

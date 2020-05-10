@@ -87,10 +87,16 @@ namespace TBM.View
                         tbNome.Text.ToUpper(),
                         dtpDtNasc.Value,
                         (Endereco)cbEndereco.SelectedItem);
+                msg = "";
                 if (func_escolhido == null)
-                    control.showInfoMessageBox(bl_cadalt.inserirFuncionario(func),"Erro");
+                    msg = bl_cadalt.inserirFuncionario(func);
                 else
-                    bl_cadalt.updateFuncionario(func);
+                    msg = bl_cadalt.updateFuncionario(func);
+
+                if (msg != "OK")
+                {
+                    control.showInfoMessageBox(msg, "Aviso");
+                }
                 this.Close();
             } else
                 control.showInfoMessageBox(msg, "Aviso");

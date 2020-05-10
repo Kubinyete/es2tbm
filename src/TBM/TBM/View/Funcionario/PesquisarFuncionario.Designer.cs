@@ -66,11 +66,11 @@
             // 
             // btnPequisa
             // 
-            this.btnPequisa.Location = new System.Drawing.Point(493, 17);
+            this.btnPequisa.Image = global::TBM.Properties.Resources.search;
+            this.btnPequisa.Location = new System.Drawing.Point(493, 10);
             this.btnPequisa.Name = "btnPequisa";
-            this.btnPequisa.Size = new System.Drawing.Size(37, 31);
+            this.btnPequisa.Size = new System.Drawing.Size(47, 45);
             this.btnPequisa.TabIndex = 1;
-            this.btnPequisa.Text = "SRC";
             this.btnPequisa.UseVisualStyleBackColor = true;
             this.btnPequisa.Click += new System.EventHandler(this.btnPequisa_Click);
             // 
@@ -80,7 +80,7 @@
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 53);
             this.btnAlterar.TabIndex = 2;
-            this.btnAlterar.Text = "ALT";
+            this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
@@ -90,7 +90,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 53);
             this.btnExcluir.TabIndex = 3;
-            this.btnExcluir.Text = "EXC";
+            this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -100,7 +100,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 53);
             this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "ADD";
+            this.btnAdd.Text = "Cadastrar";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -120,9 +120,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(366, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Pesquisar Por :";
+            this.label1.Text = "Pesquisar por:";
             // 
             // cbFiltros
             // 
