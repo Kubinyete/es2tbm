@@ -728,6 +728,73 @@ BEGIN
 	end if;
 END//
 
+
+DROP procedure IF EXISTS `gerenciar_pedido`;
+CREATE PROCEDURE `gerenciar_pedido`(
+  in p_ped_id integer, 
+    in p_data_efetuado datetime, 
+    in p_ped_valor_total double, 
+    in p_com_id integer, 
+    in p_estadopedido_esp_id integer, 
+    in p_item_cardapio_itc_id integer, 
+    in p_pedido_ped_id integer, 
+    in p_ipe_quantidade integer, 
+    in p_ipe_valor_unitario double, 
+    in p_ipe_valor_subtotal double
+)
+BEGIN 
+  IF p_ped_id = 0 then 
+     insert into pedido(ped_data_efetuado, ped_valor_total, comanda_com_id, 
+         estadopedido_esp_id) values
+         (p_data_efetuado,p_ped_valor_total, p_com_id, p_estadopedido_esp_id);
+         
+         select ped_id into @last_ped_id
+         from pedido order by ped_id desc limit 1;
+         
+         insert into itempedido(itemcardapio_itc_id, pedido_ped_id, 
+         ipe_quantidade, ipe_valor_unitario, ipe_valor_subtotal)
+         values
+         (p_item_cardapio_itc_id, @last_ped_id, p_ipe_quantidade, p_ipe_valor_unitario, p_ipe_valor_subtotal);
+   ELSE 
+    update pedido set ped_data_efetuado = p_data_efetuado,
+        ped_valor_total = p_ped_valor_total, comanda_com_id = p_comanda_com_id, 
+        estadopedido_esp_id = p_estadopedido_esp_id where ped_id = p_ped_id;
+        
+        update itempedido set itemcardapio_itc_id = p_itemcardapio_itc_id, 
+        ipe_quantidade = p_ipe_quantidade, ipe_valor_unitario = p_ipe_unitario, 
+        ipe_valor_subtotal = p_ipe_valor_total;
+     END IF; 
+     COMMIT;
+END
+
+CREATE TRIGGER `pedido_AFTER_INSERT` AFTER INSERT ON `pedido` FOR EACH ROW BEGIN
+  declare p_com_valor double;
+  SELECT com_valor_total into p_com_valor
+    from comanda
+    where com_id = NEW.comanda_com_id;
+    
+    set p_com_valor := p_com_valor + new.ped_valor_total;
+    
+    update comanda set com_valor_total = p_com_valor 
+    where com_id = new.comanda_com_id;
+    
+END
+
+CREATE TRIGGER `pedido_AFTER_UPDATE` 
+AFTER UPDATE ON `pedido` 
+FOR EACH ROW BEGIN
+  DECLARE t_com_valor double;
+    IF new.estadopedido_esp_id = 5 then
+    select com_valor_total into t_com_valor from comanda 
+    where com_id = new.comanda_com_id;
+    
+        set t_com_valor := t_com_valor - new.ped_valor_total;
+    
+        update comanda set com_valor_total = t_com_valor 
+        where com_id = new.comanda_com_id;
+        END IF;
+END
+
 -- END PROCEDURES -> Mauricio
 -- BEGIN PROCEDURES -> Vitor
 

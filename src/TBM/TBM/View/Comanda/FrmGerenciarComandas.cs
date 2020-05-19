@@ -25,9 +25,7 @@ namespace TBM.View.Comanda
             Controller.ComandaController.carregarMesas(cbMesa);
             try
             {
-                Controller.ComandaController.carregarComandas(dgvComandas,
-                    Convert.ToInt32(cbMesa.SelectedItem.ToString()),
-                    cbGarcom.Text);
+                Controller.ComandaController.carregarComandas(dgvComandas);
             }catch(Exception err)
             {
                 MessageBox.Show(err.Message, "Erro",
@@ -42,9 +40,7 @@ namespace TBM.View.Comanda
             new View.Comanda.frmAbrirComanda().ShowDialog();
             try
             {
-                Controller.ComandaController.carregarComandas(dgvComandas,
-                    Convert.ToInt32(cbMesa.SelectedItem.ToString()),
-                    cbGarcom.Text);
+                Controller.ComandaController.carregarComandas(dgvComandas);
             }
             catch (Exception err)
             {
@@ -59,9 +55,20 @@ namespace TBM.View.Comanda
         {
             try
             {
-                Controller.ComandaController.carregarComandas(dgvComandas,
-                    Convert.ToInt32(cbMesa.SelectedItem.ToString()),
-                    cbGarcom.Text);
+                if (cbFiltrosAtivados.Checked)
+                {
+                    Controller.ComandaController
+                        .carregarComandas(dgvComandas,
+                        Convert
+                        .ToInt32(cbMesa.SelectedItem.ToString()),
+                        cbGarcom.Text,tbBusca.Text.ToLower());
+                }
+                else
+                {
+                    Controller
+                        .ComandaController
+                        .carregarComandas(dgvComandas,tbBusca.Text);
+                }
             }
             catch (Exception err)
             {
@@ -85,9 +92,7 @@ namespace TBM.View.Comanda
                 comandaController.Comanda = null;
                 try
                 {
-                    Controller.ComandaController.carregarComandas(dgvComandas,
-                        Convert.ToInt32(cbMesa.SelectedItem.ToString()),
-                        cbGarcom.Text);
+                    Controller.ComandaController.carregarComandas(dgvComandas);
                 }
                 catch (Exception err)
                 {
@@ -105,7 +110,12 @@ namespace TBM.View.Comanda
 
         private void btnGerenciarPedidos_Click(object sender, EventArgs e)
         {
+            Controller.ComandaController.comanda = 
+                (Model.Comanda)dgvComandas
+                .SelectedRows[0]
+                .DataBoundItem;
             new View.Comanda.frmGerenciarPedidos().ShowDialog();
+            Controller.ComandaController.carregarComandas(dgvComandas);
         }
     }
 }

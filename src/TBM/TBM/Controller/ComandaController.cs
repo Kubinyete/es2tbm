@@ -30,13 +30,40 @@ namespace TBM.Controller
             cbMesas.DataSource = dalmesa.obterMesas();
         }
 
-        public static void carregarComandas(DataGridView dgvComandas, int mesaid,string nomeGarcom)
+        public static void carregarComandas(DataGridView dgvComandas, string args = null)
+        {
+            if(args==""||args==null)
+            {
+                dgvComandas.DataSource = new DAL.DALComanda(DAL
+                    .PersistenciaFactory
+                    .criarConexaoPersistencia()).obterComandas();
+            }
+            else
+            {
+                if (args.Length > 260)
+                    throw new Exception("Pesquisa muito grande");
+                else
+                    dgvComandas.DataSource = new DAL.DALComanda(DAL
+                    .PersistenciaFactory
+                    .criarConexaoPersistencia()).obterComandas(
+                        " WHERE com_apelido like @busca",args);
+            }
+        }
+
+        public static void carregarComandas(DataGridView dgvComandas, 
+            int mesaid,
+            string nomeGarcom, 
+            string busca = null)
         {
             DAL.DALComanda dalcom = new DAL.DALComanda(DAL
                 .PersistenciaFactory.criarConexaoPersistencia());
             try
             {
-                dgvComandas.DataSource = dalcom.obterComandas(mesaid, nomeGarcom);
+                if(busca==null||busca=="")
+                    dgvComandas.DataSource = dalcom.obterComandas(mesaid, nomeGarcom);
+                else
+                    dgvComandas.DataSource = dalcom.obterComandas(mesaid, nomeGarcom, 
+                    " AND com_apelido like @busca;", busca);
             }
             catch (BL.Errors.BLValidationError err)
             {

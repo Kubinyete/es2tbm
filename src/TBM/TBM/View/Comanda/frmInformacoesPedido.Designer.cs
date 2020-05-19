@@ -31,12 +31,12 @@
             this.tbItem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPreco = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbQuantidade = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbObservacoes = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
@@ -70,20 +70,21 @@
             this.tbPreco.Size = new System.Drawing.Size(101, 20);
             this.tbPreco.TabIndex = 2;
             // 
-            // textBox3
+            // tbQuantidade
             // 
-            this.textBox3.Location = new System.Drawing.Point(284, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(87, 20);
-            this.textBox3.TabIndex = 3;
+            this.tbQuantidade.Location = new System.Drawing.Point(284, 27);
+            this.tbQuantidade.Name = "tbQuantidade";
+            this.tbQuantidade.Size = new System.Drawing.Size(87, 20);
+            this.tbQuantidade.TabIndex = 3;
+            this.tbQuantidade.TextChanged += new System.EventHandler(this.tbQuantidade_TextChanged);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.tbItem);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.tbQuantidade);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.tbPreco);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -91,14 +92,14 @@
             this.panel1.Size = new System.Drawing.Size(382, 82);
             this.panel1.TabIndex = 4;
             // 
-            // label4
+            // lblTotal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(272, 60);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Total : R$ %value%";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(281, 50);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(54, 13);
+            this.lblTotal.TabIndex = 6;
+            this.lblTotal.Text = "Total : R$";
             // 
             // label3
             // 
@@ -118,20 +119,20 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Preço";
             // 
-            // textBox4
+            // tbObservacoes
             // 
-            this.textBox4.Location = new System.Drawing.Point(6, 30);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(365, 128);
-            this.textBox4.TabIndex = 5;
+            this.tbObservacoes.Location = new System.Drawing.Point(6, 30);
+            this.tbObservacoes.Multiline = true;
+            this.tbObservacoes.Name = "tbObservacoes";
+            this.tbObservacoes.Size = new System.Drawing.Size(365, 128);
+            this.tbObservacoes.TabIndex = 5;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnCancelar);
             this.panel2.Controls.Add(this.btnRegistrar);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.tbObservacoes);
             this.panel2.Location = new System.Drawing.Point(12, 100);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(382, 208);
@@ -145,6 +146,7 @@
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnRegistrar
             // 
@@ -154,6 +156,7 @@
             this.btnRegistrar.TabIndex = 7;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // label5
             // 
@@ -172,7 +175,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmInformacoesPedido";
-            this.Text = "frmInformacoesPedido";
+            this.Text = "Informações adicionais do pedido";
             this.Load += new System.EventHandler(this.frmInformacoesPedido_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -187,12 +190,12 @@
         private System.Windows.Forms.TextBox tbItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbPreco;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbQuantidade;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbObservacoes;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnRegistrar;
