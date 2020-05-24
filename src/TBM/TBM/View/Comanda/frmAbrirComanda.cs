@@ -20,6 +20,7 @@ namespace TBM.View.Comanda
         private void frmAbrirComanda_Load(object sender, EventArgs e)
         {
             Controller.ComandaController.carregarGarcom(cbGarcom);
+            Controller.ComandaController.carregarMesas(cbMesa);
             lblAcao.Text = "Abrir Comanda";
             if (Controller.ComandaController.comanda != null)
             {
@@ -27,7 +28,7 @@ namespace TBM.View.Comanda
                     .comanda.Com_id.ToString();
                 tbNomeIdentificacao.Text = Controller.ComandaController
                     .comanda.Com_apelido;
-                tbNumeroMesa.Text = Controller.ComandaController
+                cbMesa.Text = Controller.ComandaController
                     .comanda.Mesa.Mes_id;
                 tbObs.Text = Controller.ComandaController
                     .comanda.Com_observacoes;
@@ -35,7 +36,9 @@ namespace TBM.View.Comanda
                     ComandaController.buscarIndice((List<Model.Funcionario>)
                     cbGarcom.DataSource);
                 lblAcao.Text = "Alterar Comanda";
-            }
+                this.Text = this.Text.Replace("%action%", "Alteração");
+            }else
+                this.Text = this.Text.Replace("%action%", "Abertura");
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -46,7 +49,7 @@ namespace TBM.View.Comanda
                     tbNomeIdentificacao.Text,
                     (Model.Funcionario)cbGarcom.SelectedValue,
                     tbObs.Text,
-                    tbNumeroMesa.Text
+                    cbMesa.Text
                 );
             try
             {
@@ -62,6 +65,11 @@ namespace TBM.View.Comanda
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

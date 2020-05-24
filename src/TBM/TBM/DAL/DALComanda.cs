@@ -57,36 +57,134 @@ namespace TBM.DAL
 
         }
 
-        public List<Model.Comanda> obterComandas(int numMesa, string garcomNome)
+        #region OBTER COMANDAS
+//        public List<Model.Comanda> obterComandas(int numMesa, string garcomNome,
+//            string args=null, string busca = null)
+//        {
+//            List<Model.Comanda> ret = new List<Model.Comanda>();
+
+//            string sql = "select comanda.*, funcionario.*, pessoafisica.*," +
+//                " endereco.*, bairro.*, mesa.*, cargo.*, cidade.*, estado.* "+
+//"from comanda "+
+//"inner join mesa on mesa.mes_id = comanda.mesa_mes_id "+
+//"inner join funcionario on funcionario.pessoafisica_pes_cpf = comanda.funcionario_pessoafisica_pes_cpf "+
+//"inner join cargo on cargo.car_id = funcionario.cargo_car_id "+
+//"inner join pessoafisica on pessoafisica.pes_cpf = funcionario.pessoafisica_pes_cpf "+
+//"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id "+
+//"inner join bairro on bairro.bai_id = endereco.bairro_bai_id "+
+//"inner join cidade on cidade.cid_id = bairro.bai_id " +
+//"inner join estado on estado.est_uf = cidade.estado_est_uf "+
+//"where mesa.mes_id = @mesid and pessoafisica.pes_nome = @nome";
+
+//            var parametros = criarParametros();
+//            parametros.Add("@mesid", numMesa);
+//            parametros.Add("@nome", garcomNome);
+//            if (args != null)
+//            {
+//                sql += args;
+//                parametros.Add("busca", String.Format("%{0}%", busca.Replace("%", "%%")));
+//            }
+
+//            try
+//            {
+//                DataTable dt = Db.executarSelect(sql, parametros); 
+//                foreach(DataRow row in dt.Rows)
+//                {
+//                    ret.Add(mapearObjeto(row));
+//                }
+//                return ret;
+//            }catch(MySqlException err)
+//            {
+//                throw new BL.Errors.BLValidationError(
+//                    "Erro no banco de dados : " + err.Number);
+//            }
+//        }
+
+//    //caso eu queira buscar sem os filtros
+//        public List<Model.Comanda> obterComandas(string args=null, string busca = null)
+//        {
+//            List<Model.Comanda> ret = new List<Model.Comanda>();
+
+//            string sql = "select comanda.*, funcionario.*, pessoafisica.*," +
+//                " endereco.*, bairro.*, mesa.*, cargo.*, cidade.*, estado.* " +
+//"from comanda " +
+//"inner join mesa on mesa.mes_id = comanda.mesa_mes_id " +
+//"inner join funcionario on funcionario.pessoafisica_pes_cpf = comanda.funcionario_pessoafisica_pes_cpf " +
+//"inner join cargo on cargo.car_id = funcionario.cargo_car_id " +
+//"inner join pessoafisica on pessoafisica.pes_cpf = funcionario.pessoafisica_pes_cpf " +
+//"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id " +
+//"inner join bairro on bairro.bai_id = endereco.bairro_bai_id " +
+//"inner join cidade on cidade.cid_id = bairro.bai_id " +
+//"inner join estado on estado.est_uf = cidade.estado_est_uf ";
+
+//            var parametros = criarParametros();
+
+//            if (args!=null)
+//            {
+//                sql += args;
+//                parametros.Add("busca", String.Format("%{0}%", busca.Replace("%", "%%")));
+//            }
+
+//            try
+//            {
+//                DataTable dt = Db.executarSelect(sql,parametros);
+//                foreach (DataRow row in dt.Rows)
+//                {
+//                    ret.Add(mapearObjeto(row));
+//                }
+//                return ret;
+//            }
+//            catch (MySqlException err)
+//            {
+//                throw new BL.Errors.BLValidationError(
+//                    "Erro no banco de dados : " + err.Number);
+//            }
+//        }
+
+        #endregion
+
+        public List<Model.Comanda> obterComandas(string args = null, 
+            string busca = null, 
+            string numMesa = null, 
+            string nomeGarcom = null)
         {
             List<Model.Comanda> ret = new List<Model.Comanda>();
 
             string sql = "select comanda.*, funcionario.*, pessoafisica.*," +
-                " endereco.*, bairro.*, mesa.*, cargo.*, cidade.*, estado.* "+
-"from comanda "+
-"inner join mesa on mesa.mes_id = comanda.mesa_mes_id "+
-"inner join funcionario on funcionario.pessoafisica_pes_cpf = comanda.funcionario_pessoafisica_pes_cpf "+
-"inner join cargo on cargo.car_id = funcionario.cargo_car_id "+
-"inner join pessoafisica on pessoafisica.pes_cpf = funcionario.pessoafisica_pes_cpf "+
-"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id "+
-"inner join bairro on bairro.bai_id = endereco.bairro_bai_id "+
+                " endereco.*, bairro.*, mesa.*, cargo.*, cidade.*, estado.* " +
+"from comanda " +
+"inner join mesa on mesa.mes_id = comanda.mesa_mes_id " +
+"inner join funcionario on funcionario.pessoafisica_pes_cpf = comanda.funcionario_pessoafisica_pes_cpf " +
+"inner join cargo on cargo.car_id = funcionario.cargo_car_id " +
+"inner join pessoafisica on pessoafisica.pes_cpf = funcionario.pessoafisica_pes_cpf " +
+"inner join endereco on endereco.end_id = pessoafisica.endereco_end_id " +
+"inner join bairro on bairro.bai_id = endereco.bairro_bai_id " +
 "inner join cidade on cidade.cid_id = bairro.bai_id " +
-"inner join estado on estado.est_uf = cidade.estado_est_uf "+
-"where mesa.mes_id = @mesid and pessoafisica.pes_nome = @nome";
+"inner join estado on estado.est_uf = cidade.estado_est_uf ";
 
             var parametros = criarParametros();
-            parametros.Add("@mesid", numMesa);
-            parametros.Add("@nome", garcomNome);
+
+            if (args != null)
+            {
+                sql += args; 
+                if(busca!=null) 
+                    parametros.Add("busca", String.Format("%{0}%", busca.Replace("%", "%%")));
+                if(numMesa!=null)
+                    parametros.Add("@mesid", numMesa);
+                if(nomeGarcom!=null)
+                    parametros.Add("@nome", nomeGarcom);
+            }
 
             try
             {
-                DataTable dt = Db.executarSelect(sql, parametros); 
-                foreach(DataRow row in dt.Rows)
+                DataTable dt = Db.executarSelect(sql, parametros);
+                foreach (DataRow row in dt.Rows)
                 {
                     ret.Add(mapearObjeto(row));
                 }
                 return ret;
-            }catch(MySqlException err)
+            }
+            catch (MySqlException err)
             {
                 throw new BL.Errors.BLValidationError(
                     "Erro no banco de dados : " + err.Number);

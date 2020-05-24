@@ -19,7 +19,9 @@ namespace TBM.Model
         {
         }
 
-        public ItemCardapio(int itc_id, string itc_nome, double itc_preco, string itc_descricao, bool itc_disponivel, CategoriaCardapio cac)
+        public ItemCardapio(int itc_id, string itc_nome, double itc_preco,
+            string itc_descricao,
+            bool itc_disponivel, CategoriaCardapio cac)
         {
             Itc_id = itc_id;
             Itc_nome = itc_nome;
@@ -35,5 +37,14 @@ namespace TBM.Model
         public string Itc_descricao { get => _itc_descricao; set => _itc_descricao = value; }
         public bool Itc_disponivel { get => _itc_disponivel; set => _itc_disponivel = value; }
         public CategoriaCardapio Cac { get => _cac; set => _cac = value; }
+
+        public override string ToString()
+        {
+            return Itc_nome;
+        }
+
+        public string ItcPrecoFormatado{
+            get { return "R$ " + Itc_preco.ToString("N2"); }
+        }
     }
 }

@@ -113,7 +113,7 @@ namespace TBM.View
 
         private void efetuarBaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Estoque.FrmEfetuarBaixaDeProduto().Show();
+            new Estoque.FrmGerenciarEstoque().Show();
         }
 
         private void comandaToolStripMenuItem_Click(object sender, EventArgs e)

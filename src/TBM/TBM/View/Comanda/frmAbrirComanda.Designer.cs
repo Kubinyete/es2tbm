@@ -40,14 +40,15 @@
             this.tbObs = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbMesa = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbNumeroMesa = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbGarcom = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbNomeIdentificacao = new System.Windows.Forms.TextBox();
             this.tbNumero = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -154,8 +155,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.cbMesa);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.tbNumeroMesa);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.cbGarcom);
             this.panel2.Controls.Add(this.label2);
@@ -167,6 +169,16 @@
             this.panel2.Size = new System.Drawing.Size(443, 117);
             this.panel2.TabIndex = 0;
             // 
+            // cbMesa
+            // 
+            this.cbMesa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMesa.FormattingEnabled = true;
+            this.cbMesa.Location = new System.Drawing.Point(261, 82);
+            this.cbMesa.Name = "cbMesa";
+            this.cbMesa.Size = new System.Drawing.Size(173, 21);
+            this.cbMesa.TabIndex = 8;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -175,13 +187,6 @@
             this.label6.Size = new System.Drawing.Size(88, 13);
             this.label6.TabIndex = 7;
             this.label6.Text = "Número da Mesa";
-            // 
-            // tbNumeroMesa
-            // 
-            this.tbNumeroMesa.Location = new System.Drawing.Point(261, 82);
-            this.tbNumeroMesa.Name = "tbNumeroMesa";
-            this.tbNumeroMesa.Size = new System.Drawing.Size(173, 20);
-            this.tbNumeroMesa.TabIndex = 6;
             // 
             // label3
             // 
@@ -234,6 +239,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Número";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(376, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Obrigatório";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // frmAbrirComanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,7 +257,7 @@
             this.ClientSize = new System.Drawing.Size(487, 396);
             this.Controls.Add(this.panel1);
             this.Name = "frmAbrirComanda";
-            this.Text = "frmAbrirComanda";
+            this.Text = "%action% de comanda";
             this.Load += new System.EventHandler(this.frmAbrirComanda_Load);
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -275,6 +291,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblAcao;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbNumeroMesa;
+        private System.Windows.Forms.ComboBox cbMesa;
+        private System.Windows.Forms.Label label5;
     }
 }
