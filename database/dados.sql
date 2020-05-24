@@ -1,685 +1,256 @@
+-- FAVOR COLOCAR OS DELETES
+DELETE FROM usuario;
+DELETE FROM cliente;
 DELETE FROM parametrizacao;
+
+DELETE FROM produtoemitemcardapio;
+DELETE FROM itempedido;
+DELETE FROM pedido;
+
+DELETE FROM comanda;
+DELETE FROM mesa;
+DELETE FROM estadopedido;
+DELETE FROM itemcardapio;
+DELETE FROM categoriacardapio;
+DELETE FROM produto;
+DELETE FROM categoriaproduto;
+DELETE FROM unidademedida;
+DELETE FROM marca;
+
+DELETE FROM funcionario;
+DELETE FROM cargo;
+DELETE FROM pessoafisica;
+
 DELETE FROM endereco;
 DELETE FROM bairro;
 DELETE FROM cidade;
 DELETE FROM estado;
 
-INSERT INTO estado (est_uf, est_nome) VALUES ('SP', 'São Paulo');
+-- ENDEREÇOS...
 
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Adamantina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Adolfo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Aguaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Águas da Prata', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Águas de Lindóia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Águas de Santa Bárbara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Águas de São Pedro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Agudos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Alambari', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Alfredo Marcondes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Altair', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Altinópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Alto Alegre', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Alumínio', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Álvares Florence', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Álvares Machado', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Álvaro de Carvalho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Alvinlândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Americana', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Américo Brasiliense', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Américo de Campos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Amparo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Analândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Andradina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Angatuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Anhembi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Anhumas', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Aparecida', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Aparecida d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Apiaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Araçariguama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Araçatuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Araçoiaba da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Aramina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Arandu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Arapeí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Araraquara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Araras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Arco-Íris', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Arealva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Areias', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Areiópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ariranha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Artur Nogueira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Arujá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Aspásia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Assis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Atibaia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Auriflama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Avaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Avanhandava', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Avaré', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bady Bassitt', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Balbinos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bálsamo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bananal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barão de Antonina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barbosa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bariri', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barra Bonita', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barra do Chapéu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barra do Turvo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barretos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barrinha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Barueri', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bastos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Batatais', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bauru', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bebedouro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bento de Abreu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bernardino de Campos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bertioga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bilac', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Birigui', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Biritiba-Mirim', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Boa Esperança do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bocaina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bofete', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Boituva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bom Jesus dos Perdões', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bom Sucesso de Itararé', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Borá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Boracéia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Borborema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Borebi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Botucatu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Bragança Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Braúna', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Brejo Alegre', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Brodowski', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Brotas', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Buri', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Buritama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Buritizal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cabrália Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cabreúva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Caçapava', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cachoeira Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Caconde', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cafelândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Caiabu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Caieiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Caiuá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cajamar', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cajati', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cajobi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cajuru', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Campina do Monte Alegre', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Campinas', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Campo Limpo Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Campos do Jordão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Campos Novos Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cananéia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Canas', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cândido Mota', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cândido Rodrigues', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Canitar', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Capão Bonito', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Capela do Alto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Capivari', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Caraguatatuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Carapicuíba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cardoso', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Casa Branca', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cássia dos Coqueiros', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Castilho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Catanduva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Catiguá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cedral', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cerqueira César', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cerquilho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cesário Lange', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Charqueada', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Chavantes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Clementina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Colina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Colômbia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Conchal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Conchas', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cordeirópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Coroados', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Coronel Macedo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Corumbataí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cosmópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cosmorama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cotia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cravinhos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cristais Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cruzália', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cruzeiro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cubatão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Cunha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Descalvado', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Diadema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dirce Reis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Divinolândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dobrada', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dois Córregos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dolcinópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dourado', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dracena', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Duartina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Dumont', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Echaporã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Eldorado', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Elias Fausto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Elisiário', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Embaúba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Embu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Embu-Guaçu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Emilianópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Engenheiro Coelho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Espírito Santo do Pinhal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Espírito Santo do Turvo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Estiva Gerbi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Estrela d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Estrela do Norte', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Euclides da Cunha Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Fartura', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Fernando Prestes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Fernandópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Fernão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ferraz de Vasconcelos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Flora Rica', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Floreal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Florínia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Flórida Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Franca', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Francisco Morato', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Franco da Rocha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Gabriel Monteiro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Gália', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Garça', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Gastão Vidigal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Gavião Peixoto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('General Salgado', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Getulina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Glicério', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guaiçara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guaimbê', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guaíra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guapiaçu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guapiara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guará', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guaraçaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guaraci', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guarani d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guarantã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guararapes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guararema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guaratinguetá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guareí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guariba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guarujá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guarulhos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guatapará', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Guzolândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Herculândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Holambra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Hortolândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iacanga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iacri', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iaras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ibaté', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ibirá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ibirarema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ibitinga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ibiúna', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Icém', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iepê', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Igaraçu do Tietê', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Igarapava', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Igaratá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iguape', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ilha Comprida', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ilha Solteira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ilhabela', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Indaiatuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Indiana', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Indiaporã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Inúbia Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ipauçu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iperó', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ipeúna', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ipiguá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iporanga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ipuã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Iracemápolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Irapuã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Irapuru', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itaberá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itajobi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itaju', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itanhaém', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itaóca', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapecerica da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapetininga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapeva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapevi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapirapuã Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itápolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itaporanga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapuí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itapura', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itaquaquecetuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itararé', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itariri', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itatiba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itatinga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itirapina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itirapuã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itobi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Itupeva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ituverava', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jaborandi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jaboticabal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jacareí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jaci', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jacupiranga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jaguariúna', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jales', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jambeiro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jandira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jardinópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jarinu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jaú', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jeriquara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Joanópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('João Ramalho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('José Bonifácio', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Júlio Mesquita', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jumirim', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Jundiaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Junqueirópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Juquiá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Juquitiba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lagoinha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Laranjal Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lavínia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lavrinhas', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Leme', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lençóis Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Limeira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lindóia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lins', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lorena', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lourdes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Louveira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lucélia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lucianópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Luís Antônio', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Luiziânia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lupércio', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Lutécia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Macatuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Macaubal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Macedônia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Magda', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mairinque', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mairiporã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Manduri', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Marabá Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Maracaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Marapoama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mariápolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Marília', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Marinópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Martinópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Matão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mauá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mendonça', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Meridiano', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mesópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Miguelópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mineiros do Tietê', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mira Estrela', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Miracatu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mirandópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mirante do Paranapanema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mirassol', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mirassolândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mococa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mogi das Cruzes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mogi-Guaçu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mogi-Mirim', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mombuca', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monções', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Mongaguá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monte Alegre do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monte Alto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monte Aprazível', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monte Azul Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monte Castelo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monte Mor', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Monteiro Lobato', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Morro Agudo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Morungaba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Motuca', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Murutinga do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nantes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Narandiba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Natividade da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nazaré Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Neves Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nhandeara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nipoã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Aliança', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Campina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Canaã Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Castilho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Europa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Granada', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Guataporanga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Independência', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Luzitânia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nova Odessa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Novais', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Novo Horizonte', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Nuporanga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ocauçu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Óleo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Olímpia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Onda Verde', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Oriente', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Orindiúva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Orlândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Osasco', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Oscar Bressane', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Osvaldo Cruz', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ourinhos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ouro Verde', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ouroeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pacaembu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Palestina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Palmares Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Palmeira d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Palmital', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Panorama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paraguaçu Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paraibuna', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paraíso', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paranapanema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paranapuã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Parapuã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pardinho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pariquera-Açu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Parisi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Patrocínio Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paulicéia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paulínia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paulistânia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Paulo de Faria', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pederneiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pedra Bela', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pedranópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pedregulho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pedreira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pedrinhas Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pedro de Toledo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Penápolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pereira Barreto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pereiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Peruíbe', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piacatu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piedade', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pilar do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pindamonhangaba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pindorama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pinhalzinho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piquerobi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piquete', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piracaia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piracicaba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piraju', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pirajuí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pirangi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pirapora do Bom Jesus', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pirapozinho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pirassununga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Piratininga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pitangueiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Planalto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Platina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Poá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Poloni', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pompéia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pongaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pontal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pontalinda', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pontes Gestal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Populina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Porangaba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Porto Feliz', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Porto Ferreira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Potim', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Potirendaba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pracinha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pradópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Praia Grande', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Pratânia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Presidente Alves', 'SP');
-INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Presidente Bernardes', 'SP');
-INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Presidente Epitácio', 'SP');
-INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Presidente Prudente', 'SP');
-INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Presidente Venceslau', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Promissão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Quadra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Quatá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Queiroz', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Queluz', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Quintana', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rafard', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rancharia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Redenção da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Regente Feijó', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Reginópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Registro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Restinga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão Bonito', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão Branco', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão Corrente', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão dos Índios', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão Grande', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão Pires', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ribeirão Preto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rifaina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rincão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rinópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rio Claro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rio das Pedras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rio Grande da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Riolândia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Riversul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rosana', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Roseira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rubiácea', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Rubinéia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sabino', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sagres', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sales', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sales Oliveira', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Salesópolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Salmourão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Saltinho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Salto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Salto de Pirapora', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Salto Grande', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sandovalina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Adélia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Albertina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Bárbara d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Branca', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Clara d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Cruz da Conceição', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Cruz da Esperança', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Cruz das Palmeiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Cruz do Rio Pardo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Ernestina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Fé do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Gertrudes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Isabel', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Lúcia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Maria da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Mercedes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Rita d''Oeste', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Rita do Passa Quatro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Rosa de Viterbo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santa Salete', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santana da Ponte Pensa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santana de Parnaíba', 'SP');
-INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Anastácio', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo André', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Antônio da Alegria', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Antônio de Posse', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Antônio do Aracanguá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Antônio do Jardim', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Antônio do Pinhal', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santo Expedito', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santópolis do Aguapeí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Santos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Bento do Sapucaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Bernardo do Campo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Caetano do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Carlos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Francisco', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São João da Boa Vista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São João das Duas Pontes', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São João de Iracema', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São João do Pau d''Alho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Joaquim da Barra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São José da Bela Vista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São José do Barreiro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São José do Rio Pardo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São José do Rio Preto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São José dos Campos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Lourenço da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Luís do Paraitinga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Manuel', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Miguel Arcanjo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Paulo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Pedro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Pedro do Turvo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Roque', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Sebastião', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Sebastião da Grama', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Simão', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('São Vicente', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sarapuí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sarutaiá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sebastianópolis do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Serra Azul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Serra Negra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Serrana', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sertãozinho', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sete Barras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Severínia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Silveiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Socorro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sorocaba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sud Mennucci', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Sumaré', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Suzanápolis', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Suzano', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tabapuã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tabatinga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taboão da Serra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taciba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taguaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taiaçu', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taiúva', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tambaú', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tanabi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tapiraí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tapiratiba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taquaral', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taquaritinga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taquarituba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taquarivaí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tarabai', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tarumã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tatuí', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Taubaté', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tejupá', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Teodoro Sampaio', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Terra Roxa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tietê', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Timburi', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Torre de Pedra', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Torrinha', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Trabiju', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tremembé', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Três Fronteiras', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tuiuti', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tupã', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Tupi Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Turiúba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Turmalina', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ubarana', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ubatuba', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Ubirajara', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Uchoa', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('União Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Urânia', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Uru', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Urupês', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Valentim Gentil', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Valinhos', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Valparaíso', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vargem', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vargem Grande do Sul', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vargem Grande Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Várzea Paulista', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vera Cruz', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vinhedo', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Viradouro', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vista Alegre do Alto', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Vitória Brasil', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Votorantim', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Votuporanga', 'SP');
--- INSERT INTO cidade (cid_nome, estado_est_uf) VALUES ('Zacarias', 'SP');
+INSERT INTO estado (est_uf, est_nome) VALUES (
+    'SP', 
+    'São Paulo'
+);
 
-INSERT INTO bairro (bai_nome, cidade_cid_id) VALUES ('Bairro Batata Doce', (SELECT cid_id FROM cidade WHERE cid_nome = 'Presidente Prudente'));
-INSERT INTO bairro (bai_nome, cidade_cid_id) VALUES ('Bairro Frango', (SELECT cid_id FROM cidade WHERE cid_nome = 'Presidente Prudente'));
+INSERT INTO cidade (cid_nome, estado_est_uf) VALUES (
+    'Presidente Bernardes', 
+    'SP'
+);
 
-INSERT INTO endereco (end_logradouro, end_numero, end_observacoes, bairro_bai_id) VALUES ('Av. Teste', 7777, 'Observação de teste!', (SELECT bai_id FROM bairro WHERE bai_nome = 'Bairro Batata Doce'));
+INSERT INTO cidade (cid_nome, estado_est_uf) VALUES (
+    'Presidente Epitácio', 
+    'SP'
+);
 
-INSERT INTO parametrizacao (par_nome_fantasia, par_razao_social, par_cnpj, par_ie, par_email, par_telefone, par_data_ativacao, endereco_end_id) VALUES ('Top Burguer', 'TOP BURGUER LTDA.', '62246009000134', 225450934645, 'contato@topburguer.com.br', '1832639999', NOW(), (SELECT end_id FROM endereco WHERE end_logradouro = 'Av. Teste'));
+INSERT INTO cidade (cid_nome, estado_est_uf) VALUES (
+    'Presidente Prudente', 
+    'SP'
+);
 
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Administrador','Gerencia do Restaurante', 3000.00, 0);
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Atendente','Atende clientes', 1200.00, 1);
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Garçom','Entrega Comidas', 1200.00, 2);
-INSERT INTO cargo (car_nome,car_descricao,car_sal_base, car_nivel_permissao) VALUES('Cozinheiro','Prepara Comidas', 1900.00, 3);
+INSERT INTO cidade (cid_nome, estado_est_uf) VALUES (
+    'Presidente Venceslau', 
+    'SP'
+);
 
--- pessoas fisicas iniciais
-INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('1', '1', 'ADMSYS', '2011-11-11', '1');
-INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('2', '2', 'DEVSYS', '2011-11-11', '1');
-INSERT INTO `tbmdb`.`pessoafisica` (`pes_cpf`, `pes_rg`, `pes_nome`, `pes_data_nascimento`, `endereco_end_id`) VALUES ('3', '3', 'TBM', '2011-11-11', '1');
+INSERT INTO cidade (cid_nome, estado_est_uf) VALUES (
+    'Santo Anastácio', 
+    'SP'
+);
 
---cargos iniciais
-INSERT INTO `tbmdb`.`cargo` (`car_id`, `car_nome`, `car_descricao`, `car_sal_base`) VALUES ('1', 'ADMSYS', 'System', '0');
-INSERT INTO `tbmdb`.`cargo` (`car_id`, `car_nome`, `car_descricao`, `car_sal_base`) VALUES ('2', 'DEVSYS', 'System', '0');
-INSERT INTO `tbmdb`.`cargo` (`car_id`, `car_nome`, `car_descricao`, `car_sal_base`) VALUES ('3', 'TBM', 'System', '0');
+INSERT INTO bairro (bai_nome, cidade_cid_id) VALUES (
+    'Bairro Batata Doce', 
+    (SELECT cid_id FROM cidade WHERE cid_nome = 'Presidente Prudente')
+);
 
---funcionarios iniciais
-INSERT INTO `tbmdb`.`funcionario` (`fun_salario_atual`, `cargo_car_id`, `pessoafisica_pes_cpf`) VALUES ('0000.5', '5', '11111111111');
-INSERT INTO `tbmdb`.`funcionario` (`fun_salario_atual`, `cargo_car_id`, `pessoafisica_pes_cpf`) VALUES ('0000.5', '4', '22222222222');
-INSERT INTO `tbmdb`.`funcionario` (`fun_salario_atual`, `cargo_car_id`, `pessoafisica_pes_cpf`) VALUES ('0', '3', '3');
+INSERT INTO bairro (bai_nome, cidade_cid_id) VALUES (
+    'Bairro Frango', 
+    (SELECT cid_id FROM cidade WHERE cid_nome = 'Presidente Prudente')
+);
 
--- senha : tbm
-INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('ADMSYS', md5('tbmgerencia1'), '1', '1');
-INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('DEVSYS', md5('desenvolvimento1'), '1', '2');
-INSERT INTO `tbmdb`.`usuario` (`usr_username`, `usr_password`, `usr_ativado`, `funcionario_pessoafisica_pes_cpf`) VALUES ('TBM', md5('tbm'), '1', '3');
+INSERT INTO endereco (end_logradouro, end_numero, end_observacoes, bairro_bai_id) VALUES (
+    'Av. Teste', 
+    7777, 
+    'Observação de teste!', 
+    (SELECT bai_id FROM bairro WHERE bai_nome = 'Bairro Batata Doce')
+);
+
+-- PARAMETRIZACAO
+
+INSERT INTO parametrizacao (par_nome_fantasia, par_razao_social, par_cnpj, par_ie, par_email, par_telefone, par_data_ativacao, endereco_end_id) VALUES (
+    'Top Burguer', 
+    'TOP BURGUER LTDA.', 
+    '62246009000134', 
+    225450934645, 
+    'contato@topburguer.com.br', 
+    '1832639999', 
+    NOW(), 
+    (SELECT end_id FROM endereco WHERE end_logradouro = 'Av. Teste')
+);
+
+-- CARGOS, PESSOAS, FUNCIONARIOS e USUARIOS
+
+INSERT INTO cargo (car_nome, car_descricao, car_sal_base, car_nivel_permissao) VALUES (
+    'Administrador',
+    'Gerencia do Restaurante', 
+    3000.00, 
+    0
+);
+
+INSERT INTO cargo (car_nome, car_descricao, car_sal_base, car_nivel_permissao) VALUES (
+    'Atendente',
+    'Atende clientes', 
+    1200.00, 
+    1
+);
+
+INSERT INTO cargo (car_nome, car_descricao, car_sal_base, car_nivel_permissao) VALUES (
+    'Garçom',
+    'Entrega Comidas', 
+    1200.00, 
+    2
+);
+
+INSERT INTO cargo (car_nome, car_descricao, car_sal_base, car_nivel_permissao) VALUES (
+    'Cozinheiro',
+    'Prepara Comidas', 
+    1900.00, 
+    3
+);
+
+-- V2
+
+INSERT INTO pessoafisica VALUES (
+    '11111111111',
+    NULL,
+    'Administrador',
+    NULL,
+    (SELECT end_id FROM endereco WHERE end_logradouro = 'Av. Teste')
+);
+
+INSERT INTO funcionario VALUES (
+    2000.00,
+    'contato@topburguer.com.br',
+    '1833333333',
+    (SELECT car_id FROM cargo WHERE car_nome = 'Administrador'),
+    '11111111111'
+);
+
+INSERT INTO usuario VALUES (
+    'TBM',
+    MD5('tbm'),
+    1,
+    '11111111111'
+);
+
+-- ADMINISTRADOR DO SISTEMA:
+-- username=TBM
+-- password=tbm
+
+-- PRODUTOS E CARDAPIO
+
+INSERT INTO marca VALUES (
+    1,
+    'Marca A'
+);
+
+INSERT INTO categoriaproduto VALUES (
+    1,
+    'Categoria A'
+);
+
+INSERT INTO unidademedida VALUES (
+    1,
+    'Sacos de 1Kg', 
+    'Descrição...'
+);
+
+INSERT INTO produto VALUES (
+    1,
+    'Pão',
+    2000,
+    100,
+    (SELECT mar_id FROM marca WHERE mar_nome = 'Marca A'),
+    (SELECT cap_id FROM categoriaproduto WHERE cap_nome = 'Categoria A'),
+    (SELECT uni_id FROM unidademedida WHERE uni_nome = 'Sacos de 1Kg')
+);
+
+INSERT INTO categoriacardapio VALUES (
+    1,
+    'Lanches'
+);
+
+INSERT INTO itemcardapio VALUES (
+    1,
+    'X-Só-Pão',
+    25.00,
+    'Um lanche blah, blah, blah...!',
+    1,
+    (SELECT cac_id FROM categoriacardapio WHERE cac_nome = 'Lanches')
+);
+
+INSERT INTO produtoemitemcardapio VALUES (
+    2,
+    0,
+    (SELECT itc_id FROM itemcardapio WHERE itc_nome = 'X-Só-Pão'),
+    (SELECT pro_id FROM produto WHERE pro_nome = 'Pão')
+);
+
+-- MESAS, COMANDAS E AFINS...
+
+INSERT INTO mesa VALUES (
+    1,
+    'A primeira mesa do sistema!',
+    4,
+    0
+);
+
+INSERT INTO mesa VALUES (
+    2,
+    'A segunda mesa do sistema!',
+    6,
+    1
+);
+
+INSERT INTO comanda VALUES (
+    1,
+    'Comanda #1',
+    'Observação...',
+    50.00,
+    '11111111111',
+    NULL,
+    1,
+    NOW(),
+    NULL
+);
+
+INSERT INTO estadopedido VALUES (
+    1,
+    'Solicitado'
+);
+
+INSERT INTO estadopedido VALUES (
+    2,
+    'Em preparo'
+);
+
+INSERT INTO estadopedido VALUES (
+    3,
+    'Finalizado'
+);
+
+INSERT INTO pedido VALUES (
+    1,
+    NOW(),
+    50.00,
+    (SELECT com_id FROM comanda WHERE com_apelido = 'Comanda #1'),
+    (SELECT esp_id FROM estadopedido WHERE esp_nome = 'Solicitado')
+);
+
+INSERT INTO itempedido VALUES (
+    (SELECT itc_id FROM itemcardapio WHERE itc_nome = 'X-Só-Pão'),
+    (SELECT ped_id FROM pedido ORDER BY ped_data_efetuado ASC LIMIT 1),
+    2,
+    25.00,
+    50.00
+);

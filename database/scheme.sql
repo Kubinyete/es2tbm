@@ -204,7 +204,8 @@ CREATE TABLE IF NOT EXISTS `tbmdb`.`comanda` (
   `funcionario_pessoafisica_pes_cpf` CHAR(11) NOT NULL,
   `cliente_pessoafisica_pes_cpf` CHAR(11) NULL,
   `mesa_mes_id` INT NOT NULL,
-  `com_data_abertura` DATE NOT NULL DEFAULT CURDATE(),
+  `com_data_abertura` DATETIME NOT NULL DEFAULT NOW(),
+  `com_data_fechamento` DATETIME NULL,
   PRIMARY KEY (`com_id`),
   CONSTRAINT `fk_comanda_funcionario1`
     FOREIGN KEY (`funcionario_pessoafisica_pes_cpf`)
@@ -232,8 +233,14 @@ DROP TABLE IF EXISTS `tbmdb`.`contareceber` ;
 CREATE TABLE IF NOT EXISTS `tbmdb`.`contareceber` (
   `con_id` INT NOT NULL AUTO_INCREMENT,
   `con_valor` DOUBLE NOT NULL,
-  `con_valor_pago` DOUBLE NOT NULL,
-  `con_data_recebimento` DATETIME NOT NULL,
+  -- @TODO:
+  -- Retirar
+  -- `con_valor_pago` DOUBLE NOT NULL,
+  -- D = Dinheiro
+  -- C = Cartão
+  -- F = Fiado/Carteira
+  `con_forma_recebimento` CHAR CHECK (con_forma_recebimento IS NULL OR con_forma_recebimento IN ('D', 'C', 'F')),
+  `con_data_recebimento` TIMESTAMP NULL,
   `con_data_vencimento` DATE NOT NULL,
   `comanda_com_id` INT NOT NULL,
   PRIMARY KEY (`con_id`),
@@ -292,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `tbmdb`.`itemcardapio` (
   `itc_nome` VARCHAR(75) NOT NULL,
   `itc_preco` DOUBLE NOT NULL,
   `itc_descricao` VARCHAR(256) NULL,
-  `itc_disponivel` TINYINT NOT NULL,
+  `itc_disponivel` TINYINT NOT NULL DEFAULT 1,
   `categoriacardapio_cac_id` INT NOT NULL,
   PRIMARY KEY (`itc_id`),
   CONSTRAINT `fk_itemcardapio_categoriacardapio1`
@@ -391,7 +398,7 @@ DROP TABLE IF EXISTS `tbmdb`.`produtoemitemcardapio` ;
 
 CREATE TABLE IF NOT EXISTS `tbmdb`.`produtoemitemcardapio` (
   `pic_quantidade` INT NOT NULL,
-  `pic_efetuar_baixa` TINYINT NOT NULL,
+  `pic_efetuar_baixa` TINYINT NOT NULL DEFAULT 0,
   `itemcardapio_itc_id` INT NOT NULL,
   `produto_pro_id` INT NOT NULL,
   PRIMARY KEY (`itemcardapio_itc_id`, `produto_pro_id`),
@@ -790,6 +797,50 @@ BEGIN
     UPDATE pessoafisica SET pes_cpf = proc_pes_cpf, pes_rg = proc_pes_rg, pes_nome = proc_pes_nome, pes_data_nascimento = proc_pes_data_nascimento, endereco_end_id = proc_endereco_end_id WHERE pes_cpf = proc_pes_cpf;
     UPDATE cliente SET cli_ativado = proc_cli_ativado, cli_email = proc_cli_email, cli_telefone = proc_cli_telefone WHERE pessoafisica_pes_cpf = proc_pes_cpf;
     SET proc_result := 1;
+    COMMIT;
+  END IF;
+END//
+
+DROP PROCEDURE IF EXISTS `fechar_comanda`//
+CREATE PROCEDURE `fechar_comanda` (IN proc_com_id INT, IN proc_data_vencimento DATE, IN proc_mesa_mes_id INT, IN proc_pes_cpf CHAR(11), OUT proc_result TINYINT(1))
+BEGIN
+  DECLARE total DOUBLE;
+  DECLARE total_receber DOUBLE;
+  
+  SET proc_result = 0;
+
+  -- Se a comanda não estiver fechada
+  IF (SELECT COUNT(*) FROM comanda WHERE com_id = proc_com_id AND com_data_fechamento IS NULL LIMIT 1) > 0 THEN
+    SELECT SUM(ped_valor_total) INTO total FROM pedido WHERE pedido.comanda_com_id = proc_com_id;
+    UPDATE comanda SET com_valor_total = total, com_data_fechamento = NOW(), cliente_pessoafisica_pes_cpf = proc_pes_cpf WHERE com_id = proc_com_id;
+    -- Comanda totalmente fechada
+
+    -- Agora verifique a questão das contas
+    SELECT COALESCE(SUM(con_valor), 0) INTO total_receber FROM contareceber WHERE contareceber.comanda_com_id = proc_com_id;
+
+    -- Caso total seja zero, isso sempre será falso
+    -- pois não existe total_receber negativo
+    IF total_receber < total THEN
+      -- Precisamos criar um recebimento em carteira
+      INSERT INTO contareceber (con_valor, con_forma_recebimento, con_data_recebimento, con_data_vencimento, comanda_com_id) VALUES (
+        total - total_receber,
+        'F',
+        NULL,
+        proc_data_vencimento,
+        proc_com_id
+      );
+    END IF;
+
+    -- @PERFORMANCE: Isso aqui é bem lento em um sistema grande
+    -- porém só será ativado caso alguma comanda seja fechada.
+    -- Verficar se a mesa da comanda está liberada
+    SELECT COUNT(*) INTO total FROM comanda WHERE comanda.mesa_mes_id = proc_mesa_mes_id AND comanda.com_data_fechamento IS NULL;
+    
+    IF total = 0 THEN
+      UPDATE mesa SET mes_disponivel = 1 WHERE mes_id = proc_mesa_mes_id;
+    END IF;
+
+    SET proc_result = 1;
     COMMIT;
   END IF;
 END//

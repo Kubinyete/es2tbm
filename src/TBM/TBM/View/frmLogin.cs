@@ -36,7 +36,6 @@ namespace TBM.View
                 msg = ctr_login.logar(tbUsername.Text.ToUpper(), tbPassword.Text); 
                 if(msg == "OK")
                 {
-                    this.Close();
                     Model.Usuario u = ctr_login.obterUsuario(tbUsername.Text.ToUpper());
                     ctr_login.setUser(u);
                     this.Close();

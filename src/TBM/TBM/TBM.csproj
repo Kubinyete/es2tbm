@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -74,14 +74,21 @@
   <ItemGroup>
     <Compile Include="BL\BLCliente.cs" />
     <Compile Include="BL\BLComanda.cs" />
+    <Compile Include="BL\BLContaReceber.cs" />
+    <Compile Include="BL\BLItemPedido.cs" />
+    <Compile Include="BL\BLMesa.cs" />
     <Compile Include="Controller\ComandaController.cs" />
     <Compile Include="Controller\mainController.cs" />
     <Compile Include="Controller\PedidoController.cs" />
     <Compile Include="DAL\DALCategoriaCardapio.cs" />
     <Compile Include="DAL\DALCliente.cs" />
     <Compile Include="DAL\DALComanda.cs" />
+    <Compile Include="DAL\DALContaReceber.cs" />
+    <Compile Include="DAL\DALEstadoPedido.cs" />
     <Compile Include="DAL\DALItemCardapio.cs" />
+    <Compile Include="DAL\DALItemPedido.cs" />
     <Compile Include="DAL\DALMesa.cs" />
+    <Compile Include="DAL\DALPedido.cs" />
     <Compile Include="Model\CategoriaCardapio.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="BL\BLCadastrarAlterarUsuario.cs" />
@@ -102,8 +109,12 @@
     <Compile Include="BL\Errors\BLValidationError.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="Model\Comanda.cs" />
+    <Compile Include="Model\ContaReceber.cs" />
+    <Compile Include="Model\EstadoPedido.cs" />
     <Compile Include="Model\ItemCardapio.cs" />
+    <Compile Include="Model\ItemPedido.cs" />
     <Compile Include="Model\Mesa.cs" />
+    <Compile Include="Model\Pedido.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,6 +216,18 @@
     <Compile Include="View\frmGerenciarEnderecos.Designer.cs">
       <DependentUpon>frmGerenciarEnderecos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmListarComandasAbertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmListarComandasAbertas.Designer.cs">
+      <DependentUpon>frmListarComandasAbertas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPagamento.Designer.cs">
+      <DependentUpon>frmPagamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmGerenciarEnderecos.resx">
       <DependentUpon>frmGerenciarEnderecos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmListarComandasAbertas.resx">
+      <DependentUpon>frmListarComandasAbertas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPagamento.resx">
+      <DependentUpon>frmPagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
@@ -345,6 +374,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\comanda-icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-card-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

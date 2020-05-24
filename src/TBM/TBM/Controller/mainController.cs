@@ -12,6 +12,11 @@ namespace TBM.Controller
 
         public static void montarTela(Model.Usuario u, View.mainForm telaPrincipal)
         {
+            if (u == null)
+                // @DEBUG:
+                // Se não tiver ninguem logado, por enquanto, apenas deixe
+                return;
+
             switch (u.Funcionario.Cargo.NivelAcesso)
             {
                 case Model.NivelAcesso.Atendente:

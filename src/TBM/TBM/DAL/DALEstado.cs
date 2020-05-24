@@ -23,6 +23,14 @@ namespace TBM.DAL
             );
         }
 
+        public static Estado mapearObjetov2(DataRow dr, string v)
+        {
+            return new Estado(
+                (string)dr[v + "est_uf"],
+                (string)dr[v + "est_nome"]
+            );
+        }
+
         public Estado obterEstado(string uf)
         {
             Estado ret = null;

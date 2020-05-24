@@ -23,18 +23,18 @@ namespace TBM.View.Comanda
         {
             Controller.ComandaController.carregarGarcom(cbGarcom);
             Controller.ComandaController.carregarMesas(cbMesa);
-            try
-            {
+            //try
+            //{
                 Controller.ComandaController.carregarComandas(dgvComandas,
-                    Convert.ToInt32(cbMesa.SelectedItem.ToString()),
+                    ((Model.Mesa)cbMesa.SelectedItem).Mes_id,
                     cbGarcom.Text);
-            }catch(Exception err)
-            {
-                MessageBox.Show(err.Message, "Erro",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                this.Close();
-            }
+            //}catch(Exception err)
+            //{
+            //    MessageBox.Show(err.Message, "Erro",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error);
+            //    this.Close();
+            //}
         }
 
         private void btnabrirComanda_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace TBM.View.Comanda
             try
             {
                 Controller.ComandaController.carregarComandas(dgvComandas,
-                    Convert.ToInt32(cbMesa.SelectedItem.ToString()),
+                    ((Model.Mesa)cbMesa.SelectedItem).Mes_id,
                     cbGarcom.Text);
             }
             catch (Exception err)

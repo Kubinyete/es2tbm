@@ -35,5 +35,10 @@ namespace TBM.Model
         public string Itc_descricao { get => _itc_descricao; set => _itc_descricao = value; }
         public bool Itc_disponivel { get => _itc_disponivel; set => _itc_disponivel = value; }
         public CategoriaCardapio Cac { get => _cac; set => _cac = value; }
+
+        public override string ToString()
+        {
+            return Itc_nome;
+        }
     }
 }

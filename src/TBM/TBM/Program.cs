@@ -17,9 +17,13 @@ namespace TBM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new frmLogin().ShowDialog();
-            if(Controller.LoginController.usuario_logado != null)
-                new mainForm().ShowDialog();
+            
+            // @DEBUG: Apenas para testes, por favor desative na versão final.
+            new mainForm().ShowDialog();
+            
+            //new frmLogin().ShowDialog();
+            //if(Controller.LoginController.usuario_logado != null)
+            //    new mainForm().ShowDialog();
 
             Application.Exit();
         }

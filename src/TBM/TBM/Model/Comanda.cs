@@ -13,13 +13,14 @@ namespace TBM.Model
         string _com_observacoes;
         double _com_valor_total;
         DateTime _com_data_abertura;
+        DateTime? _com_data_fechamento;
         Funcionario _funcionario;
         Cliente _cliente;
         Mesa _mesa;
 
         public Comanda(int com_id, string com_apelido, string com_observacoes,
             double com_valor_total, Funcionario funcionario,
-            Cliente cliente, Mesa mesa, DateTime com_data_abertura)
+            Cliente cliente, Mesa mesa, DateTime com_data_abertura, DateTime? com_data_fechamento)
         {
             _com_id = com_id;
             _com_apelido = com_apelido;
@@ -29,6 +30,7 @@ namespace TBM.Model
             _cliente = cliente;
             _mesa = mesa;
             Com_data_abertura = com_data_abertura;
+            Com_data_fechamento = com_data_fechamento;
         }
 
         public int Com_id { get => _com_id; set => _com_id = value; }
@@ -38,6 +40,12 @@ namespace TBM.Model
         public Funcionario Funcionario { get => _funcionario; set => _funcionario = value; }
         public Cliente Cliente { get => _cliente; set => _cliente = value; }
         public DateTime Com_data_abertura { get => _com_data_abertura; set => _com_data_abertura = value; }
-        internal Mesa Mesa { get => _mesa; set => _mesa = value; }
+        public DateTime? Com_data_fechamento { get => _com_data_fechamento; set => _com_data_fechamento = value; }
+        public Mesa Mesa { get => _mesa; set => _mesa = value; }
+
+        public bool Equals(Comanda obj)
+        {
+            return Com_id == obj.Com_id;
+        }
     }
 }

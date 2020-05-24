@@ -24,6 +24,15 @@ namespace TBM.DAL
             );
         }
 
+        public static Bairro mapearObjetov2(DataRow dr, string v, Cidade e = null)
+        {
+            return new Bairro(
+                (int)dr[v + "bai_id"],
+                (string)dr[v + "bai_nome"],
+                e != null ? e : DALCidade.mapearObjetov2(dr, v)
+            );
+        }
+
         public static Dictionary<string, object> mapearParametros(Bairro b)
         {
             var param = criarParametros();

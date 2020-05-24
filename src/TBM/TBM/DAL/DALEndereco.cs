@@ -15,7 +15,7 @@ namespace TBM.DAL
 
         }
 
-        public static Endereco mapearObjeto(DataRow dr, Bairro e)
+        public static Endereco mapearObjeto(DataRow dr, Bairro e = null)
         {
             return new Endereco(
                 (int)dr["end_id"],
@@ -23,6 +23,17 @@ namespace TBM.DAL
                 (string)dr["end_logradouro"],
                 dr["end_observacoes"] is DBNull ? null : (string)dr["end_observacoes"],
                 e != null ? e : DALBairro.mapearObjeto(dr, null)
+            );
+        }
+
+        public static Endereco mapearObjetov2(DataRow dr, string v, Bairro e = null)
+        {
+            return new Endereco(
+                (int)dr[v + "end_id"],
+                (int)dr[v + "end_numero"],
+                (string)dr[v + "end_logradouro"],
+                dr[v + "end_observacoes"] is DBNull ? null : (string)dr[v + "end_observacoes"],
+                e != null ? e : DALBairro.mapearObjetov2(dr, v)
             );
         }
 

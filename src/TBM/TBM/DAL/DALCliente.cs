@@ -33,6 +33,24 @@ namespace TBM.DAL
             );
         }
 
+        public static Cliente mapearObjetov2(DataRow dr, string v, Endereco e = null)
+        {
+            return new Cliente(
+                (string)dr[v + "pes_cpf"],
+                dr[v + "pes_rg"] is DBNull ? null : (string)dr[v + "pes_rg"],
+                (string)dr[v + "pes_nome"],
+                // Pode ser NULL também
+                dr[v + "pes_data_nascimento"] is DBNull ? null : (DateTime?)dr[v + "pes_data_nascimento"],
+                // Podemos também receber um Cliente sem endereço, se esse for o caso, não tente mapear (resultará em um objeto Endereco com valores NULL)
+                e != null ? e : (dr[v + "endereco_end_id"] is DBNull ? null : DALEndereco.mapearObjetov2(dr, v)),
+                (double)dr[v + "cli_divida_acumulada"],
+                (bool)dr[v + "cli_ativado"],
+                // Pode ser NULL
+                dr[v + "cli_email"] is DBNull ? null : (string)dr[v + "cli_email"],
+                dr[v + "cli_telefone"] is DBNull ? null : (string)dr[v + "cli_telefone"]
+            );
+        }
+
         public static Dictionary<string, object> mapearParametros(Cliente e)
         {
             var param = criarParametros();

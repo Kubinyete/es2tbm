@@ -30,6 +30,21 @@ namespace TBM.DAL
                 ) ;
         }
 
+        public static Funcionario mapearObjetov2(DataRow dr, string v, Cargo cargo = null, Endereco endereco = null)
+        {
+            return new Funcionario(Convert.ToDouble(
+               dr[v + "fun_salario_atual"].ToString()),
+               cargo != null ? cargo : DALCargo.mapearObjetov2(dr, v),
+               dr[v + "fun_email"] is DBNull ? "" : dr[v + "fun_email"].ToString(),
+               dr[v + "fun_telefone"] is DBNull ? "" : dr[v + "fun_telefone"].ToString(),
+               dr[v + "pes_cpf"].ToString(),
+               dr[v + "pes_rg"].ToString(),
+               dr[v + "pes_nome"].ToString(),
+               dr[v + "pes_data_nascimento"] is DBNull ? DateTime.Now : Convert.ToDateTime(dr[v + "pes_data_nascimento"].ToString()),
+               endereco != null ? endereco : DALEndereco.mapearObjetov2(dr, v)
+               );
+        }
+
         public Funcionario obterFuncionario(string cpf,Endereco endereco,Cargo cargo)
         {
             Funcionario ret = null;

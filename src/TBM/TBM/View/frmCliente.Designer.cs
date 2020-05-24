@@ -30,6 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbParametros = new System.Windows.Forms.GroupBox();
+            this.tbTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.checkDataNascimento = new System.Windows.Forms.CheckBox();
             this.btnEndereco = new System.Windows.Forms.Button();
             this.cbEndereco = new System.Windows.Forms.ComboBox();
@@ -48,10 +52,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAction = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.tbTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbEmail = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.gbParametros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcone)).BeginInit();
@@ -92,6 +92,39 @@
             this.gbParametros.TabIndex = 12;
             this.gbParametros.TabStop = false;
             this.gbParametros.Text = "Parâmetros";
+            // 
+            // tbTelefone
+            // 
+            this.tbTelefone.Location = new System.Drawing.Point(294, 110);
+            this.tbTelefone.Mask = "(00)00000-0000";
+            this.tbTelefone.Name = "tbTelefone";
+            this.tbTelefone.Size = new System.Drawing.Size(164, 20);
+            this.tbTelefone.TabIndex = 29;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(291, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Telefone*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 94);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "E-mail";
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Location = new System.Drawing.Point(6, 110);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(282, 20);
+            this.tbEmail.TabIndex = 26;
             // 
             // checkDataNascimento
             // 
@@ -205,6 +238,7 @@
             // 
             this.pbIcone.BackColor = System.Drawing.Color.Transparent;
             this.pbIcone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbIcone.Image = global::TBM.Properties.Resources.user_icon;
             this.pbIcone.Location = new System.Drawing.Point(0, 0);
             this.pbIcone.Name = "pbIcone";
             this.pbIcone.Size = new System.Drawing.Size(50, 50);
@@ -264,39 +298,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // tbTelefone
-            // 
-            this.tbTelefone.Location = new System.Drawing.Point(294, 110);
-            this.tbTelefone.Mask = "(00)00000-0000";
-            this.tbTelefone.Name = "tbTelefone";
-            this.tbTelefone.Size = new System.Drawing.Size(164, 20);
-            this.tbTelefone.TabIndex = 29;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(291, 94);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "Telefone*";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 94);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "E-mail";
-            // 
-            // tbEmail
-            // 
-            this.tbEmail.Location = new System.Drawing.Point(6, 110);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(282, 20);
-            this.tbEmail.TabIndex = 26;
             // 
             // frmCliente
             // 

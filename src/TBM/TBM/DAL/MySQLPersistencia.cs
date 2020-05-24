@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Data.Common;
 
 namespace TBM.DAL
 {
@@ -39,7 +40,9 @@ namespace TBM.DAL
         public override void fechar()
         {
             if (!IsSubContext)
+            {
                 _con.Close();
+            }
         }
 
         public override DataTable executarSelect(string select, Dictionary<string, object> parametros = null)
@@ -79,6 +82,11 @@ namespace TBM.DAL
 
             fechar();
             return lc;
+        }
+
+        public override DbTransaction beginTransaction()
+        {
+            return _con.BeginTransaction();
         }
 
         public override long obterUltimoId()

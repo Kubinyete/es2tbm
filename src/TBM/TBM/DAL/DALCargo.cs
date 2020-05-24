@@ -24,6 +24,17 @@ namespace TBM.DAL
             );
         }
 
+        public static Cargo mapearObjetov2(DataRow dr, string v)
+        {
+            return new Cargo(
+                Convert.ToInt32(dr[v + "car_id"]),
+                (string)dr[v + "car_nome"],
+                dr[v + "car_descricao"] is DBNull ? null : (string)dr[v + "car_descricao"],
+                Convert.ToDouble(dr[v + "car_sal_base"]),
+                (NivelAcesso)Convert.ToInt32(dr[v + "car_nivel_permissao"])
+            );
+        }
+
         public Cargo obterCargo(int Id)
         {
             Cargo ret = null;

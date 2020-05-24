@@ -69,15 +69,21 @@ namespace TBM.Controller
                 throw new BL.Errors.BLValidationError("Não é possível inserir uma" +
                     " comanda sem um apelido!");
             }
-            else if (!Uteis.StringUteis
-                .hasNumersOnly(c.Mesa.Mes_id))
+            // @NOTE (vitorkubinyete):
+            // Modificado string Mesa.Mes_id para integer.
+            // else if (!Uteis.StringUteis
+            //    .hasNumersOnly(c.Mesa.Mes_id.ToString()))
+            //{
+            //    throw new BL.Errors.BLValidationError("Número da mesa inválido!");
+            //}
+            else if (c.Mesa.Mes_id <= 0)
             {
                 throw new BL.Errors.BLValidationError("Número da mesa inválido!");
             }
             else
             {
                 try{
-                    new BL.Errors.BLComanda().verificarConsistencia(c);
+                    new BL.BLComanda().verificarConsistencia(c);
                 }
                 catch (BL.Errors.BLValidationError erro)
                 {
@@ -90,7 +96,7 @@ namespace TBM.Controller
         // Montar Objetos
         public static Model.Comanda montarObjeto(string comandaNumero, 
             string comandaApelido, Model.Funcionario comandaGarcom, 
-            string comandaObservacao, string mesaNumero)
+            string comandaObservacao, int mesaNumero)
         {
             return new Model.Comanda(
                 comandaNumero == "" ? 0 : Convert.ToInt32(comandaNumero),
@@ -100,7 +106,8 @@ namespace TBM.Controller
                 comandaGarcom,
                 null,  //no client
                 new Model.Mesa(mesaNumero),
-                DateTime.Now
+                DateTime.Now,
+                null
             );
         }
 

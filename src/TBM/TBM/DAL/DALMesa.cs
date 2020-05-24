@@ -17,7 +17,7 @@ namespace TBM.DAL
         public static Model.Mesa mapearObjeto(DataRow dr)
         {
             return new Model.Mesa(
-                dr["mes_id"].ToString(),
+                (int)dr["mes_id"],
                 dr["mes_observacoes"].ToString(),
                 Convert.ToInt32(dr["mes_capacidade"].ToString()),
                 dr["mes_disponivel"].ToString() == "1" ? true : false

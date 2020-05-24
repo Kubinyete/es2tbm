@@ -28,7 +28,7 @@ namespace TBM.View.Comanda
                 tbNomeIdentificacao.Text = Controller.ComandaController
                     .comanda.Com_apelido;
                 tbNumeroMesa.Text = Controller.ComandaController
-                    .comanda.Mesa.Mes_id;
+                    .comanda.Mesa.Mes_id.ToString();
                 tbObs.Text = Controller.ComandaController
                     .comanda.Com_observacoes;
                 cbGarcom.SelectedIndex = Controller.
@@ -46,7 +46,7 @@ namespace TBM.View.Comanda
                     tbNomeIdentificacao.Text,
                     (Model.Funcionario)cbGarcom.SelectedValue,
                     tbObs.Text,
-                    tbNumeroMesa.Text
+                    Convert.ToInt32(tbNumeroMesa.Text)
                 );
             try
             {

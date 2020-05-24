@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.Common;
 
 namespace TBM.DAL
 {
@@ -18,6 +19,8 @@ namespace TBM.DAL
         public abstract DataTable executarSelect(string select, Dictionary<string, object> parametros = null);
 
         public abstract int executarNonQuery(string query, Dictionary<string, object> parametros = null);
+
+        public abstract DbTransaction beginTransaction();
 
         public abstract long obterUltimoId();
     }

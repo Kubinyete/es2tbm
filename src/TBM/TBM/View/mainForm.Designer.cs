@@ -47,6 +47,8 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharComandaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tbcPrincipal.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -60,7 +62,8 @@
             this.financeiroToolStripMenuItem,
             this.comandaToolStripMenuItem,
             this.estoqueToolStripMenuItem,
-            this.deliveryToolStripMenuItem});
+            this.deliveryToolStripMenuItem,
+            this.debugToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
@@ -224,6 +227,21 @@
             this.tabPage3.Text = "Visualização de pedidos";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fecharComandaToolStripMenuItem});
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.debugToolStripMenuItem.Text = "Debug";
+            // 
+            // fecharComandaToolStripMenuItem
+            // 
+            this.fecharComandaToolStripMenuItem.Name = "fecharComandaToolStripMenuItem";
+            this.fecharComandaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fecharComandaToolStripMenuItem.Text = "Fechar comanda";
+            this.fecharComandaToolStripMenuItem.Click += new System.EventHandler(this.fecharComandaToolStripMenuItem_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +286,8 @@
         private System.Windows.Forms.ToolStripMenuItem efetuarBaixaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deliveryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem telaGerenciarComandaExperimentalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fecharComandaToolStripMenuItem;
     }
 }
 

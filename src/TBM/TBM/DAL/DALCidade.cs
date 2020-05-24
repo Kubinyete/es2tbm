@@ -24,6 +24,15 @@ namespace TBM.DAL
             );
         }
 
+        public static Cidade mapearObjetov2(DataRow dr, string v, Estado e = null)
+        {
+            return new Cidade(
+                (int)dr[v + "cid_id"],
+                (string)dr[v + "cid_nome"],
+                e != null ? e : DALEstado.mapearObjetov2(dr, v)
+            );
+        }
+
         public List<Cidade> obterCidades(Estado e)
         {
             List<Cidade> ret = new List<Cidade>();
