@@ -42,14 +42,6 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvComandas = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnFecharComanda = new System.Windows.Forms.Button();
-            this.btnAlterarComanda = new System.Windows.Forms.Button();
-            this.btnGerenciarPedidos = new System.Windows.Forms.Button();
-            this.btnabrirComanda = new System.Windows.Forms.Button();
-            this.lblAcao = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.com_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.com_data_abertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.com_valor_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +51,14 @@
             this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comanda_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnFecharComanda = new System.Windows.Forms.Button();
+            this.btnAlterarComanda = new System.Windows.Forms.Button();
+            this.btnGerenciarPedidos = new System.Windows.Forms.Button();
+            this.btnabrirComanda = new System.Windows.Forms.Button();
+            this.lblAcao = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -216,89 +216,6 @@
             this.dgvComandas.Size = new System.Drawing.Size(818, 252);
             this.dgvComandas.TabIndex = 0;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Location = new System.Drawing.Point(18, 187);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(848, 283);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnFecharComanda);
-            this.panel3.Controls.Add(this.btnAlterarComanda);
-            this.panel3.Controls.Add(this.btnGerenciarPedidos);
-            this.panel3.Controls.Add(this.btnabrirComanda);
-            this.panel3.Location = new System.Drawing.Point(18, 473);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(848, 44);
-            this.panel3.TabIndex = 3;
-            // 
-            // btnFecharComanda
-            // 
-            this.btnFecharComanda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFecharComanda.Location = new System.Drawing.Point(354, 3);
-            this.btnFecharComanda.Name = "btnFecharComanda";
-            this.btnFecharComanda.Size = new System.Drawing.Size(109, 36);
-            this.btnFecharComanda.TabIndex = 3;
-            this.btnFecharComanda.Text = "Fechar Comanda";
-            this.btnFecharComanda.UseVisualStyleBackColor = true;
-            // 
-            // btnAlterarComanda
-            // 
-            this.btnAlterarComanda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAlterarComanda.Location = new System.Drawing.Point(124, 3);
-            this.btnAlterarComanda.Name = "btnAlterarComanda";
-            this.btnAlterarComanda.Size = new System.Drawing.Size(109, 36);
-            this.btnAlterarComanda.TabIndex = 2;
-            this.btnAlterarComanda.Text = "Alterar Comanda";
-            this.btnAlterarComanda.UseVisualStyleBackColor = true;
-            this.btnAlterarComanda.Click += new System.EventHandler(this.btnAlterarComanda_Click);
-            // 
-            // btnGerenciarPedidos
-            // 
-            this.btnGerenciarPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGerenciarPedidos.Location = new System.Drawing.Point(239, 3);
-            this.btnGerenciarPedidos.Name = "btnGerenciarPedidos";
-            this.btnGerenciarPedidos.Size = new System.Drawing.Size(109, 36);
-            this.btnGerenciarPedidos.TabIndex = 1;
-            this.btnGerenciarPedidos.Text = "Gerenciar Pedidos";
-            this.btnGerenciarPedidos.UseVisualStyleBackColor = true;
-            this.btnGerenciarPedidos.Click += new System.EventHandler(this.btnGerenciarPedidos_Click);
-            // 
-            // btnabrirComanda
-            // 
-            this.btnabrirComanda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnabrirComanda.Location = new System.Drawing.Point(9, 3);
-            this.btnabrirComanda.Name = "btnabrirComanda";
-            this.btnabrirComanda.Size = new System.Drawing.Size(109, 36);
-            this.btnabrirComanda.TabIndex = 0;
-            this.btnabrirComanda.Text = "Abrir Comanda";
-            this.btnabrirComanda.UseVisualStyleBackColor = true;
-            this.btnabrirComanda.Click += new System.EventHandler(this.btnabrirComanda_Click);
-            // 
-            // lblAcao
-            // 
-            this.lblAcao.BackColor = System.Drawing.Color.IndianRed;
-            this.lblAcao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcao.ForeColor = System.Drawing.Color.White;
-            this.lblAcao.Location = new System.Drawing.Point(16, 9);
-            this.lblAcao.Name = "lblAcao";
-            this.lblAcao.Size = new System.Drawing.Size(847, 47);
-            this.lblAcao.TabIndex = 4;
-            this.lblAcao.Text = "Gerenciar Comandas";
-            this.lblAcao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // com_id
             // 
             this.com_id.DataPropertyName = "com_id";
@@ -369,6 +286,90 @@
             this.Comanda_total.Name = "Comanda_total";
             this.Comanda_total.ReadOnly = true;
             this.Comanda_total.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Location = new System.Drawing.Point(18, 187);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(848, 283);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnFecharComanda);
+            this.panel3.Controls.Add(this.btnAlterarComanda);
+            this.panel3.Controls.Add(this.btnGerenciarPedidos);
+            this.panel3.Controls.Add(this.btnabrirComanda);
+            this.panel3.Location = new System.Drawing.Point(18, 473);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(848, 44);
+            this.panel3.TabIndex = 3;
+            // 
+            // btnFecharComanda
+            // 
+            this.btnFecharComanda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFecharComanda.Location = new System.Drawing.Point(354, 3);
+            this.btnFecharComanda.Name = "btnFecharComanda";
+            this.btnFecharComanda.Size = new System.Drawing.Size(109, 36);
+            this.btnFecharComanda.TabIndex = 3;
+            this.btnFecharComanda.Text = "Fechar Comanda";
+            this.btnFecharComanda.UseVisualStyleBackColor = true;
+            this.btnFecharComanda.Click += new System.EventHandler(this.btnFecharComanda_Click);
+            // 
+            // btnAlterarComanda
+            // 
+            this.btnAlterarComanda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAlterarComanda.Location = new System.Drawing.Point(124, 3);
+            this.btnAlterarComanda.Name = "btnAlterarComanda";
+            this.btnAlterarComanda.Size = new System.Drawing.Size(109, 36);
+            this.btnAlterarComanda.TabIndex = 2;
+            this.btnAlterarComanda.Text = "Alterar Comanda";
+            this.btnAlterarComanda.UseVisualStyleBackColor = true;
+            this.btnAlterarComanda.Click += new System.EventHandler(this.btnAlterarComanda_Click);
+            // 
+            // btnGerenciarPedidos
+            // 
+            this.btnGerenciarPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGerenciarPedidos.Location = new System.Drawing.Point(239, 3);
+            this.btnGerenciarPedidos.Name = "btnGerenciarPedidos";
+            this.btnGerenciarPedidos.Size = new System.Drawing.Size(109, 36);
+            this.btnGerenciarPedidos.TabIndex = 1;
+            this.btnGerenciarPedidos.Text = "Gerenciar Pedidos";
+            this.btnGerenciarPedidos.UseVisualStyleBackColor = true;
+            this.btnGerenciarPedidos.Click += new System.EventHandler(this.btnGerenciarPedidos_Click);
+            // 
+            // btnabrirComanda
+            // 
+            this.btnabrirComanda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnabrirComanda.Location = new System.Drawing.Point(9, 3);
+            this.btnabrirComanda.Name = "btnabrirComanda";
+            this.btnabrirComanda.Size = new System.Drawing.Size(109, 36);
+            this.btnabrirComanda.TabIndex = 0;
+            this.btnabrirComanda.Text = "Abrir Comanda";
+            this.btnabrirComanda.UseVisualStyleBackColor = true;
+            this.btnabrirComanda.Click += new System.EventHandler(this.btnabrirComanda_Click);
+            // 
+            // lblAcao
+            // 
+            this.lblAcao.BackColor = System.Drawing.Color.IndianRed;
+            this.lblAcao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcao.ForeColor = System.Drawing.Color.White;
+            this.lblAcao.Location = new System.Drawing.Point(16, 9);
+            this.lblAcao.Name = "lblAcao";
+            this.lblAcao.Size = new System.Drawing.Size(847, 47);
+            this.lblAcao.TabIndex = 4;
+            this.lblAcao.Text = "Gerenciar Comandas";
+            this.lblAcao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(15, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 47);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmGerenciarComandas
             // 

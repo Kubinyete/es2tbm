@@ -111,5 +111,10 @@ namespace TBM.View.Comanda
             new View.Comanda.frmGerenciarPedidos().ShowDialog();
             Controller.ComandaController.carregarComandas(dgvComandas);
         }
+
+        private void btnFecharComanda_Click(object sender, EventArgs e)
+        {
+            //COLOQUE SUA FUNÇÃO AQUI (Fechar Comanda) 
+        }
     }
 }

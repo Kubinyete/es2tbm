@@ -152,6 +152,7 @@
             this.btnRegistrarCompra.TabIndex = 2;
             this.btnRegistrarCompra.Text = "Registrar Compra";
             this.btnRegistrarCompra.UseVisualStyleBackColor = true;
+            this.btnRegistrarCompra.Click += new System.EventHandler(this.btnRegistrarCompra_Click);
             // 
             // groupBox3
             // 

@@ -171,5 +171,9 @@ namespace TBM.View.Estoque
 
         #endregion
 
+        private void btnRegistrarCompra_Click(object sender, EventArgs e)
+        {
+            //COLOQUE SUA FUNÇÃO AQUI(Efetuar Compra)
+        }
     }
 }
