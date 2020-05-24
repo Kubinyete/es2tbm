@@ -19,19 +19,28 @@ namespace TBM.View.Comanda
 
         private void frmGerenciarPedidos_Load(object sender, EventArgs e)
         {
+            #region carregamento das grids e checkbox
             Controller.PedidoController.carregarCbCategorias(cbCategoria);
-            Controller.PedidoController.carregarItemsCardapio(
-                dgvCardapio, (Model.CategoriaCardapio)cbCategoria.SelectedItem
-                );
+
+            carregarItemsCardapioView();
+            carregarPedidosView();
+
+            #endregion
+
+            #region carregar textos
             this.Text = this.Text.Replace("%cmd%", Controller
                 .ComandaController
                 .comanda.Com_apelido);
-            lblAcao.Text = this.lblAcao.Text.Replace("%cmd%", Controller
+            lblAcao.Text = this.lblAcao.Text.Replace("%cmd%", "Comanda Nº" +
+                Controller.ComandaController.comanda.Com_id + " - " +
+                Controller
                 .ComandaController
-                .comanda.Com_apelido);
-            Controller.PedidoController.carregarPedidosDaComanda(dgvPedido);
+                .comanda.Com_apelido + " - Mesa " + Controller
+                .ComandaController
+                .comanda.Mesa.Mes_id);
             lblValorTotal.Text = lblValorTotal.Text.Replace("%total%", Controller
-                    .ComandaController.comanda.Com_valor_total.ToString());
+                    .ComandaController.comanda.Com_valor_total.ToString("N2"));
+            #endregion
         }
 
         private void btnNovoPedido_Click(object sender, EventArgs e)
@@ -41,12 +50,14 @@ namespace TBM.View.Comanda
                 Controller.PedidoController.item =
                 (Model.ItemCardapio)dgvCardapio.SelectedRows[0].DataBoundItem;
                 new View.Comanda.frmInformacoesPedido().ShowDialog();
-                Controller.PedidoController.carregarPedidosDaComanda(dgvPedido);
-                Controller.ComandaController.comanda.Com_valor_total +=
-                    Controller.PedidoController.ultimoInserido.Ipe_valor_subtotal;
-                lblValorTotal.Text = "Total : R$ "+
-                    Controller.ComandaController.comanda.Com_valor_total
-                    ;
+                carregarPedidosView();
+
+                if (Controller
+                    .PedidoController.ultimoInserido != null)
+                {
+                    atualizarValorTotalView(Controller
+                        .PedidoController.ultimoInserido.Pedido, "+");
+                }
             }catch(Exception err)
             {
                 MessageBox.Show("Não há uma prato selecionado", "Erro",
@@ -56,9 +67,7 @@ namespace TBM.View.Comanda
 
         private void cbCategoria_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Controller.PedidoController.carregarItemsCardapio(
-                dgvCardapio, (Model.CategoriaCardapio)cbCategoria.SelectedItem
-                );
+            carregarItemsCardapioView();
         }
 
         private void btnCancelarPedido_Click(object sender, EventArgs e)
@@ -71,22 +80,63 @@ namespace TBM.View.Comanda
                 Controller.PedidoController
                     .alterarEstadoPedido(new Model.EstadoPedido(5), pedido_escolhido);
 
-                Controller.PedidoController.atualizarLabel(
-                    Controller.ComandaController.comanda.Com_valor_total,
-                    pedido_escolhido.Ped_valor_total,
-                    "-",
-                    lblValorTotal
-                    );
+                atualizarValorTotalView(pedido_escolhido,"-");
 
-                Controller
-                    .PedidoController
-                    .carregarPedidosDaComanda(dgvPedido);
+                carregarPedidosView();
             }catch(Exception erro)
             {
                 MessageBox.Show(erro.Message, "erro", 
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void cbOcultarPedidosCancelados_CheckedChanged(object sender, EventArgs e)
+        {
+            carregarPedidosView();
+        }
+
+        private void carregarPedidosView()
+        {
+            Controller.PedidoController
+                .carregarPedidosDaComanda(dgvPedido,
+                cbOcultarPedidosCancelados.Checked);
+        }
+
+        private void carregarItemsCardapioView()
+        {
+            Controller.PedidoController.carregarItemsCardapio(
+                dgvCardapio,
+                (Model.CategoriaCardapio)cbCategoria.SelectedItem
+                );
+        }
+
+        private void atualizarValorTotalView(Model.Pedido pedido, 
+            string operacao)
+        {
+            if (operacao == "-")
+            {
+                Controller.PedidoController.atualizarLabel(
+                    Controller.ComandaController.comanda.Com_valor_total,
+                    pedido.Ped_valor_total,
+                    "-",
+                    lblValorTotal
+                    );
+            }
+            else
+            {
+                Controller.PedidoController.atualizarLabel(
+                    Controller.ComandaController.comanda.Com_valor_total,
+                    pedido.Ped_valor_total,
+                    "+",
+                    lblValorTotal
+                    );
+            }
+        }
+
+        private void lblValorTotal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -40,18 +40,21 @@
             this.itc_disponivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria_cardapio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Itc_preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbOcultarPedidosCancelados = new System.Windows.Forms.CheckBox();
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.btnCancelarPedido = new System.Windows.Forms.Button();
             this.dgvPedido = new System.Windows.Forms.DataGridView();
+            this.lblAcao = new System.Windows.Forms.Label();
             this.Com_apelido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pedido_comanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ped_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_solic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preco_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ped_valor_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblAcao = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCardapio)).BeginInit();
@@ -82,6 +85,7 @@
             // 
             // cbCategoria
             // 
+            this.cbCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(15, 46);
@@ -92,6 +96,7 @@
             // 
             // btnNovoPedido
             // 
+            this.btnNovoPedido.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNovoPedido.Location = new System.Drawing.Point(87, 468);
             this.btnNovoPedido.Name = "btnNovoPedido";
             this.btnNovoPedido.Size = new System.Drawing.Size(178, 40);
@@ -120,7 +125,8 @@
             this.itc_descricao,
             this.itc_disponivel,
             this.categoria_cardapio,
-            this.preco});
+            this.preco,
+            this.Itc_preco});
             this.dgvCardapio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvCardapio.Location = new System.Drawing.Point(15, 83);
             this.dgvCardapio.Name = "dgvCardapio";
@@ -171,13 +177,22 @@
             // 
             // preco
             // 
-            this.preco.DataPropertyName = "Itc_preco";
+            this.preco.DataPropertyName = "ItcPrecoFormatado";
             this.preco.HeaderText = "Preço";
             this.preco.Name = "preco";
             this.preco.ReadOnly = true;
             // 
+            // Itc_preco
+            // 
+            this.Itc_preco.DataPropertyName = "Itc_preco";
+            this.Itc_preco.HeaderText = "Itc_preco";
+            this.Itc_preco.Name = "Itc_preco";
+            this.Itc_preco.ReadOnly = true;
+            this.Itc_preco.Visible = false;
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbOcultarPedidosCancelados);
             this.groupBox1.Controls.Add(this.lblValorTotal);
             this.groupBox1.Controls.Add(this.btnCancelarPedido);
             this.groupBox1.Controls.Add(this.dgvPedido);
@@ -188,20 +203,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista de Pedidos da Comanda";
             // 
+            // cbOcultarPedidosCancelados
+            // 
+            this.cbOcultarPedidosCancelados.AutoSize = true;
+            this.cbOcultarPedidosCancelados.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbOcultarPedidosCancelados.Location = new System.Drawing.Point(9, 19);
+            this.cbOcultarPedidosCancelados.Name = "cbOcultarPedidosCancelados";
+            this.cbOcultarPedidosCancelados.Size = new System.Drawing.Size(161, 17);
+            this.cbOcultarPedidosCancelados.TabIndex = 3;
+            this.cbOcultarPedidosCancelados.Text = "Mostrar Pedidos Cancelados";
+            this.cbOcultarPedidosCancelados.UseVisualStyleBackColor = true;
+            this.cbOcultarPedidosCancelados.CheckedChanged += new System.EventHandler(this.cbOcultarPedidosCancelados_CheckedChanged);
+            // 
             // lblValorTotal
             // 
-            this.lblValorTotal.AutoSize = true;
-            this.lblValorTotal.Location = new System.Drawing.Point(6, 477);
+            this.lblValorTotal.BackColor = System.Drawing.Color.IndianRed;
+            this.lblValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.ForeColor = System.Drawing.Color.White;
+            this.lblValorTotal.Location = new System.Drawing.Point(9, 452);
             this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(93, 13);
+            this.lblValorTotal.Size = new System.Drawing.Size(541, 56);
             this.lblValorTotal.TabIndex = 2;
             this.lblValorTotal.Text = "Total : R$ %total%";
+            this.lblValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblValorTotal.Click += new System.EventHandler(this.lblValorTotal_Click);
             // 
             // btnCancelarPedido
             // 
+            this.btnCancelarPedido.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelarPedido.Location = new System.Drawing.Point(556, 452);
             this.btnCancelarPedido.Name = "btnCancelarPedido";
-            this.btnCancelarPedido.Size = new System.Drawing.Size(95, 40);
+            this.btnCancelarPedido.Size = new System.Drawing.Size(95, 56);
             this.btnCancelarPedido.TabIndex = 1;
             this.btnCancelarPedido.Text = "Cancelar Pedido";
             this.btnCancelarPedido.UseVisualStyleBackColor = true;
@@ -218,15 +251,28 @@
             this.ped_id,
             this.data_solic,
             this.preco_item,
+            this.Ped_valor_total,
             this.qtde,
             this.item_status});
             this.dgvPedido.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvPedido.Location = new System.Drawing.Point(9, 33);
+            this.dgvPedido.Location = new System.Drawing.Point(9, 46);
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.ReadOnly = true;
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedido.Size = new System.Drawing.Size(642, 413);
+            this.dgvPedido.Size = new System.Drawing.Size(642, 400);
             this.dgvPedido.TabIndex = 0;
+            // 
+            // lblAcao
+            // 
+            this.lblAcao.BackColor = System.Drawing.Color.IndianRed;
+            this.lblAcao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcao.ForeColor = System.Drawing.Color.White;
+            this.lblAcao.Location = new System.Drawing.Point(12, 9);
+            this.lblAcao.Name = "lblAcao";
+            this.lblAcao.Size = new System.Drawing.Size(1027, 58);
+            this.lblAcao.TabIndex = 5;
+            this.lblAcao.Text = "Gerenciar Pedidos - %cmd%";
+            this.lblAcao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Com_apelido
             // 
@@ -262,10 +308,18 @@
             // 
             // preco_item
             // 
-            this.preco_item.DataPropertyName = "Ped_valor_total";
+            this.preco_item.DataPropertyName = "PedidoPrecoFormatado";
             this.preco_item.HeaderText = "Preço";
             this.preco_item.Name = "preco_item";
             this.preco_item.ReadOnly = true;
+            // 
+            // Ped_valor_total
+            // 
+            this.Ped_valor_total.DataPropertyName = "Ped_valor_total";
+            this.Ped_valor_total.HeaderText = "Ped_valor_total";
+            this.Ped_valor_total.Name = "Ped_valor_total";
+            this.Ped_valor_total.ReadOnly = true;
+            this.Ped_valor_total.Visible = false;
             // 
             // qtde
             // 
@@ -280,18 +334,6 @@
             this.item_status.HeaderText = "Status";
             this.item_status.Name = "item_status";
             this.item_status.ReadOnly = true;
-            // 
-            // lblAcao
-            // 
-            this.lblAcao.BackColor = System.Drawing.Color.IndianRed;
-            this.lblAcao.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAcao.ForeColor = System.Drawing.Color.White;
-            this.lblAcao.Location = new System.Drawing.Point(12, 9);
-            this.lblAcao.Name = "lblAcao";
-            this.lblAcao.Size = new System.Drawing.Size(1027, 58);
-            this.lblAcao.TabIndex = 5;
-            this.lblAcao.Text = "Gerenciar Pedidos - %cmd%";
-            this.lblAcao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmGerenciarPedidos
             // 
@@ -327,18 +369,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbCategoria;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblAcao;
+        private System.Windows.Forms.CheckBox cbOcultarPedidosCancelados;
         private System.Windows.Forms.DataGridViewTextBoxColumn cardapio;
         private System.Windows.Forms.DataGridViewTextBoxColumn itc_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn itc_descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn itc_disponivel;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria_cardapio;
         private System.Windows.Forms.DataGridViewTextBoxColumn preco;
-        private System.Windows.Forms.Label lblAcao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Itc_preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn Com_apelido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pedido_comanda;
         private System.Windows.Forms.DataGridViewTextBoxColumn ped_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_solic;
         private System.Windows.Forms.DataGridViewTextBoxColumn preco_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ped_valor_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtde;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_status;
     }

@@ -44,5 +44,9 @@ namespace TBM.Model
         public DateTime Com_data_abertura { get => _com_data_abertura; set => _com_data_abertura = value; }
         public int Com_id { get => _com_id; set => _com_id = value; }
         public Mesa Mesa { get => _mesa; set => _mesa = value; }
+
+        public string ValorFormatado{
+            get { return "R$ " + Com_valor_total.ToString("N2"); }
+        }
     }
 }

@@ -30,44 +30,74 @@ namespace TBM.Controller
             cbMesas.DataSource = dalmesa.obterMesas();
         }
 
-        public static void carregarComandas(DataGridView dgvComandas, string args = null)
+        public static void redirecionar(DataGridView dgvComandas,bool filtrarMesa,string mesa, 
+            bool filtrarGarcom, string garcom, string busca)
         {
-            if(args==""||args==null)
+            if (filtrarMesa && filtrarGarcom)
             {
-                dgvComandas.DataSource = new DAL.DALComanda(DAL
-                    .PersistenciaFactory
-                    .criarConexaoPersistencia()).obterComandas();
+                carregarComandas(
+                    dgvComandas,
+                    busca,
+                    mesa,
+                    garcom
+                );
             }
             else
             {
-                if (args.Length > 260)
-                    throw new Exception("Pesquisa muito grande");
+                if (filtrarGarcom && !filtrarMesa)
+                {
+                    carregarComandas(
+                        dgvComandas,
+                        busca,
+                        null,
+                        garcom
+                        );
+                }
                 else
-                    dgvComandas.DataSource = new DAL.DALComanda(DAL
-                    .PersistenciaFactory
-                    .criarConexaoPersistencia()).obterComandas(
-                        " WHERE com_apelido like @busca",args);
+                {
+                    carregarComandas(
+                        dgvComandas,
+                        busca,
+                        mesa,
+                        null
+                        );
+                }
             }
         }
 
-        public static void carregarComandas(DataGridView dgvComandas, 
-            int mesaid,
-            string nomeGarcom, 
-            string busca = null)
+        public static void carregarComandas(DataGridView dgvComandas,
+            string busca = null,
+            string mesa = null, 
+            string Garcom = null
+            )
         {
             DAL.DALComanda dalcom = new DAL.DALComanda(DAL
-                .PersistenciaFactory.criarConexaoPersistencia());
-            try
+                .PersistenciaFactory
+                .criarConexaoPersistencia());
+            //optei por buscar sem filtros
+            if (mesa == null && Garcom == null&&busca==null)
             {
-                if(busca==null||busca=="")
-                    dgvComandas.DataSource = dalcom.obterComandas(mesaid, nomeGarcom);
-                else
-                    dgvComandas.DataSource = dalcom.obterComandas(mesaid, nomeGarcom, 
-                    " AND com_apelido like @busca;", busca);
+                dgvComandas.DataSource = dalcom.obterComandas();
             }
-            catch (BL.Errors.BLValidationError err)
+            else
             {
-                throw err;
+                string args = "WHERE com_apelido like @busca ";
+
+                if (mesa != null)
+                {
+                    args += "AND mesa.mes_id = @mesid ";
+                }
+
+                if(Garcom!= null)
+                {
+                    args += "AND pessoafisica.pes_nome = @nome ";
+                }
+                dgvComandas.DataSource = dalcom.obterComandas(
+                    args,
+                    busca,
+                    mesa,
+                    Garcom
+                );
             }
         }
 

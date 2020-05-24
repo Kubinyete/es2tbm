@@ -39,5 +39,9 @@ namespace TBM.Model
         public EstadoPedido Pedido_estado { get => _pedido_estado; set => _pedido_estado = value; }
         public int Ped_quantidade { get => _ped_quantidade; set => _ped_quantidade = value; }
         public ItemPedido Item_pedido { get => _item_pedido; set => _item_pedido = value; }
+
+        public string PedidoPrecoFormatado{
+            get { return "R$ " + Ped_valor_total.ToString("N2"); }
+        }
     }
 }

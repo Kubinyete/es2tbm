@@ -418,6 +418,7 @@ CREATE TABLE IF NOT EXISTS `tbmdb`.`registrobaixa` (
   `reg_descricao` VARCHAR(256) NULL,
   `reg_quantidade` VARCHAR(45) NOT NULL,
   `produto_pro_id` INT NOT NULL,
+  `reg_data_efetuado` DATETIME NOT NULL,
   PRIMARY KEY (`reg_id`),
   CONSTRAINT `fk_registrobaixa_produto1`
     FOREIGN KEY (`produto_pro_id`)
@@ -793,6 +794,30 @@ FOR EACH ROW BEGIN
         update comanda set com_valor_total = t_com_valor 
         where com_id = new.comanda_com_id;
         END IF;
+END
+
+CREATE TRIGGER `registrobaixa_AFTER_INSERT` 
+AFTER INSERT ON `registrobaixa` 
+FOR EACH ROW BEGIN
+  declare p_qtde int; 
+    select pro_quantidade into p_qtde from produto
+    where pro_id = new.produto_pro_id; 
+    set p_qtde := p_qtde - new.reg_quantidade;
+    
+    update produto set pro_quantidade = p_qtde 
+    where pro_id = new.produto_pro_id;
+END
+
+CREATE  TRIGGER `registrobaixa_AFTER_DELETE` 
+AFTER DELETE ON `registrobaixa` 
+FOR EACH ROW BEGIN
+  declare p_qtde int; 
+  select pro_quantidade into p_qtde 
+    from produto where pro_id = old.produto_pro_id;
+    set p_qtde := p_qtde + old.reg_quantidade;
+    
+    update produto set pro_quantidade = p_qtde
+    where pro_id = old.produto_pro_id;
 END
 
 -- END PROCEDURES -> Mauricio

@@ -66,5 +66,10 @@ namespace TBM.View.Comanda
         {
             this.Close();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -147,8 +147,8 @@
             // efetuarBaixaToolStripMenuItem
             // 
             this.efetuarBaixaToolStripMenuItem.Name = "efetuarBaixaToolStripMenuItem";
-            this.efetuarBaixaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.efetuarBaixaToolStripMenuItem.Text = "Efetuar Baixa";
+            this.efetuarBaixaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.efetuarBaixaToolStripMenuItem.Text = "Gerenciar Estoque";
             this.efetuarBaixaToolStripMenuItem.Click += new System.EventHandler(this.efetuarBaixaToolStripMenuItem_Click);
             // 
             // deliveryToolStripMenuItem

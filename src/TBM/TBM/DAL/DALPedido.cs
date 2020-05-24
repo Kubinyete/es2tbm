@@ -58,7 +58,7 @@ namespace TBM.DAL
             }
         }
 
-        public List<Model.Pedido> carregarPedidosDaComanda(int com_id)
+        public List<Model.Pedido> carregarPedidosDaComanda(int com_id, string condition = null)
         {
             List<Model.Pedido> ret = new List<Model.Pedido>();
 
@@ -69,6 +69,12 @@ namespace TBM.DAL
 "inner join categoriacardapio on categoriacardapio.cac_id = itemcardapio.categoriacardapio_cac_id " +
 "inner join comanda on comanda.com_id = comanda_com_id " +
 "where pedido.comanda_com_id = " + com_id;
+
+            if(condition != null)
+            {
+                sql += condition;
+            }
+
             try
             {
                 DataTable dt = Db.executarSelect(sql);

@@ -74,19 +74,27 @@
   <ItemGroup>
     <Compile Include="BL\BLCliente.cs" />
     <Compile Include="BL\BLComanda.cs" />
+    <Compile Include="BL\BLEstoque.cs" />
     <Compile Include="BL\BLPedido.cs" />
     <Compile Include="Controller\ComandaController.cs" />
+    <Compile Include="Controller\EstoqueController.cs" />
     <Compile Include="Controller\mainController.cs" />
     <Compile Include="Controller\PedidoController.cs" />
     <Compile Include="DAL\DALCategoriaCardapio.cs" />
+    <Compile Include="DAL\DALCategoriaProduto.cs" />
     <Compile Include="DAL\DALCliente.cs" />
     <Compile Include="DAL\DALComanda.cs" />
     <Compile Include="DAL\DALEstadoPedido.cs" />
     <Compile Include="DAL\DALItemCardapio.cs" />
     <Compile Include="DAL\DALItemPedido.cs" />
+    <Compile Include="DAL\DALMarca.cs" />
     <Compile Include="DAL\DALMesa.cs" />
     <Compile Include="DAL\DALPedido.cs" />
+    <Compile Include="DAL\DALProduto.cs" />
+    <Compile Include="DAL\DALRegistroBaixa.cs" />
+    <Compile Include="DAL\DALUnidadeMedida.cs" />
     <Compile Include="Model\CategoriaCardapio.cs" />
+    <Compile Include="Model\CategoriaProduto.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="BL\BLCadastrarAlterarUsuario.cs" />
     <Compile Include="BL\BLPesquisarFuncionario.cs" />
@@ -109,8 +117,12 @@
     <Compile Include="Model\EstadoPedido.cs" />
     <Compile Include="Model\ItemCardapio.cs" />
     <Compile Include="Model\ItemPedido.cs" />
+    <Compile Include="Model\Marca.cs" />
     <Compile Include="Model\Mesa.cs" />
     <Compile Include="Model\Pedido.cs" />
+    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\RegistroBaixa.cs" />
+    <Compile Include="Model\UnidadeMedida.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,11 +182,11 @@
       <DependentUpon>frmInformacoesPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ECrudContext.cs" />
-    <Compile Include="View\Estoque\FrmEfetuarBaixaDeProduto.cs">
+    <Compile Include="View\Estoque\FrmGerenciarEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Estoque\FrmEfetuarBaixaDeProduto.Designer.cs">
-      <DependentUpon>FrmEfetuarBaixaDeProduto.cs</DependentUpon>
+    <Compile Include="View\Estoque\FrmGerenciarEstoque.Designer.cs">
+      <DependentUpon>FrmGerenciarEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Estoque\FrmEfetuarBaixaProdutoSelecionado.cs">
       <SubType>Form</SubType>
@@ -253,8 +265,8 @@
     <EmbeddedResource Include="View\Comanda\frmInformacoesPedido.resx">
       <DependentUpon>frmInformacoesPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Estoque\FrmEfetuarBaixaDeProduto.resx">
-      <DependentUpon>FrmEfetuarBaixaDeProduto.cs</DependentUpon>
+    <EmbeddedResource Include="View\Estoque\FrmGerenciarEstoque.resx">
+      <DependentUpon>FrmGerenciarEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Estoque\FrmEfetuarBaixaProdutoSelecionado.resx">
       <DependentUpon>FrmEfetuarBaixaProdutoSelecionado.cs</DependentUpon>

@@ -33,7 +33,7 @@ namespace TBM.Controller
             Label label)
         {
             double resultado = operacao == "+" ? valor + valor2 : valor - valor2;
-            label.Text = "Total : R$ " + resultado;
+            label.Text = "Total : R$ " + resultado.ToString("N2");
             Controller
                 .ComandaController
                 .comanda.Com_valor_total = resultado;
@@ -46,7 +46,7 @@ namespace TBM.Controller
             try
             {
                 int qtde = Convert.ToInt32(valor);
-                lbltotal.Text = "Total : R$ " + qtde * item.Itc_preco;
+                lbltotal.Text = "Total : R$ " + (qtde * item.Itc_preco).ToString("N2");
             }catch(Exception e)
             {
                 throw new Exception("Quantidade inválida");
@@ -68,15 +68,20 @@ namespace TBM.Controller
             }
         }
 
-        public static void carregarPedidosDaComanda(DataGridView dgvPedidosEfetuados)
+        public static void carregarPedidosDaComanda(DataGridView dgvPedidosEfetuados,
+            bool cancelados)
         {
+            int com_id = Controller.ComandaController.comanda.Com_id;
             DAL.DALPedido dalped = new DAL.DALPedido(DAL
                 .PersistenciaFactory
                 .criarConexaoPersistencia());
-            dgvPedidosEfetuados.DataSource = dalped.carregarPedidosDaComanda(Controller
-                .ComandaController.
-                comanda
-                .Com_id);
+            if (cancelados)
+                dgvPedidosEfetuados.DataSource =
+                    dalped.carregarPedidosDaComanda(com_id);
+            else
+                dgvPedidosEfetuados.DataSource =
+                    dalped.carregarPedidosDaComanda(com_id, 
+                    " AND estadopedido_esp_id <> 5");
         }
 
         public static void alterarEstadoPedido(Model.EstadoPedido e_ped, Model.Pedido ped)

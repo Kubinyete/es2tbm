@@ -48,6 +48,7 @@
             this.tbNomeIdentificacao = new System.Windows.Forms.TextBox();
             this.tbNumero = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -154,6 +155,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.cbMesa);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label3);
@@ -237,6 +239,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Número";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(376, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Obrigatório";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // frmAbrirComanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,5 +292,6 @@
         private System.Windows.Forms.Label lblAcao;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbMesa;
+        private System.Windows.Forms.Label label5;
     }
 }

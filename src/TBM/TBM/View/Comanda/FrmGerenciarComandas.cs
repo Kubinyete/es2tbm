@@ -55,20 +55,14 @@ namespace TBM.View.Comanda
         {
             try
             {
-                if (cbFiltrosAtivados.Checked)
-                {
-                    Controller.ComandaController
-                        .carregarComandas(dgvComandas,
-                        Convert
-                        .ToInt32(cbMesa.SelectedItem.ToString()),
-                        cbGarcom.Text,tbBusca.Text.ToLower());
-                }
-                else
-                {
-                    Controller
-                        .ComandaController
-                        .carregarComandas(dgvComandas,tbBusca.Text);
-                }
+                Controller.ComandaController.redirecionar(
+                    dgvComandas,
+                    cbFiltrarMesa.Checked,
+                    cbMesa.Text,
+                    cbFiltrarGarcom.Checked,
+                    cbGarcom.Text,
+                    tbBusca.Text
+                    );
             }
             catch (Exception err)
             {

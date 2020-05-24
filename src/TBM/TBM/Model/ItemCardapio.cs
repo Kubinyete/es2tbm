@@ -42,5 +42,9 @@ namespace TBM.Model
         {
             return Itc_nome;
         }
+
+        public string ItcPrecoFormatado{
+            get { return "R$ " + Itc_preco.ToString("N2"); }
+        }
     }
 }
