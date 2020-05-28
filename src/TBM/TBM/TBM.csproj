@@ -222,6 +222,12 @@
     <Compile Include="View\frmListarComandasAbertas.Designer.cs">
       <DependentUpon>frmListarComandasAbertas.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmListarContasReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmListarContasReceber.Designer.cs">
+      <DependentUpon>frmListarContasReceber.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmListarComandasAbertas.resx">
       <DependentUpon>frmListarComandasAbertas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmListarContasReceber.resx">
+      <DependentUpon>frmListarContasReceber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmPagamento.resx">
       <DependentUpon>frmPagamento.cs</DependentUpon>
